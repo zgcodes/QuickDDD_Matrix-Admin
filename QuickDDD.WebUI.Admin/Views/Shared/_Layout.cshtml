@@ -1,0 +1,74 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>@ViewBag.Title</title>
+    @*@Styles.Render("~/bundles/css/bootstrap2")*@
+    <link href="~/Content/admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/admin/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    @RenderSection("css", false)   
+    @*@Styles.Render("~/bundles/css/admin")*@   
+    <link href="~/Content/admin/css/uniform.css" rel="stylesheet" />
+    <link href="~/Content/admin/css/select2.css" rel="stylesheet" />
+    <link href="~/Content/admin/css/matrix-style.css" rel="stylesheet" />
+    <link href="~/Content/admin/css/matrix-media.css" rel="stylesheet" />
+    <link href="~/Content/admin/css/font.css" rel="stylesheet" />
+    <link href="~/Content/admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  
+</head>
+<body>
+
+    <!--Header-Part-->
+    <div id="header">
+        <h1><a href="dashboard.html">Matrix Admin</a></h1>
+    </div>
+    <!--Header-Part-->
+
+    @Html.Partial("_HeaderMenu")
+
+    @Html.Partial("_TopSearch")
+
+     @Html.Partial("_SidebarMenu")
+    <!--main-container-part-->
+    <div id="content">
+        <!--BreadCrumbs-->
+        @*@Html.Partial("_BreadCrumb")*@
+        <!--BreadCrumbs-->
+
+        <!--Body-->
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+        <!--Body-->
+    </div>
+    <!--end-main-container-part-->
+    
+    <!--Footer-part-->
+    @Html.Partial("_Footer") 
+    <!--end-Footer-part-->
+    @*@Scripts.Render("~/bundles/js/admin-jq")*@
+    <script src="~/Content/admin/js/jquery.min.js"></script>
+
+    @*@Scripts.Render("~/bundles/js/bootstrap2")*@ 
+    <script src="~/Content/admin/js/bootstrap.min.js"></script>
+    <script src="~/Content/admin/js/bootbox.min.js"></script>
+
+    @*@Scripts.Render("~/bundles/js/jqdataTables")*@ 
+    <script src="~/Content/admin/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/admin/js/jquery.dataTables.AjaxSource.min.js"></script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @*<script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+    @*@Scripts.Render("~/bundles/js/admin-plugin")*@
+    <script src="~/Content/admin/js/select2.min.js"></script>
+    <script src="~/Content/admin/js/matrix.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

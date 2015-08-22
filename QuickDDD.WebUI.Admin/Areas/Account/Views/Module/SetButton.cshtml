@@ -1,0 +1,22 @@
+﻿@model ModuleDto
+
+
+<h2>@Model.ModuleName</h2>
+@Html.HiddenFor(t => t.ModuleId)
+@{
+    if (ViewBag.PermissionList != null)
+    {
+        foreach (Quick.Domain.Permission ermission in ViewBag.PermissionList)
+        {
+            var ischecked = "";
+            if (ViewBag.SelectedPermissionIds != null && ViewBag.SelectedPermissionIds.Contains(ermission.Id))
+            {
+
+                ischecked = "checked='checked'";
+            }
+    <input type="checkbox" name="SelectedPermissionIds" value="@ermission.Id" id="@ermission.Id" @ischecked/>
+    <label for="@ermission.Id">@ermission.Name</label>
+        }
+    }
+}
+

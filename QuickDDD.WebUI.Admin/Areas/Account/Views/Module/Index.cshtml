@@ -1,0 +1,91 @@
+﻿@section css{
+    @Styles.Render("~/bundles/css/jqueryui")
+}
+
+<div id="content-body" class="row-fluid">
+    <div class="span22">
+        <!--操作 -->
+        @Html.Partial("Search")
+
+        <!--列表-->
+        @Html.Partial("List")
+
+        @Html.Partial("_FormModal")
+
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+        var oTable = null;
+
+        $(function () {
+            var actionUrl = "@Url.Action("List")?rand=" + Math.random();
+            var aoColumns = [
+                    { "sTitle": "模块名称", "mDataProp": "Name", "bSortable": false },
+                    { "sTitle": "链接", "mDataProp": "LinkUrl", "bSortable": false },
+                    { "sTitle": "图标", "mDataProp": "Icon", "bSortable": false, "fnRender": renderIcon },
+                    { "sTitle": "编码", "mDataProp": "Code", "bSortable": false },
+                    { "sTitle": "排序", "mDataProp": "OrderSort", "bSortable": false },
+                    { "sTitle": "是否菜单", "mDataProp": "IsMenu", "bSortable": false, "fnRender": renderBool },
+                    { "sTitle": "是否激活", "mDataProp": "Enabled", "bSortable": false, "fnRender": renderBool },
+                    {
+                        "mDataProp": "Id",
+                        "bSortable": false,
+                        "fnRender": function (obj, data) {
+                            var btnArray = "";
+                            btnArray += '<button type="submit" id="add" class="btn btn-primary btn-normal" title="设置按钮" onclick="SetButton(' + data + ')"><span class="icon-pencil"></span></button>'
+
+                            btnArray += '<button type="submit" id="add" class="btn btn-primary btn-normal" title="编辑" onclick="Edit(' + data + ')"><span class="icon-pencil"></span></button>'
+
+                            btnArray += '<button type="submit"  class="btn btn-danger btn-normal" title="删除" onclick="Delete(' + data + ')"><span class="icon-remove"></span></button>'
+
+                            return btnArray;
+                        }
+                    }
+            ];
+            //初始化表格
+            oTable = InitDatatables($(".data-table"), actionUrl, aoColumns, oTable);
+        });
+
+        //查询
+        function Search() {
+            var filterdata = $(".search-form").serialize();
+            var actionUrl = "@Url.Action("List")?rand=" + Math.random() + "&" + filterdata;
+            SearchRecord(actionUrl, oTable);
+        }
+
+        //设置按钮
+        function Create() {
+            var actionUrl = "@Url.Action("SetButton")";
+            var saveActionUrl = "@Url.Action("SetButton")";
+            var param = {};
+            ShowModal(actionUrl, saveActionUrl, param, "设置按钮");
+        }
+
+        //新增
+        function Create() {
+            var actionUrl = "@Url.Action("Edit")";
+            var saveActionUrl = "@Url.Action("Create")";
+            var param = {};
+            ShowModal(actionUrl, saveActionUrl, param, "新增模块");
+        }
+
+        //编辑
+        function Edit(id) {
+            var actionUrl = "@Url.Action("Edit")";
+            var saveActionUrl = "@Url.Action("Update")";
+            var param = { id: id }
+            ShowModal(actionUrl, saveActionUrl, param, "编辑模块");
+        }
+
+
+        //删除
+        function Delete(id) {
+            var actionUrl = "@Url.Action("Delete")";
+            var param = { id: id }
+            DeleteRecord(actionUrl, param, oTable);
+        }
+    </script>
+}
