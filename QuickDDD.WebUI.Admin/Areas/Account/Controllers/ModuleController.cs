@@ -67,7 +67,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             ViewBag.PermissionList = _permissionService.GetList();
             //已选的权限
             ViewBag.SelectedPermissionIds = model.ModulePermission.Where(m => m.ModuleId == id).Select(m => m.PermissionId).ToList();
-            return View();
+            return View(model);
 
         }
 

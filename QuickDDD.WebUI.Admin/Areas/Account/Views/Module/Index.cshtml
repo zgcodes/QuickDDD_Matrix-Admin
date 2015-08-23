@@ -57,10 +57,10 @@
         }
 
         //设置按钮
-        function Create() {
+        function SetButton(id) {
             var actionUrl = "@Url.Action("SetButton")";
             var saveActionUrl = "@Url.Action("SetButton")";
-            var param = {};
+            var param = { id: id }
             ShowModal(actionUrl, saveActionUrl, param, "设置按钮");
         }
 

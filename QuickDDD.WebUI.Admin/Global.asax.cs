@@ -45,7 +45,7 @@ namespace Quick.WebUI.Admin
             this.register();
             
             //指定初始化策略
-            //Database.SetInitializer(new SampleDataInitializer());
+             //Database.SetInitializer(new SampleDataInitializer());
             //也可换种写法：封装个静态方法，把上句封装起来，或者在QuickDbContext的构造函数中指定
             //DatabaseInitializer.Initialize();
         }
