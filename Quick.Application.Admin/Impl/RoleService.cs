@@ -19,18 +19,21 @@ namespace Quick.Application
         private readonly IRoleRepository _roleRepository;
         private readonly IModuleRepository _moduleRepository;
         private readonly IModulePermissionRepository _modulePermissionRepository;
-        private readonly IRoleModulePermissionRepository _roleModulePermission;
+        private readonly IRoleModulePermissionRepository _roleModulePermissionRepository;
+        private readonly IPermissionRepository _permissionRepository;
 
        // public IUnitOfWork UnitOfWork { get; set; }
         public RoleService(IRoleRepository roleRepository,
                IModulePermissionRepository modulePermissionRepository,
-            IRoleModulePermissionRepository roleModulePermission,
-            IModuleRepository moduleRepository)
+            IRoleModulePermissionRepository roleModulePermissionRepository,
+            IModuleRepository moduleRepository,
+            IPermissionRepository permissionRepository)
         {
             _roleRepository = roleRepository;
             _modulePermissionRepository = modulePermissionRepository;
-            _roleModulePermission = roleModulePermission;
+            _roleModulePermissionRepository = roleModulePermissionRepository;
             _moduleRepository = moduleRepository;
+            _permissionRepository = permissionRepository;
         }
         
         #region 公共方法
@@ -94,7 +97,7 @@ namespace Quick.Application
                                 }).OrderBy(t => t.Code).ToList();
 
             //选中菜单
-            var selectedModule = _roleModulePermission.GetAll().Where(t => t.RoleId == id && t.IsDeleted == false).Select(t => t.ModuleId).ToList();
+            var selectedModule = _roleModulePermissionRepository.GetAll().Where(t => t.RoleId == id && t.IsDeleted == false).Select(t => t.ModuleId).ToList();
 
             //对比菜单
             foreach (var item in model.ModuleDataList)
@@ -110,10 +113,96 @@ namespace Quick.Application
             return model;
         }
 
+        public RoleSelectedPermissionModel GetPermission(GetPermissionInput input)
+        {
+            //选中模块
+            List<int> selectedModuleId = new List<int>();
+
+            string[] strSelectedModules = input.SelectedModules.Split(',');
+            foreach (var Id in strSelectedModules)
+            {
+                selectedModuleId.Add(Convert.ToInt32(Id));
+            }
+
+            //权限列表
+            var model = new RoleSelectedPermissionModel();
+
+            model.HeaderPermissionList = _permissionRepository.GetAll().Where(t => t.IsDeleted == false && t.Enabled == true)
+                                                        .OrderBy(t => t.OrderSort)
+                                                        .Select(t => new PermissionModel
+                                                        {
+                                                            PermissionId = t.Id,
+                                                            PermissionName = t.Name,
+                                                            OrderSort = t.OrderSort
+                                                        }).ToList();
+
+            //权限列表 (从选中的菜单获取)
+            foreach (var moduleId in selectedModuleId.Distinct())
+            {
+                var module = _moduleRepository.GetAll().FirstOrDefault(t => t.Id == moduleId);
+
+                var modulePermissionModel = new ModulePermissionModel
+                {
+                    ModuleId = module.Id,
+                    ParentId = module.ParentId,
+                    ModuleName = module.Name,
+                    Code = module.Code
+                };
+
+                //所有权限列表
+                foreach (var permission in model.HeaderPermissionList)
+                {
+                    modulePermissionModel.PermissionDataList.Add(new PermissionModel
+                    {
+                        PermissionId = permission.PermissionId,
+                        PermissionName = permission.PermissionName,
+                        OrderSort = permission.OrderSort,
+                    });
+                }
+
+                //模块包含的按钮
+                var modulePermission = _modulePermissionRepository.GetAll().Where(t => t.ModuleId == moduleId && t.IsDeleted == false);
+                var selectedModulePermission = _roleModulePermissionRepository.GetAll().Where(t => t.RoleId == input.RoleId && t.ModuleId == moduleId && t.IsDeleted == false);
+
+                if (module.ChildModule.Count > 0 && selectedModulePermission.Count() > 0)
+                {
+                    modulePermissionModel.Selected = true;
+                }
+
+                foreach (var mp in modulePermission)
+                {
+                    var permission = _permissionRepository.GetAll().FirstOrDefault(t => t.Id == mp.PermissionId);
+
+                    foreach (var p in modulePermissionModel.PermissionDataList)
+                    {
+                        if (p.PermissionId == permission.Id)
+                        {
+                            //设置Checkbox可用
+                            p.Enabled = true;
+                            //设置选中
+                            var rmp = _roleModulePermissionRepository.GetAll().FirstOrDefault(t => t.RoleId == input.RoleId && t.ModuleId == moduleId && t.PermissionId == permission.Id && t.IsDeleted == false);
+                            if (rmp != null)
+                            {
+                                //设置父节点选中
+                                modulePermissionModel.Selected = true;
+                                p.Selected = true;
+                            }
+                        }
+                    }
+
+                }
+                model.ModulePermissionDataList.Add(modulePermissionModel);
+            }
+
+            //权限按照Code排序
+            model.ModulePermissionDataList = model.ModulePermissionDataList.OrderBy(t => t.Code).ToList();
+            return model;
+        }
+
         public void SetPermission(SetPermissionInput input)
         {
         //选中的模块权限
-            var oldModulePermissionList = _roleModulePermission.GetAll().Where(t => t.RoleId == input.RoleId && t.IsDeleted == false)
+            var oldModulePermissionList = _roleModulePermissionRepository.GetAll().Where(t => t.RoleId == input.RoleId && t.IsDeleted == false)
                                                 .Select(t => new RoleModulePermissionModel
                                                 {
                                                     RoleId = t.RoleId,
@@ -136,11 +225,11 @@ namespace Quick.Application
             {
                 foreach (var rmp in removeModulePermissionList)
                 {
-                    var updateEntity = _roleModulePermission.GetAll().FirstOrDefault(t => t.RoleId == roleId && t.ModuleId == rmp.ModuleId && t.PermissionId == rmp.PermissionId && t.IsDeleted == false);
+                    var updateEntity = _roleModulePermissionRepository.GetAll().FirstOrDefault(t => t.RoleId == roleId && t.ModuleId == rmp.ModuleId && t.PermissionId == rmp.PermissionId && t.IsDeleted == false);
                     if (updateEntity != null)
                     {
                         updateEntity.IsDeleted = true;
-                        _roleModulePermission.Update(updateEntity);
+                        _roleModulePermissionRepository.Update(updateEntity);
                     }
                 }
             }
@@ -149,11 +238,11 @@ namespace Quick.Application
             {
                 foreach (var amp in addModulePermissionList)
                 {
-                    var updateEntity = _roleModulePermission.GetAll().FirstOrDefault(t => t.RoleId == roleId && t.ModuleId == amp.ModuleId && t.PermissionId == amp.PermissionId && t.IsDeleted == true);
+                    var updateEntity = _roleModulePermissionRepository.GetAll().FirstOrDefault(t => t.RoleId == roleId && t.ModuleId == amp.ModuleId && t.PermissionId == amp.PermissionId && t.IsDeleted == true);
                     if (updateEntity != null)
                     {
                         updateEntity.IsDeleted = false;
-                        _roleModulePermission.Update(updateEntity);
+                        _roleModulePermissionRepository.Update(updateEntity);
                     }
                     else
                     {
@@ -163,7 +252,7 @@ namespace Quick.Application
                             ModuleId = amp.ModuleId,
                             PermissionId = amp.PermissionId
                         };
-                        _roleModulePermission.Insert(addEntity);
+                        _roleModulePermissionRepository.Insert(addEntity);
                     }
                 }
             }

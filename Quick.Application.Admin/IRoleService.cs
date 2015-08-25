@@ -26,6 +26,8 @@ namespace Quick.Application
 
         void SetPermission(SetPermissionInput input);
 
+        RoleSelectedPermissionModel GetPermission(GetPermissionInput input);
+
         #endregion
     }
 }

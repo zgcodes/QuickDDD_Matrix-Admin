@@ -129,10 +129,9 @@
                 url: actionUrl,
                 data: data,
                 success: function (data) {
-                    bootbox.alert(data.Message);
-                    if (data.ResultType == 0) {
-                        $('#modal-form-permission').modal('hide');
-                    }
+                    bootbox.alert("保存成功！");
+                    $('#modal-form-permission').modal('hide');
+                    
                 }
             });
         }

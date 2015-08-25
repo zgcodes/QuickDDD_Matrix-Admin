@@ -85,104 +85,25 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
         [HttpPost]
         public JsonResult SetPermission(int roleId, string isSet, string newModulePermission)
         {
-            
+
             if (isSet == "0")
             {
                 return Json(0, JsonRequestBehavior.AllowGet);
             }
             else
             {
-               var input = new SetPermissionInput() { RoleId =roleId,IsSet=isSet,MewModulePermission = newModulePermission };
-               _roleService.SetPermission(input);
+                var input = new SetPermissionInput() { RoleId = roleId, IsSet = isSet, MewModulePermission = newModulePermission };
+                _roleService.SetPermission(input);
             }
             return Json(1, JsonRequestBehavior.AllowGet);
         }
 
-        //public ActionResult GetPermission(int roleId, string selectedModules)
-        //{
-        //    //选中模块
-        //    List<int> selectedModuleId = new List<int>();
+        public ActionResult GetPermission(int roleId, string selectedModules)
+        {
+            var input = new GetPermissionInput() { RoleId = roleId, SelectedModules = selectedModules };
+            RoleSelectedPermissionModel model = _roleService.GetPermission(input);
 
-        //    string[] strSelectedModules = selectedModules.Split(',');
-        //    foreach (var Id in strSelectedModules)
-        //    {
-        //        selectedModuleId.Add(Convert.ToInt32(Id));
-        //    }
-
-        //    //权限列表
-        //    var model = new RoleSelectedPermissionModel();
-
-        //    model.HeaderPermissionList = PermissionService.Permissions.Where(t => t.IsDeleted == false && t.Enabled == true)
-        //                                                .OrderBy(t => t.OrderSort)
-        //                                                .Select(t => new PermissionModel
-        //                                                {
-        //                                                    PermissionId = t.Id,
-        //                                                    PermissionName = t.Name,
-        //                                                    OrderSort = t.OrderSort
-        //                                                }).ToList();
-
-        //    //权限列表 (从选中的菜单获取)
-        //    foreach (var moduleId in selectedModuleId.Distinct())
-        //    {
-        //        var module = ModuleService.Modules.FirstOrDefault(t => t.Id == moduleId);
-
-        //        var modulePermissionModel = new ModulePermissionModel
-        //        {
-        //            ModuleId = module.Id,
-        //            ParentId = module.ParentId,
-        //            ModuleName = module.Name,
-        //            Code = module.Code
-        //        };
-
-        //        //所有权限列表
-        //        foreach (var permission in model.HeaderPermissionList)
-        //        {
-        //            modulePermissionModel.PermissionDataList.Add(new PermissionModel
-        //            {
-        //                PermissionId = permission.PermissionId,
-        //                PermissionName = permission.PermissionName,
-        //                OrderSort = permission.OrderSort,
-        //            });
-        //        }
-
-        //        //模块包含的按钮
-        //        var modulePermission = ModulePermissionService.ModulePermissions.Where(t => t.ModuleId == moduleId && t.IsDeleted == false);
-        //        var selectedModulePermission = RoleModulePermissionService.RoleModulePermissions.Where(t => t.RoleId == roleId && t.ModuleId == moduleId && t.IsDeleted == false);
-
-        //        if (module.ChildModule.Count > 0 && selectedModulePermission.Count() > 0)
-        //        {
-        //            modulePermissionModel.Selected = true;
-        //        }
-
-        //        foreach (var mp in modulePermission)
-        //        {
-        //            var permission = PermissionService.Permissions.FirstOrDefault(t => t.Id == mp.PermissionId);
-
-        //            foreach (var p in modulePermissionModel.PermissionDataList)
-        //            {
-        //                if (p.PermissionId == permission.Id)
-        //                {
-        //                    //设置Checkbox可用
-        //                    p.Enabled = true;
-        //                    //设置选中
-        //                    var rmp = RoleModulePermissionService.RoleModulePermissions.FirstOrDefault(t => t.RoleId == roleId && t.ModuleId == moduleId && t.PermissionId == permission.Id && t.IsDeleted == false);
-        //                    if (rmp != null)
-        //                    {
-        //                        //设置父节点选中
-        //                        modulePermissionModel.Selected = true;
-        //                        p.Selected = true;
-        //                    }
-        //                }
-        //            }
-
-        //        }
-        //        model.ModulePermissionDataList.Add(modulePermissionModel);
-        //    }
-
-        //    //权限按照Code排序
-        //    model.ModulePermissionDataList = model.ModulePermissionDataList.OrderBy(t => t.Code).ToList();
-
-        //    return PartialView("Permission", model);
-        //}
+            return PartialView("Permission", model);
+        }
     }
 }
