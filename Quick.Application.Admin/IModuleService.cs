@@ -13,6 +13,13 @@ namespace Quick.Application
 
         QueryRequestOut<ModuleItem> GetAll(ModuleQueryInput input);
 
+        /// <summary>
+        /// 根据角色获取菜单列表
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        IEnumerable<ModuleDto> GetModuleListByRole(ModuleQueryInput input);
+
         IQueryable<Module> GetAll();
 
         ModuleDto GetById(int id);

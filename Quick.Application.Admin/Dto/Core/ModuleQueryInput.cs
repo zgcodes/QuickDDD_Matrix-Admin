@@ -9,6 +9,6 @@ namespace Quick.Application
 {
     public class ModuleQueryInput : QueryRequestInput
     {
-  
+        public int? RoleId { get; set; }
     }
 }

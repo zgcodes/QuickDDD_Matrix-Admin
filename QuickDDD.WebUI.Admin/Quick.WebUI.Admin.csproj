@@ -150,9 +150,11 @@
     <Compile Include="Areas\Account\Controllers\RoleController.cs" />
     <Compile Include="Areas\Account\Controllers\UserController.cs" />
     <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
+    <Compile Include="Extension\Filters\AdminLayoutAttribute.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Extension\Filters\PermissionValidationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -21,19 +21,22 @@ namespace Quick.Application
         private readonly IModulePermissionRepository _modulePermissionRepository;
         private readonly IRoleModulePermissionRepository _roleModulePermissionRepository;
         private readonly IPermissionRepository _permissionRepository;
+        private readonly IUserRoleRepository _userRoleRepository;
 
        // public IUnitOfWork UnitOfWork { get; set; }
         public RoleService(IRoleRepository roleRepository,
                IModulePermissionRepository modulePermissionRepository,
             IRoleModulePermissionRepository roleModulePermissionRepository,
             IModuleRepository moduleRepository,
-            IPermissionRepository permissionRepository)
+            IPermissionRepository permissionRepository,
+             IUserRoleRepository userRoleRepository)
         {
             _roleRepository = roleRepository;
             _modulePermissionRepository = modulePermissionRepository;
             _roleModulePermissionRepository = roleModulePermissionRepository;
             _moduleRepository = moduleRepository;
             _permissionRepository = permissionRepository;
+            _userRoleRepository = userRoleRepository;
         }
         
         #region 公共方法
@@ -59,6 +62,16 @@ namespace Quick.Application
         {
             return _roleRepository.GetAll()
                 .Where(m => !m.IsDeleted)
+                .MapToList<RoleDto>();
+        }
+
+        public IEnumerable<RoleDto> GetRoleListByUserId(RoleQueryInput input)
+        {
+            //Title:对于这种input不允许不传值的，直接比较，如果没值，就查不到。
+            //这里没用导航属性，用了两次查询，这是避免每次都连表查，查询次数过多，两次查，第一次可以用缓存呢，以后都查单表了
+            var roleIdList = _userRoleRepository.GetAll().Where(m=>m.UserId == input.UserId).Select(m=>m.RoleId).ToList();
+            return _roleRepository.GetAll()
+                .Where(m => !m.IsDeleted && roleIdList.Contains(m.Id))
                 .MapToList<RoleDto>();
         }
 

@@ -14,6 +14,8 @@ namespace Quick.Application
 
         IEnumerable<RoleDto> GetList();
 
+        IEnumerable<RoleDto> GetRoleListByUserId(RoleQueryInput input);
+
         RoleDto GetById(int id);
 
         void Delete(int id);
