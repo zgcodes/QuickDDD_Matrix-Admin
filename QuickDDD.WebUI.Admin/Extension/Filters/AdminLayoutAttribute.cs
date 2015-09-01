@@ -16,24 +16,24 @@ namespace Quick.WebUI.Admin
 	/// </summary>
     public class AdminLayoutAttribute : ActionFilterAttribute 
     {
-        private readonly IUserService _userService;
-        private readonly IRoleService _roleService;
-        private readonly IModuleService _moduleService;
-        private readonly IPermissionService _permissionService;
+        public IUserService _userService { set; get; }
+        public IRoleService _roleService { set; get; }
+        public IModuleService _moduleService { set; get; }
+        public IPermissionService _permissionService { set; get; }
 
-        public AdminLayoutAttribute(IUserService userService,
-            IRoleService roleService,
-            IModuleService moduleService,
-            IPermissionService permissionService
-            )
-		{
-            _userService = userService;
-            _roleService = roleService;
-            _moduleService = moduleService;
-            _permissionService = permissionService;
+        //public AdminLayoutAttribute(IUserService userService,
+        //    IRoleService roleService,
+        //    IModuleService moduleService,
+        //    IPermissionService permissionService
+        //    )
+        //{
+        //    _userService = userService;
+        //    _roleService = roleService;
+        //    _moduleService = moduleService;
+        //    _permissionService = permissionService;
 
-            var user = HttpContext.Current.Session["CurrentUser"] as UserDto;
-		}
+        //    var user = HttpContext.Current.Session["CurrentUser"] as UserDto;
+        //}
 
 		public override void OnResultExecuting(ResultExecutingContext filterContext)
 		{
@@ -42,7 +42,7 @@ namespace Quick.WebUI.Admin
 			if (user != null)
 			{
 				//左侧菜单
-				((ViewResult)filterContext.Result).ViewBag.SidebarMenuModel = InitSidebarMenu(user);
+				//((ViewResult)filterContext.Result).ViewBag.SidebarMenuModel = InitSidebarMenu(user);
 
 				//按钮
 				//InitButton(user, filterContext);

@@ -10,5 +10,7 @@ namespace Quick.Application
     public class ModuleQueryInput : QueryRequestInput
     {
         public int? RoleId { get; set; }
+
+        public IList<int> RoleIdList { get; set; }
     }
 }

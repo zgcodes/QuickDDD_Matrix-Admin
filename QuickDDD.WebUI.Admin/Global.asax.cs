@@ -69,6 +69,14 @@ namespace Quick.WebUI.Admin
 
                 //控制器注入
                 builder.RegisterControllers(Assembly.GetExecutingAssembly());
+
+                builder.RegisterType<UserService>().As<IUserService>();
+                builder.RegisterType<RoleService>().As<IRoleService>();
+                builder.RegisterType<ModuleService>().As<IModuleService>();
+                builder.RegisterType<PermissionService>().As<IPermissionService>();
+                builder.RegisterFilterProvider();
+
+
                 //这里一个一个程序集获取，没用上面的Assembly.GetExecutingAssembly()或者AppDomain.CurrentDomain.GetAssemblies()
                 //来获取程序集数组，因为获取不到，原因不明
                 var dataAccessAssembly = Assembly.Load("Quick.Application");

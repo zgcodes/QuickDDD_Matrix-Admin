@@ -69,12 +69,12 @@
              //Ajax Tab
              $('[data-toggle="tab"]').click(function (e) {
                  e.preventDefault();
+                 //Set Permission
+                 $("input[name='isSet']").val(1);
+
                  var loadurl = $(this).attr('href');
                  var targ = $(this).attr('data-target');
-                 if (targ == "#permission") {
-                     //Set Permission
-                     $("input[name='isSet']").val(1);
-
+                 if (targ == "#permission") {//
                      //Role Id
                      var roleId = $("#RoleId").val();
 

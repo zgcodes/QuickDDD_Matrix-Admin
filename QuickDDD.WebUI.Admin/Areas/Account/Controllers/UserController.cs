@@ -23,7 +23,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             _roleService = roleService;
         }
 
-
+        [AdminLayout]
         public ActionResult Index()
         {
             return View();

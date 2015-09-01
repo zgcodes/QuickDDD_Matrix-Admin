@@ -28,7 +28,7 @@ namespace Quick.Application
             _moduleRepository = moduleRepository;
             _modulePermissionRepository = modulePermissionRepository;
             _roleModulePermissionRepository = roleModulePermissionRepository;
-           
+
         }
 
         #region 公共方法
@@ -75,16 +75,18 @@ namespace Quick.Application
 
         public IEnumerable<ModuleDto> GetModuleListByRole(ModuleQueryInput input)
         {  //Title:对于这种input不允许不传值的，直接比较，如果没值，就查不到。
+            //传入角色对应的模块ID集合
             var moduleIdList = _roleModulePermissionRepository.GetAll()
-                .Where(m=>m.RoleId == input.RoleId).Select(m=>m.ModuleId)
+                .Where(m => input.RoleIdList.Contains(m.RoleId) && !m.IsDeleted).Select(m => m.ModuleId).Distinct()
                 .ToList();
             //先查第一级
-             var resulModuleList = _moduleRepository.GetAll().Where(m=>moduleIdList.Contains(m.Id) && m.ParentId == 0).MapToList<ModuleDto>();
-             var childrenModuleList = _moduleRepository.GetAll().Where(m=>moduleIdList.Contains(m.Id) && m.ParentId != 0).MapToList<ModuleDto>();
-           //循环给第一级添加下级
-            foreach(var item in resulModuleList)
+            var resulModuleList = _moduleRepository.GetAll().Where(m => moduleIdList.Contains(m.Id) && !m.ParentId.HasValue && !m.IsDeleted).MapToList<ModuleDto>();
+            //所有的二级
+            var childrenModuleList = _moduleRepository.GetAll().Where(m => moduleIdList.Contains(m.Id) && m.ParentId.HasValue && !m.IsDeleted).MapToList<ModuleDto>();
+            //循环给第一级添加下级
+            foreach (var item in resulModuleList)
             {
-                item.ChildModule = childrenModuleList.Where(m=>m.ParentId == item.Id).ToList();
+                item.ChildModule = childrenModuleList.Where(m => m.ParentId == item.Id).ToList();
             }
             return resulModuleList;
         }

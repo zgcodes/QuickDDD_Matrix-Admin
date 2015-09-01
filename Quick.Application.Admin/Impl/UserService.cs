@@ -128,7 +128,7 @@ namespace Quick.Application
             {
                 return new OperationResult(OperationResultType.Warning, "登录密码不正确。");
             }
-            return new OperationResult(OperationResultType.Success, "登录成功。", user);
+            return new OperationResult(OperationResultType.Success, "登录成功。", user.MapTo<UserDto>());
         }
 
 
