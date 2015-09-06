@@ -80,6 +80,8 @@
     <Compile Include="Dto\Core\RoleModulePermission\GetPermissionInput.cs" />
     <Compile Include="Dto\Core\RoleModulePermission\SetPermissionInput.cs" />
     <Compile Include="Dto\Core\SetButtonDto.cs" />
+    <Compile Include="Dto\Core\RoleModulePermission\GetButtonModelInput.cs" />
+    <Compile Include="Dto\Core\RoleModulePermission\ButtonModel.cs" />
     <Compile Include="Dto\Core\UserQueryInput.cs" />
     <Compile Include="Dto\Core\ModuleQueryInput.cs" />
     <Compile Include="Dto\Core\UserItem.cs" />

@@ -11,10 +11,10 @@ using Newtonsoft.Json;
 
 namespace Quick.Application
 {
-	/// <summary>
+    /// <summary>
     /// 服务层实现类 —— 
     /// </summary>
-    public class RoleService : ServiceBase, IRoleService 
+    public class RoleService : ServiceBase, IRoleService
     {
         private readonly IRoleRepository _roleRepository;
         private readonly IModuleRepository _moduleRepository;
@@ -23,7 +23,7 @@ namespace Quick.Application
         private readonly IPermissionRepository _permissionRepository;
         private readonly IUserRoleRepository _userRoleRepository;
 
-       // public IUnitOfWork UnitOfWork { get; set; }
+        // public IUnitOfWork UnitOfWork { get; set; }
         public RoleService(IRoleRepository roleRepository,
                IModulePermissionRepository modulePermissionRepository,
             IRoleModulePermissionRepository roleModulePermissionRepository,
@@ -38,7 +38,7 @@ namespace Quick.Application
             _permissionRepository = permissionRepository;
             _userRoleRepository = userRoleRepository;
         }
-        
+
         #region 公共方法
 
         public void Create(RoleDto model)
@@ -69,7 +69,7 @@ namespace Quick.Application
         {
             //Title:对于这种input不允许不传值的，直接比较，如果没值，就查不到。
             //这里没用导航属性，用了两次查询，这是避免每次都连表查，查询次数过多，两次查，第一次可以用缓存呢，以后都查单表了
-            var roleIdList = _userRoleRepository.GetAll().Where(m=>m.UserId == input.UserId).Select(m=>m.RoleId).ToList();
+            var roleIdList = _userRoleRepository.GetAll().Where(m => m.UserId == input.UserId).Select(m => m.RoleId).ToList();
             return _roleRepository.GetAll()
                 .Where(m => !m.IsDeleted && roleIdList.Contains(m.Id))
                 .MapToList<RoleDto>();
@@ -214,7 +214,7 @@ namespace Quick.Application
 
         public void SetPermission(SetPermissionInput input)
         {
-        //选中的模块权限
+            //选中的模块权限
             var oldModulePermissionList = _roleModulePermissionRepository.GetAll().Where(t => t.RoleId == input.RoleId && t.IsDeleted == false)
                                                 .Select(t => new RoleModulePermissionModel
                                                 {
@@ -224,11 +224,11 @@ namespace Quick.Application
                                                 }).ToList();
 
             var newModulePermissionList = JsonConvert.DeserializeObject<List<RoleModulePermissionModel>>(input.MewModulePermission);
-                var sameModulePermissionList = oldModulePermissionList.Intersect(newModulePermissionList);
-                var addModulePermissionList = newModulePermissionList.Except(sameModulePermissionList);
-                var removeModulePermissionList = oldModulePermissionList.Except(sameModulePermissionList);
+            var sameModulePermissionList = oldModulePermissionList.Intersect(newModulePermissionList);
+            var addModulePermissionList = newModulePermissionList.Except(sameModulePermissionList);
+            var removeModulePermissionList = oldModulePermissionList.Except(sameModulePermissionList);
 
-             this.SetRoleModulePermission(input.RoleId, addModulePermissionList, removeModulePermissionList);
+            this.SetRoleModulePermission(input.RoleId, addModulePermissionList, removeModulePermissionList);
         }
 
         public void SetRoleModulePermission(int roleId, IEnumerable<RoleModulePermissionModel> addModulePermissionList, IEnumerable<RoleModulePermissionModel> removeModulePermissionList)
@@ -270,6 +270,34 @@ namespace Quick.Application
                 }
             }
 
-        } 
+        }
+
+        public IList<ButtonModel> GetViewButtons(GetButtonModelInput input)
+        {
+            //取到当前控制器对应的模块
+            var module = _moduleRepository.GetAll().FirstOrDefault(t => t.Controller.ToLower() == input.Controller && t.ParentId.HasValue && !t.IsDeleted);
+            var buttonModelList = new List<ButtonModel>();
+            if (module != null)
+            {//取得用户在当前模块的权限ID集合
+                var permissionIds = _roleModulePermissionRepository.GetAll().Where(t => input.RoleIdList.Contains(t.RoleId) && t.ModuleId == module.Id && !t.IsDeleted).Select(t => t.PermissionId).Distinct();
+
+                foreach (var permissionId in permissionIds)
+                {
+                    var entity = _permissionRepository.GetAll().FirstOrDefault(t => t.Id == permissionId && t.Enabled == true && !t.IsDeleted);
+                    if (entity != null)
+                    {
+                        var btnButton = new ButtonModel
+                        {
+                            Icon = entity.Icon,
+                            Text = entity.Name,
+                            Code = entity.Code
+                        };
+                        buttonModelList.Add(btnButton);
+
+                    }
+                }
+            }
+            return buttonModelList;
+        }
     }
 }

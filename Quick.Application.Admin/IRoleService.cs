@@ -30,6 +30,13 @@ namespace Quick.Application
 
         RoleSelectedPermissionModel GetPermission(GetPermissionInput input);
 
+        /// <summary>
+        /// 获取Index页面按钮集合
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        IList<ButtonModel> GetViewButtons(GetButtonModelInput input);
+
         #endregion
     }
 }
