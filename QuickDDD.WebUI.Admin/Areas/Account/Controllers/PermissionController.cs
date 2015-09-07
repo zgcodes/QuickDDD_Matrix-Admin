@@ -1,5 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
 using Quick.Application;
+using Quick.WebUI.Admin.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Quick.WebUI.Admin.Areas.Account.Controllers
 {
-    public class PermissionController : Controller
+    public class PermissionController : BaseController
     {
         private readonly IPermissionService _permissionService;
         public PermissionController(IPermissionService permissionService)
@@ -16,6 +17,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             _permissionService = permissionService;
         }
 
+        [AdminLayout]
         public ActionResult Index()
         {
             return View();

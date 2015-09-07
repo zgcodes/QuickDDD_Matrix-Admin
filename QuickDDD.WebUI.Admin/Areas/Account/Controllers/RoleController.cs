@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Quick.Application;
 using Quick.Framework.Tool;
+using Quick.WebUI.Admin.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Web.Mvc;
 
 namespace Quick.WebUI.Admin.Areas.Account.Controllers
 {
-    public class RoleController : Controller
+    public class RoleController : BaseController
     {
         private readonly IRoleService _roleService;
         private readonly IModuleService _moduleService;
@@ -22,6 +23,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             _moduleService = moduleService;
         }
 
+        [AdminLayout]
         public ActionResult Index()
         {
             return View();

@@ -1,7 +1,16 @@
 ﻿@section css{
     @Styles.Render("~/bundles/css/jqueryui")
 }
+@{
+    var buttonList = new List<ButtonModel>();
+    buttonList = ViewBag.ButtonList;
 
+    var editButton = new ButtonModel();
+    var deleteButton = new ButtonModel();
+
+    editButton = buttonList.FirstOrDefault(m => m.Code.ToLower() == "edit");
+    deleteButton = buttonList.FirstOrDefault(m => m.Code.ToLower() == "delete");
+}
 <div id="content-body" class="row-fluid">
     <div class="span22">
         <!--操作 -->
@@ -36,9 +45,14 @@
                         "fnRender": function (obj, data) {
                             var btnArray = "";
 
-                            btnArray += '<button type="submit" id="add" class="btn btn-primary btn-normal" title="编辑" onclick="Edit(' + data + ')"><span class="icon-pencil"></span></button>'
-
-                            btnArray += '<button type="submit"  class="btn btn-danger btn-normal" title="删除" onclick="Delete(' + data + ')"><span class="icon-remove"></span></button>'
+                            @if (editButton != null)
+                            {
+                            <text> btnArray += '<button type="submit" id="add" class="btn btn-primary btn-normal" title="@editButton.Text" onclick="Edit(' + data + ')"><span class="@editButton.Icon"></span></button>'</text>
+                             }
+                            @if (deleteButton != null)
+                               {
+                            <text>btnArray += '<button type="submit"  class="btn btn-danger btn-normal" title="@deleteButton.Text" onclick="Delete(' + data + ')"><span class="@deleteButton.Icon"></span></button>'</text>
+                                }
 
                             return btnArray;
                         }

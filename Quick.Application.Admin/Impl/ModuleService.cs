@@ -80,13 +80,13 @@ namespace Quick.Application
                 .Where(m => input.RoleIdList.Contains(m.RoleId) && !m.IsDeleted).Select(m => m.ModuleId).Distinct()
                 .ToList();
             //先查第一级
-            var resulModuleList = _moduleRepository.GetAll().Where(m => moduleIdList.Contains(m.Id) && !m.ParentId.HasValue && !m.IsDeleted).MapToList<ModuleDto>();
+            var resulModuleList = _moduleRepository.GetAll().Where(m => moduleIdList.Contains(m.Id) && !m.ParentId.HasValue && !m.IsDeleted).OrderBy(m=>m.OrderSort).MapToList<ModuleDto>();
             //所有的二级
             var childrenModuleList = _moduleRepository.GetAll().Where(m => moduleIdList.Contains(m.Id) && m.ParentId.HasValue && !m.IsDeleted).MapToList<ModuleDto>();
             //循环给第一级添加下级
             foreach (var item in resulModuleList)
             {
-                item.ChildModule = childrenModuleList.Where(m => m.ParentId == item.Id).ToList();
+                item.ChildModule = childrenModuleList.Where(m => m.ParentId == item.Id).OrderBy(m=>m.OrderSort).ToList();
             }
             return resulModuleList;
         }

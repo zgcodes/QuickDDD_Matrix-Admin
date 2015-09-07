@@ -1,6 +1,18 @@
 ﻿@section css{
     @Styles.Render("~/bundles/css/jqueryui")
 }
+@{
+    var buttonList = new List<ButtonModel>();
+    buttonList = ViewBag.ButtonList;
+
+    var editButton = new ButtonModel();
+    var deleteButton = new ButtonModel();
+    var setPermission = new ButtonModel();
+
+    editButton = buttonList.FirstOrDefault(m => m.Code.ToLower() == "edit");
+    deleteButton = buttonList.FirstOrDefault(m => m.Code.ToLower() == "delete");
+    setPermission = buttonList.FirstOrDefault(m => m.Code.ToLower() == "setpermission");
+}
 
 <div id="content-body" class="row-fluid">
     <div class="span22">
@@ -12,7 +24,7 @@
 
         @Html.Partial("_FormModal")
 
-          <!--授权-->
+        <!--授权-->
         @Html.Partial("_FormModalPermission")
 
     </div>
@@ -36,18 +48,25 @@
                         "bSortable": false,
                         "fnRender": function (obj, data) {
                             var btnArray = "";
-                            btnArray += '<button type="submit" id="add" class="btn btn-primary btn-normal" title="授权" onclick="SetPermission(' + data + ')"><span class="icon-pencil"></span></button>'
+                            @if(setPermission != null)
+                            {
+                               <text>btnArray += '<button type="submit" id="add" class="btn btn-primary btn-normal" title="@setPermission.Text" onclick="SetPermission(' + data + ')"><span class="@setPermission.Icon"></span></button>'</text>
+                            }
+                            @if (editButton != null)
+                            {
+                                <text> btnArray += '<button type="submit" id="add" class="btn btn-primary btn-normal" title="@editButton.Text" onclick="Edit(' + data + ')"><span class="@editButton.Icon"></span></button>'</text>
+                            }
+                            @if (deleteButton != null)
+                            {
+                                <text>btnArray += '<button type="submit"  class="btn btn-danger btn-normal" title="@deleteButton.Text" onclick="Delete(' + data + ')"><span class="@deleteButton.Icon"></span></button>'</text>
+                            }
 
-                            btnArray += '<button type="submit" id="add" class="btn btn-primary btn-normal" title="编辑" onclick="Edit(' + data + ')"><span class="icon-pencil"></span></button>'
-
-                            btnArray += '<button type="submit"  class="btn btn-danger btn-normal" title="删除" onclick="Delete(' + data + ')"><span class="icon-remove"></span></button>'
-
-                            return btnArray;
-                        }
-                    }
-            ];
-            //初始化表格
-            oTable = InitDatatables($(".data-table"), actionUrl, aoColumns, oTable);
+            return btnArray;
+        }
+        }
+        ];
+        //初始化表格
+        oTable = InitDatatables($(".data-table"), actionUrl, aoColumns, oTable);
         });
 
         //查询
@@ -86,7 +105,7 @@
                 RegisterForm();
             });
         }
-        
+
         //保存授权
         function SavePermission() {
             //新模块权限
@@ -131,7 +150,7 @@
                 success: function (data) {
                     bootbox.alert("保存成功！");
                     $('#modal-form-permission').modal('hide');
-                    
+
                 }
             });
         }
@@ -148,4 +167,4 @@
             DeleteRecord(actionUrl, param, oTable);
         }
     </script>
-}
+    }

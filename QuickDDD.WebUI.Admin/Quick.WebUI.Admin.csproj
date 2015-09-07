@@ -150,6 +150,8 @@
     <Compile Include="Areas\Account\Controllers\RoleController.cs" />
     <Compile Include="Areas\Account\Controllers\UserController.cs" />
     <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
+    <Compile Include="Areas\SysConfig\Controllers\AppendixController.cs" />
+    <Compile Include="Areas\SysConfig\SysConfigAreaRegistration.cs" />
     <Compile Include="Extension\Filters\AdminLayoutAttribute.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -291,6 +293,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\admin\font-awesome\font\cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff" />
+    <Content Include="Areas\SysConfig\Views\Web.config" />
+    <Content Include="Areas\SysConfig\Views\Appendix\Icon.cshtml" />
+    <Content Include="Areas\SysConfig\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -328,6 +333,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Common\Controllers\" />
     <Folder Include="Areas\Common\Models\" />
+    <Folder Include="Areas\SysConfig\Models\" />
     <Folder Include="Extension\HtmlHelper\" />
     <Folder Include="Extension\Ioc\" />
     <Folder Include="Models\" />
