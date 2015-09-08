@@ -70,6 +70,7 @@ namespace Quick.Application
         public QueryRequestOut<ModuleItem> GetAll(ModuleQueryInput input)
         {
             return _moduleRepository.GetAll()
+                .WhereIf(!input.Keywords.IsNullOrWhiteSpace(),m=>m.Name.Contains(input.Keywords))
                 .ToOutPut<ModuleItem>(input);
         }
 

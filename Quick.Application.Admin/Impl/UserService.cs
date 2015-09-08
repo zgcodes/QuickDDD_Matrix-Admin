@@ -101,7 +101,7 @@ namespace Quick.Application
         {
             return _userRepository.GetAll()
                 .Where(m=>!m.IsDeleted)
-                .WhereIf(!string.IsNullOrWhiteSpace(input.LoginName), m => m.LoginName.Contains(input.LoginName))
+                .WhereIf(!input.Keywords.IsNullOrWhiteSpace(), m => m.LoginName.Contains(input.Keywords))
                 .ToOutPut<UserItem>(input);
         }
 

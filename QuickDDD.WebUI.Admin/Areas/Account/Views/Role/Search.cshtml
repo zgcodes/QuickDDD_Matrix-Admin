@@ -1,7 +1,10 @@
-﻿
-@{
-    //var createbutton = new buttonmodel();
-    //createbutton = viewbag.create;
+﻿@{
+    var buttonList = new List<ButtonModel>();
+    buttonList = ViewBag.ButtonList;
+
+    var createButton = new ButtonModel();
+
+    createButton = buttonList.FirstOrDefault(m => m.Code.ToLower() == "create");
 }
 
 <div class="widget-box">
@@ -14,25 +17,31 @@
 
             <div class="control-group">
                 <div class="search-group">
-                    <label class="search-label">用户名</label>
+                    <label class="search-label">搜索：</label>
                     <div class="span2 search-input">
-                        <input name="LoginName"/>
+                        <input name="Keywords" placeholder="角色名" />
                     </div>
                 </div>
             </div>
 
             <div class="form-actions form-operate text-right ">
-                <button type="button" class="btn btn-danger" onclick="ClearForm($('.search-form'));">
-                    <span class="icon-bullhorn"></span> 清空
-                </button>
                 <button type="button" class="btn btn-success" onclick="Search()">
                     <span class="icon-search"></span> 搜索
                 </button>
-               
-                    <button type="button" class="btn btn-primary" onclick="Create()">
-                        <span class="">新增</span>
-                    </button>
-                
+
+                @{
+                    if (createButton != null)
+                    {
+
+                        <text><button type="button" class="btn btn-primary" onclick="Create()">
+                                <span class="@createButton.Icon">@createButton.Text</span>
+                            </button></text>
+                    }
+
+                }
+                <button type="button" class="btn btn-danger" onclick="ClearForm($('.search-form'));">
+                    <span class="icon-bullhorn"></span> 清空
+                </button>
             </div>
 
         </form>

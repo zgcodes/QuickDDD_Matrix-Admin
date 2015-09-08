@@ -78,6 +78,7 @@ namespace Quick.Application
         public QueryRequestOut<RoleItem> GetAll(RoleQueryInput input)
         {
             return _roleRepository.GetAll()
+                .WhereIf(!input.Keywords.IsNullOrWhiteSpace(),m=>m.Name.Contains(input.Keywords))
                 .ToOutPut<RoleItem>(input);
         }
 

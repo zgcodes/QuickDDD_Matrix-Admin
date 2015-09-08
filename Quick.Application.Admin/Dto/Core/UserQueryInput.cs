@@ -9,6 +9,6 @@ namespace Quick.Application
 {
     public class UserQueryInput : QueryRequestInput
     {
-        public string LoginName { get; set; }
+
     }
 }

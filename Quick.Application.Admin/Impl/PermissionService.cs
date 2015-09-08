@@ -51,6 +51,7 @@ namespace Quick.Application
         public QueryRequestOut<PermissionItem> GetAll(PermissionQueryInput input)
         {
             return _permissionRepository.GetAll()
+                .WhereIf(!input.Keywords.IsNullOrWhiteSpace(),m=>m.Name.Contains(input.Keywords))
                 .ToOutPut<PermissionItem>(input);
         }
 

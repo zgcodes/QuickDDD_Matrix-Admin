@@ -83,6 +83,7 @@
     <Compile Include="Dependency\IDependency.cs" />
     <Compile Include="EfExtensions\AutoMapperHelper.cs" />
     <Compile Include="EfExtensions\IQueryableExtensions.cs" />
+    <Compile Include="EfExtensions\ObjectExtension.cs" />
     <Compile Include="EfExtensions\WhereIfExtension.cs" />
     <Compile Include="Entity\IAudited.cs" />
     <Compile Include="Entity\AuditedEntity.cs" />

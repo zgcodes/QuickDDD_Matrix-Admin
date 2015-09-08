@@ -21,20 +21,6 @@ namespace Quick.WebUI.Admin
         public IModuleService _moduleService { set; get; }
         public IPermissionService _permissionService { set; get; }
 
-        //public AdminLayoutAttribute(IUserService userService,
-        //    IRoleService roleService,
-        //    IModuleService moduleService,
-        //    IPermissionService permissionService
-        //    )
-        //{
-        //    _userService = userService;
-        //    _roleService = roleService;
-        //    _moduleService = moduleService;
-        //    _permissionService = permissionService;
-
-        //    var user = HttpContext.Current.Session["CurrentUser"] as UserDto;
-        //}
-
 		public override void OnResultExecuting(ResultExecutingContext filterContext)
 		{
             var user = HttpContext.Current.Session["CurrentUser"] as UserDto;
@@ -49,17 +35,6 @@ namespace Quick.WebUI.Admin
 			}
 		}
 
-        //private IEnumerable<ModuleDto> InitSidebarMenu(UserDto user)
-        //{
-        //   var roleList = _roleService.GetRoleListByUserId(new RoleQueryInput(){ UserId = user.Id}).Select(m=>m.Id).ToList();
-
-        //    var moduleDtoList = _moduleService.GetModuleListByRole(new ModuleQueryInput(){RoleId = roleList[0]});
-
-        //    return moduleDtoList;
-        //}
-
-
-
         private void InitButton(UserDto user, ResultExecutingContext filterContext)
         {
             var roleIds = user.UserRole.Select(t => t.RoleId);
@@ -67,23 +42,6 @@ namespace Quick.WebUI.Admin
             var buttonList = _roleService.GetViewButtons(new GetButtonModelInput() { RoleIdList = roleIds.ToList(), Controller = controller });
 
             ((ViewResult)filterContext.Result).ViewBag.ButtonList = buttonList;
-
-            //if (buttonList.FirstOrDefault(m => m.Code.ToLower() == "create") != null)
-            //{
-            //    ((ViewResult)filterContext.Result).ViewBag.Create = buttonList.FirstOrDefault(m => m.Code.ToLower() == "create");
-            //}
-            //else if (buttonList.FirstOrDefault(m => m.Code.ToLower() == "edit") != null)
-            //{
-            //    ((ViewResult)filterContext.Result).ViewBag.Edit = buttonList.FirstOrDefault(m => m.Code.ToLower() == "edit");
-            //}
-            //else if (buttonList.FirstOrDefault(m => m.Code.ToLower() == "delete") != null)
-            //{
-            //    ((ViewResult)filterContext.Result).ViewBag.Delete = buttonList.FirstOrDefault(m => m.Code.ToLower() == "delete");
-            //}
-            //else if (buttonList.FirstOrDefault(m => m.Code.ToLower() == "setbutton") != null)
-            //{
-            //    ((ViewResult)filterContext.Result).ViewBag.SetButton = buttonList.FirstOrDefault(m => m.Code.ToLower() == "setbutton");
-            //}
         }
 	}
 }

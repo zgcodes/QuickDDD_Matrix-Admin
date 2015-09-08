@@ -12,7 +12,7 @@ namespace Quick.Framework.Tool
     public class QueryRequestInput
     {
 
-        public string keywords;//搜索关键词
+        public string Keywords { get; set; }//搜索关键词
 
         /// <summary>
         /// 分页时跳过几行

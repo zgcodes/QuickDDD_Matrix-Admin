@@ -70,6 +70,7 @@ namespace Quick.WebUI.Admin
                 //控制器注入
                 builder.RegisterControllers(Assembly.GetExecutingAssembly());
 
+                //给特性类注册属性注入
                 builder.RegisterType<UserService>().As<IUserService>();
                 builder.RegisterType<RoleService>().As<IRoleService>();
                 builder.RegisterType<ModuleService>().As<IModuleService>();
