@@ -19,5 +19,10 @@ namespace Quick.WebUI.Admin.Controllers
            return View();
         }
 
+        public ActionResult Unauthorized() 
+        {
+            return View();
+        }
+
     }
 }

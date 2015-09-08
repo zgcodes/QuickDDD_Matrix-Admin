@@ -14,7 +14,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
 
         private readonly IUserService _userService;
         private readonly IRoleService _roleService;
-        
+
 
         public UserController(IUserService userService,
             IRoleService roleService)
@@ -42,11 +42,12 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
+        [PermissionValidation]
         public ActionResult Edit(int? id)
         {
             //所有角色
             ViewBag.roleList = _roleService.GetList();
-            
+
             UserDto model = null;
             if (!id.HasValue)  //新建
             {

@@ -3,7 +3,7 @@
 }
 @{
     var buttonList = new List<ButtonModel>();
-    buttonList = ViewBag.ButtonList;
+    buttonList = ViewBag.ButtonList ?? buttonList;
 
     var editButton = new ButtonModel();
     var deleteButton = new ButtonModel();
