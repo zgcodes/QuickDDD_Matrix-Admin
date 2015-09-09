@@ -21,12 +21,16 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             _permissionService = permissionService;
         }
 
+        //这里action的权限没有让用户设置，也没默认存关联数据进数据库，二是通过代码判断模块有权限且action是Index就有权限
         [AdminLayout]
         public ActionResult Index()
         {
             return View();
         }
 
+
+        // /// TODO:这里不加权限，不知道可不可以加个虚拟action名叫Index
+        [PermissionValidation(false)]
         public JsonResult List(ModuleQueryInput input)
         {
             var list = _moduleService.GetAll(input);
@@ -40,6 +44,12 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// TODO:这暂且不加权限，改进方法一：把Edit拆成create和update，二：改拦截器
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [PermissionValidation(false)]
         public ActionResult Edit(int? id)
         {
             ModuleDto model = null;

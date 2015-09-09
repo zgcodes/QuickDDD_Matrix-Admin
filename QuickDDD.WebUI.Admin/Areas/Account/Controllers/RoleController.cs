@@ -29,6 +29,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             return View();
         }
 
+        [PermissionValidation(false)]
         public JsonResult List(RoleQueryInput input)
         {
             var list = _roleService.GetAll(input);
@@ -42,6 +43,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
+        [PermissionValidation(false)]
         public ActionResult Edit(int? id)
         {
             RoleDto model = null;
@@ -100,6 +102,13 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             return Json(1, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// TODO:这里先不加权限，不知道可不可以加个虚拟action名叫SetPermission
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <param name="selectedModules"></param>
+        /// <returns></returns>
+        [PermissionValidation(false)]
         public ActionResult GetPermission(int roleId, string selectedModules)
         {
             var input = new GetPermissionInput() { RoleId = roleId, SelectedModules = selectedModules };

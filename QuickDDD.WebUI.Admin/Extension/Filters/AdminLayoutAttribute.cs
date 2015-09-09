@@ -39,7 +39,7 @@ namespace Quick.WebUI.Admin
         {
             var roleIds = user.UserRole.Select(t => t.RoleId);
             var controller = filterContext.RouteData.Values["controller"].ToString().ToLower();
-            var buttonList = _roleService.GetViewButtons(new GetButtonModelInput() { RoleIdList = roleIds.ToList(), Controller = controller });
+            var buttonList = _roleService.GetViewButtons(new GetUserPermissionInput() { RoleIdList = roleIds.ToList(), Controller = controller });
 
             ((ViewResult)filterContext.Result).ViewBag.ButtonList = buttonList;
         }

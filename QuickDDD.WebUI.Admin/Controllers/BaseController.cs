@@ -9,7 +9,7 @@ using System.Web.Script.Serialization;
 
 namespace Quick.WebUI.Admin.Controllers
 {
-
+    [PermissionValidation]
     public class BaseController : Controller
     {
         /// <summary>

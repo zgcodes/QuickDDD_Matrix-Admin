@@ -35,7 +35,14 @@ namespace Quick.Application
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        IList<ButtonModel> GetViewButtons(GetButtonModelInput input);
+        IList<ButtonModel> GetViewButtons(GetUserPermissionInput input);
+
+        /// <summary>
+        /// 判断用户是否有某个action的权限，如果action是index，匹配菜单的controller就行
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        bool IsHavaPermission(GetUserPermissionInput input);
 
         #endregion
     }

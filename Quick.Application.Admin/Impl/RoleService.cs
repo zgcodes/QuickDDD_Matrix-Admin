@@ -78,7 +78,7 @@ namespace Quick.Application
         public QueryRequestOut<RoleItem> GetAll(RoleQueryInput input)
         {
             return _roleRepository.GetAll()
-                .WhereIf(!input.Keywords.IsNullOrWhiteSpace(),m=>m.Name.Contains(input.Keywords))
+                .WhereIf(!input.Keywords.IsNullOrWhiteSpace(), m => m.Name.Contains(input.Keywords))
                 .ToOutPut<RoleItem>(input);
         }
 
@@ -273,14 +273,17 @@ namespace Quick.Application
 
         }
 
-        public IList<ButtonModel> GetViewButtons(GetButtonModelInput input)
+        public IList<ButtonModel> GetViewButtons(GetUserPermissionInput input)
         {
             //取到当前控制器对应的模块
             var module = _moduleRepository.GetAll().FirstOrDefault(t => t.Controller.ToLower() == input.Controller && t.ParentId.HasValue && !t.IsDeleted);
             var buttonModelList = new List<ButtonModel>();
             if (module != null)
-            {//取得用户在当前模块的权限ID集合
-                var permissionIds = _roleModulePermissionRepository.GetAll().Where(t => input.RoleIdList.Contains(t.RoleId) && t.ModuleId == module.Id && !t.IsDeleted).Select(t => t.PermissionId).Distinct();
+            {//取得用户在当前模块的权限ID集合（用了Distinct()，因为用户可能有多个角色，会查出多个相同的PermissionId）
+                var permissionIds = _roleModulePermissionRepository.GetAll()
+                    .Where(t => input.RoleIdList.Contains(t.RoleId)
+                        && t.ModuleId == module.Id && !t.IsDeleted)
+                        .Select(t => t.PermissionId).Distinct();
 
                 foreach (var permissionId in permissionIds)
                 {
@@ -299,6 +302,30 @@ namespace Quick.Application
                 }
             }
             return buttonModelList;
+        }
+
+        public bool IsHavaPermission(GetUserPermissionInput input)
+        {
+            //取到当前控制器对应的模块
+            var module = _moduleRepository.GetAll().FirstOrDefault(t => t.Controller.ToLower() == input.Controller && t.ParentId.HasValue && !t.IsDeleted);
+            //var permissionId = _permissionRepository.GetAll().Where(m => m.Code.ToLower() == input.Action.ToLower()).Select(m=>m.Id).FirstOrDefault();
+            if (module != null)
+            {
+                if (input.Action == "index")
+                {
+                    return true;
+                }
+
+                bool isHava = _roleModulePermissionRepository.GetAll()
+                    .Where(t => input.RoleIdList.Contains(t.RoleId)
+                        && t.ModuleId == module.Id
+                        && t.Permission.Code.ToLower() == input.Action
+                        && !t.IsDeleted).Select(t => t.PermissionId).Any();
+
+                return isHava;
+            }
+            return false;
+
         }
     }
 }

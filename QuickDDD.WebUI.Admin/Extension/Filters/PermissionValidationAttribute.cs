@@ -1,65 +1,69 @@
 ﻿using Quick.Application;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Quick.WebUI.Admin
 {
     /// <summary>
     /// 权限验证过滤器
     /// </summary>
-    public class PermissionValidationAttribute : ActionFilterAttribute
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
+    public class PermissionValidationAttribute : AuthorizeAttribute
     {
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        /// <summary>
+        /// 是否拦截
+        /// </summary>
+        private bool Validate;
+
+        public IUserService _userService { set; get; }
+        public IRoleService _roleService { set; get; }
+        public IModuleService _moduleService { set; get; }
+        public IPermissionService _permissionService { set; get; }
+
+        public PermissionValidationAttribute(bool validate = true)
         {
-            var areaName = string.Empty;
-            if (filterContext.RouteData.DataTokens["area"] != null)
+            Validate = validate;
+        }
+
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            //权限拦截是否忽略
+            if (Validate == false)
             {
-                areaName = filterContext.RouteData.DataTokens["area"].ToString();
+                return;
             }
 
-            var controllerName = string.Empty;
-            if (filterContext.RouteData.Values["controller"] != null)
+            //验证用户是否登录
+            var user = filterContext.HttpContext.Session["CurrentUser"] as UserDto;
+            if (user == null)
             {
-                controllerName = filterContext.RouteData.Values["controller"].ToString();
+                //跳转到登录页面
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
             }
-
-            var actionName = string.Empty;
-            if (filterContext.RouteData.Values["action"] != null)
+            else
             {
-                actionName = filterContext.RouteData.Values["action"].ToString();
-            }
+                // 权限拦截与验证
+                var area = filterContext.RouteData.DataTokens.ContainsKey("area") ? filterContext.RouteData.DataTokens["area"].ToString() : string.Empty;
+                var controller = filterContext.RouteData.Values["controller"].ToString().ToLower();
+                var action = filterContext.RouteData.Values["action"].ToString().ToLower();
 
-            //默认未授权
-            var isAuth = false;
+                var isAllowed = this.IsAllowed(user, controller, action);
 
-            if (filterContext.HttpContext.Session != null && filterContext.HttpContext.Session["CurrentUser"] != null && filterContext.HttpContext.Session["SidebarMenu"] != null)
-            {
-                var currentUserSession = filterContext.HttpContext.Session["CurrentUser"];
-                //TODO:第一级菜单不判断，二级菜单的area和controller知道，操作action的权限根据code判断。Index的权限匹配到控制器名就行。
-                var sidebarMenuList = filterContext.HttpContext.Session["SidebarMenu"] as IEnumerable<ModuleDto>;
-                if (currentUserSession != null)
+                if (!isAllowed)
                 {
-                    foreach (var menu in sidebarMenuList)
-                    {
-                        if (string.Compare(menu.Area, areaName, StringComparison.CurrentCultureIgnoreCase) == 0 &&
-                            string.Compare(menu.Controller, controllerName, StringComparison.CurrentCultureIgnoreCase) == 0 &&
-                            string.Compare(menu.Action, actionName, StringComparison.CurrentCultureIgnoreCase) == 0)
-                        {
-                            //已授权
-                            isAuth = true;
-                        }
-                    }
+                    filterContext.Result = new RedirectResult("/Error/Page400");
                 }
             }
+        }
 
-            //未授权
-            if (isAuth == false)
-            {
-                filterContext.Result = new RedirectResult("/Home/Unauthorized");
-            }
-
-            base.OnActionExecuting(filterContext);
+        public bool IsAllowed(UserDto user, string controller, string action)
+        {
+            var roleIds = user.UserRole.Select(t => t.RoleId);
+            var isHavaPermission = _roleService.IsHavaPermission(new GetUserPermissionInput() { RoleIdList = roleIds.ToList(), Controller = controller, Action = action });
+            return isHavaPermission;
         }
     }
 }

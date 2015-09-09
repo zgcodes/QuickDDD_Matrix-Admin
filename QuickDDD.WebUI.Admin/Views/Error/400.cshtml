@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = ViewBag.CurrentTitle + " - QucikRMS";
+    Layout = null;
 }
 <div class="row-fluid">
     <div class="span12">
@@ -13,7 +13,7 @@
                     <h1>400</h1>
                     <h3>温馨提示</h3>
                     <p>你没有权限进行该操作</p>
-                    <a class="btn btn-warning btn-big" href="@Url.Action("Index", "Home", new { Area = "Common" })">回到首页</a>
+                    <a class="btn btn-warning btn-big" href="@Url.Action("Index", "Home")">回到首页</a>
                 </div>
             </div>
         </div>

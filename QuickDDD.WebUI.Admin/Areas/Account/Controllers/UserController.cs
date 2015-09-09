@@ -29,6 +29,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             return View();
         }
 
+        [PermissionValidation(false)]
         public JsonResult List(UserQueryInput input)
         {
             var list = _userService.GetAll(input);
@@ -42,7 +43,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
-        [PermissionValidation]
+        [PermissionValidation(false)]
         public ActionResult Edit(int? id)
         {
             //所有角色
@@ -66,7 +67,6 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
         {
             _userService.Delete(id);
             return Json(1, JsonRequestBehavior.AllowGet);
-
         }
 
         public JsonResult Create(UserDto model)

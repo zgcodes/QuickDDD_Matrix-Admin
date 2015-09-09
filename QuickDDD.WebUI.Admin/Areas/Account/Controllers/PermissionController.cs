@@ -23,6 +23,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             return View();
         }
 
+        [PermissionValidation(false)]
         public JsonResult List(PermissionQueryInput input)
         {
             var list = _permissionService.GetAll(input);
@@ -36,6 +37,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
+        [PermissionValidation(false)]
         public ActionResult Edit(int? id)
         {
             PermissionDto model = null;
@@ -64,6 +66,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
 
         }
 
+          [PermissionValidation(false)]
         public JsonResult Update(PermissionDto model)
         {
             _permissionService.Update(model);

@@ -9,11 +9,13 @@ namespace Quick.Application
     /// <summary>
     /// 用于查询首页按钮
     /// </summary>
-    public class GetButtonModelInput
+    public class GetUserPermissionInput
 	{
 		public IList<int> RoleIdList { get; set; }
 
         public string Controller { get; set; }
+
+        public string Action { get; set; }
 
 	}
 }
