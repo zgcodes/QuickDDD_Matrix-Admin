@@ -11,7 +11,7 @@
 // </auto-generated>
 //
 // <copyright file="RoleService.cs">
-//        生成时间：2015-09-29 00:20
+//        生成时间：2015-09-29 00:26
 // </copyright>
 //------------------------------------------------------------------------------
 using Quick.Domain;
@@ -19,9 +19,7 @@ using Quick.Framework.Tool;
 using Quick.Repositories;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Practices.Unity;
 using System;
-using Newtonsoft.Json;
 
 namespace Quick.Application
 {

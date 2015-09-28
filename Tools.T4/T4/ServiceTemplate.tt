@@ -53,7 +53,7 @@ namespace Quick.Application
 		
         public <#= _model.Name #>Service(I<#= _model.Name #>Repository <#= _model.Name.ToLower() #>Repository)
         {
-            _<#= _model.Name.ToLower() #>Repository = <#= _model.Name.ToLower() #>Repository
+            _<#= _model.Name.ToLower() #>Repository = <#= _model.Name.ToLower() #>Repository;
         }
 	}
 }

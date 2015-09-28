@@ -32,13 +32,15 @@ namespace System.Linq
         public static QueryRequestOut<T> ToOutPut<T>(this IQueryable<object> queryable, QueryRequestInput input)
         {
 
-            Type tType = typeof(T);
-            Type type = typeof(QueryRequestOut<>);
-            type = type.MakeGenericType(tType);
-            QueryRequestOut<T> result = (QueryRequestOut<T>)Activator.CreateInstance(type);
+            //Type tType = typeof(T);
+            //Type type = typeof(QueryRequestOut<>);
+            //type = type.MakeGenericType(tType);
+            //QueryRequestOut<T> result = (QueryRequestOut<T>)Activator.CreateInstance(type);
+            //上面这四句可以反射生成对象，之前以为静态方法不能new对象，是我想多了。。
+
+            QueryRequestOut<T> result = new QueryRequestOut<T>();
             //分页
             var newQueryable = queryable.OrderBy(m => input.order).Skip(input.iDisplayStart).Take(input.iDisplayLength);
-
             IList<object> list = newQueryable.ToList();
             result.rows = list.MapToList<T>().ToArray();
             result.total = queryable.Count();//总页数
