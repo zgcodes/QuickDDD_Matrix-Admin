@@ -51,11 +51,21 @@
     </Compile>
     <Compile Include="Example\outPath\HelloWorld1.cs" />
     <Compile Include="Example\outPath\HelloWorld2.cs" />
-    <Compile Include="Example\outPath\HelloWorld3.cs" />
+    <Compile Include="Example\outPath\HelloWorld4.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="T4\" />
+    <Compile Include="T4\ServiceCodeScript.cs">
+      <DependentUpon>ServiceCodeScript.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="T4\Service\ModulePermissionService.cs" />
+    <Compile Include="T4\Service\ModuleService.cs" />
+    <Compile Include="T4\Service\PermissionService.cs" />
+    <Compile Include="T4\Service\RoleModulePermissionService.cs" />
+    <Compile Include="T4\Service\RoleService.cs" />
+    <Compile Include="T4\Service\UserRoleService.cs" />
+    <Compile Include="T4\Service\UserService.cs" />
+    <Compile Include="T4\T4ModelInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Example\HelloWorld.tt">
@@ -69,13 +79,46 @@
 .\HelloWorldMulti.cs
 .\outPath\HelloWorld1.cs
 .\outPath\HelloWorld2.cs
-.\outPath\HelloWorld3.cs
+.\outPath\HelloWorld4.cs
 </LastOutputs>
     </None>
     <None Include="Example\HelloWorldTemplate.tt" />
+    <None Include="T4\ServiceCodeScript.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ServiceCodeScript.cs</LastGenOutput>
+      <LastOutputs>
+.\Service\ModulePermissionService.cs
+.\Service\ModuleService.cs
+.\Service\PermissionService.cs
+.\Service\RoleModulePermissionService.cs
+.\Service\RoleService.cs
+.\Service\UserRoleService.cs
+.\Service\UserService.cs
+.\ServiceCodeScript.cs
+</LastOutputs>
+    </None>
+    <None Include="T4\ServiceTemplate.tt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Quick.Application.Admin\Quick.Application.csproj">
+      <Project>{3789fb66-9543-4bfd-91ad-b62ef604710b}</Project>
+      <Name>Quick.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Quick.Domain\Quick.Domain.csproj">
+      <Project>{169f1c47-313a-49e2-839e-43ffc0b81b14}</Project>
+      <Name>Quick.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Quick.Framework.Tool\Quick.Framework.Tool.csproj">
+      <Project>{8bfa233d-717c-4439-8ea3-28156f0a185b}</Project>
+      <Name>Quick.Framework.Tool</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Quick.Repositories\Quick.Repositories.csproj">
+      <Project>{38038083-1b70-4eb4-a1f1-231d846f2f1b}</Project>
+      <Name>Quick.Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -13,7 +13,7 @@
     {
         Directory.CreateDirectory(destPath);
     }
-    string[] classNames = new[]{"HelloWorld1", "HelloWorld2", "HelloWorld3"};
+    string[] classNames = new[]{"HelloWorld1", "HelloWorld2", "HelloWorld4"};
     foreach(string className in classNames)
     {
         HelloWorldTemplate template = new HelloWorldTemplate(className);
