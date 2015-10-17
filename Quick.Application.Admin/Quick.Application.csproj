@@ -71,39 +71,39 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dto\Core\DtoBase.cs" />
-    <Compile Include="Dto\Core\ModuleDto.cs" />
-    <Compile Include="Dto\Core\PermissionDto.cs" />
-    <Compile Include="Dto\Core\RoleModulePermission\RoleModulePermissionModel.cs" />
-    <Compile Include="Dto\Core\RoleModulePermission\RoleSelectedModuleModel.cs" />
-    <Compile Include="Dto\Core\RoleModulePermission\RoleSelectedPermissionModel.cs" />
-    <Compile Include="Dto\Core\RoleModulePermission\GetPermissionInput.cs" />
-    <Compile Include="Dto\Core\RoleModulePermission\SetPermissionInput.cs" />
-    <Compile Include="Dto\Core\SetButtonDto.cs" />
-    <Compile Include="Dto\Core\RoleModulePermission\GetUserPermissionInput.cs" />
-    <Compile Include="Dto\Core\RoleModulePermission\ButtonModel.cs" />
-    <Compile Include="Dto\Core\UserQueryInput.cs" />
-    <Compile Include="Dto\Core\ModuleQueryInput.cs" />
-    <Compile Include="Dto\Core\UserItem.cs" />
-    <Compile Include="Dto\Core\ModuleItem.cs" />
-    <Compile Include="Dto\Core\RoleItem.cs" />
-    <Compile Include="Dto\Core\RoleQueryInput.cs" />
-    <Compile Include="Dto\Core\PermissionItem.cs" />
-    <Compile Include="Dto\Core\PermissionQueryInput.cs" />
-    <Compile Include="Impl\ModuleService.cs" />
-    <Compile Include="Impl\RoleService.cs" />
-    <Compile Include="Impl\ServiceBase.cs" />
-    <Compile Include="Dto\Core\RoleDto.cs" />
-    <Compile Include="Dto\Core\UserDto.cs" />
-    <Compile Include="Dto\Core\UserRoleDto.cs" />
-    <Compile Include="Impl\UserService.cs" />
-    <Compile Include="Impl\PermissionService.cs" />
-    <Compile Include="IUserService.cs" />
+    <Compile Include="Core\Dto\Core\DtoBase.cs" />
+    <Compile Include="Core\Dto\Core\ModuleDto.cs" />
+    <Compile Include="Core\Dto\Core\PermissionDto.cs" />
+    <Compile Include="Core\Dto\Core\RoleModulePermission\RoleModulePermissionModel.cs" />
+    <Compile Include="Core\Dto\Core\RoleModulePermission\RoleSelectedModuleModel.cs" />
+    <Compile Include="Core\Dto\Core\RoleModulePermission\RoleSelectedPermissionModel.cs" />
+    <Compile Include="Core\Dto\Core\RoleModulePermission\GetPermissionInput.cs" />
+    <Compile Include="Core\Dto\Core\RoleModulePermission\SetPermissionInput.cs" />
+    <Compile Include="Core\Dto\Core\SetButtonDto.cs" />
+    <Compile Include="Core\Dto\Core\RoleModulePermission\GetUserPermissionInput.cs" />
+    <Compile Include="Core\Dto\Core\RoleModulePermission\ButtonModel.cs" />
+    <Compile Include="Core\Dto\Core\UserQueryInput.cs" />
+    <Compile Include="Core\Dto\Core\ModuleQueryInput.cs" />
+    <Compile Include="Core\Dto\Core\UserItem.cs" />
+    <Compile Include="Core\Dto\Core\ModuleItem.cs" />
+    <Compile Include="Core\Dto\Core\RoleItem.cs" />
+    <Compile Include="Core\Dto\Core\RoleQueryInput.cs" />
+    <Compile Include="Core\Dto\Core\PermissionItem.cs" />
+    <Compile Include="Core\Dto\Core\PermissionQueryInput.cs" />
+    <Compile Include="Core\ModuleService.cs" />
+    <Compile Include="Core\RoleService.cs" />
+    <Compile Include="Core\ServiceBase.cs" />
+    <Compile Include="Core\Dto\Core\RoleDto.cs" />
+    <Compile Include="Core\Dto\Core\UserDto.cs" />
+    <Compile Include="Core\Dto\Core\UserRoleDto.cs" />
+    <Compile Include="Core\UserService.cs" />
+    <Compile Include="Core\PermissionService.cs" />
+    <Compile Include="Core\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IModuleService.cs" />
-    <Compile Include="IServiceBase.cs" />
-    <Compile Include="IRoleService.cs" />
-    <Compile Include="IPermissionService.cs" />
+    <Compile Include="Core\IModuleService.cs" />
+    <Compile Include="Core\IServiceBase.cs" />
+    <Compile Include="Core\IRoleService.cs" />
+    <Compile Include="Core\IPermissionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -122,6 +122,7 @@
       <Name>Quick.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -1,0 +1,55 @@
+﻿<#@ template language="C#" debug="True" #>
+<#@ output extension="cs" #>
+<#@ assembly name="System.Core" #>
+<#@ Assembly Name="$(SolutionDir)\Tools.T4\bin\debug\Tools.T4.dll" #>
+<#@ Assembly Name="$(SolutionDir)\Quick.Framework.Tool\bin\Quick.Framework.Tool.dll" #>
+<#@ Assembly Name="$(SolutionDir)\Quick.Domain\bin\Quick.Domain.dll" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.Text" #>
+<#@ Import Namespace="System.Collections.Generic" #>
+<#@ import namespace="Quick.Framework.Tool" #>
+<#@ import namespace="Quick.Domain" #>
+<#@ Import Namespace="Tools.T4" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="ServiceTemplate.tt" #>
+<#@ include file="IServiceTemplate.tt" #>
+
+<#
+
+    //调用
+    string currentPath = Path.GetDirectoryName(Host.TemplateFile);
+    string solutionPath = currentPath.Substring(0, currentPath.IndexOf(@"\QuickDDD_Matrix-Admin"));
+    T4ModelInfo model = new T4ModelInfo(typeof(User));
+    string service_path = string.Format(@"{0}\Service", currentPath);
+  
+    //Service
+    ServiceTemplate config = new ServiceTemplate(model);
+    config.Output.Encoding = Encoding.UTF8;
+    config.RenderToFile(Path.Combine(service_path, config.FileName));
+
+    //IService
+    IServiceTemplate config2 = new IServiceTemplate(model);
+    config2.Output.Encoding = Encoding.UTF8;
+    config2.RenderToFile(Path.Combine(service_path, config2.FileName));
+
+    //批量生成
+    //string currentPath = Path.GetDirectoryName(Host.TemplateFile);
+    //string solutionPath = currentPath.Substring(0, currentPath.IndexOf(@"\QuickDDD_Matrix-Admin"));
+    //string modelFile= Path.Combine(solutionPath, @"QuickDDD_Matrix-Admin\Quick.Domain\bin\Quick.Domain.dll");
+    //byte[] fileData= File.ReadAllBytes(modelFile);
+    //Assembly assembly = Assembly.Load(fileData);
+    //IEnumerable<Type> modelTypes = assembly.GetTypes().Where(m => typeof(Entity).IsAssignableFrom(m) && !m.IsAbstract);
+    //foreach(Type modelType in modelTypes)
+    //{
+    //T4ModelInfo model = new T4ModelInfo(modelType);
+    ////实体映射类
+      //ServiceTemplate config = new ServiceTemplate(model);
+    //string path = string.Format(@"{0}\Service", currentPath);
+    //config.Output.Encoding = Encoding.UTF8;
+    //config.RenderToFile(Path.Combine(path, config.FileName));
+    //}
+   
+#>

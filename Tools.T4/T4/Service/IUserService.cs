@@ -12,13 +12,20 @@ using System;
 
 namespace Quick.Application
 {
-	public class UserService : IUserService
+	public interface IUserService : IServiceBase
 	{
-        private readonly IUserRepository _userRepository;
-		
-        public UserService(IUserRepository userRepository)
-        {
-            _userRepository = userRepository;
-        }
+        #region 用户信息公共方法
+
+        QueryRequestOut<UserItem> GetAll(UserQueryInput input);
+
+        UserDto GetById(int id);
+
+        void Delete(int id);
+
+        void Create(UserDto model);
+
+        void Update(UserDto model);
+
+        #endregion
 	}
 }

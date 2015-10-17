@@ -40,7 +40,7 @@ namespace Tools.T4
             var index = @namespace.LastIndexOf('.') + 1;
             ModuleName = @namespace.Substring(index, @namespace.Length - index);
             Name = modelType.Name;
-            var descAttributes = modelType.GetCustomAttributes(typeof(DescriptionAttribute), true);
+            var descAttributes = modelType.GetCustomAttributes(typeof(DescriptionAttribute), false);
             Description = descAttributes.Length == 1 ? ((DescriptionAttribute)descAttributes[0]).Description : Name;
             Properties = modelType.GetProperties();
         }
