@@ -16,14 +16,19 @@
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="ServiceTemplate.tt" #>
 <#@ include file="IServiceTemplate.tt" #>
+<#@ include file="IRepositoryTemplate.tt" #>
+<#@ include file="RepositoryTemplate.tt" #>
+<#@ include file="DtoTemplate.tt" #>
 
 <#
 
     //调用
     string currentPath = Path.GetDirectoryName(Host.TemplateFile);
-    string solutionPath = currentPath.Substring(0, currentPath.IndexOf(@"\QuickDDD_Matrix-Admin"));
+    //string solutionPath = currentPath.Substring(0, currentPath.IndexOf(@"\QuickDDD_Matrix-Admin"));
     T4ModelInfo model = new T4ModelInfo(typeof(User));
     string service_path = string.Format(@"{0}\Service", currentPath);
+    string repository_path = string.Format(@"{0}\Repositories", currentPath);
+    string dto_path = string.Format(@"{0}\Service\Dto", currentPath);
   
     //Service
     ServiceTemplate config = new ServiceTemplate(model);
@@ -34,6 +39,22 @@
     IServiceTemplate config2 = new IServiceTemplate(model);
     config2.Output.Encoding = Encoding.UTF8;
     config2.RenderToFile(Path.Combine(service_path, config2.FileName));
+
+     //IRepository
+    IRepositoryTemplate config3 = new IRepositoryTemplate(model);
+    config3.Output.Encoding = Encoding.UTF8;
+    config3.RenderToFile(Path.Combine(repository_path, config3.FileName));
+
+     //Repository
+    RepositoryTemplate config4 = new RepositoryTemplate(model);
+    config4.Output.Encoding = Encoding.UTF8;
+    config4.RenderToFile(Path.Combine(repository_path, config4.FileName));
+
+       //Dto
+    DtoTemplate config5 = new DtoTemplate(model);
+    config5.Output.Encoding = Encoding.UTF8;
+    config5.RenderToFile(Path.Combine(dto_path, config5.FileName));
+
 
     //批量生成
     //string currentPath = Path.GetDirectoryName(Host.TemplateFile);

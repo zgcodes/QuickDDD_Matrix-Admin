@@ -1,0 +1,49 @@
+﻿<#+
+// <copyright file="ServiceTemplate.tt" company="Microsoft">
+//  Copyright © Microsoft. All Rights Reserved.
+// </copyright>
+//模板定义类
+public class RepositoryTemplate : CSharpTemplate
+{
+    private T4ModelInfo _model;
+        
+    public RepositoryTemplate(T4ModelInfo model)
+    {
+        _model = model;
+    }
+
+     /// <summary>
+    /// 获生成的文件名，根据模型名定义
+    /// </summary>
+    public string FileName
+    {
+        get
+        { 
+            return string.Format("{0}Repository.cs", _model.Name);
+        }
+    }
+
+	public override string TransformText()
+	{
+		base.TransformText();
+#>
+using System;
+using System.Linq;
+using System.ComponentModel.Composition;
+using Quick.Domain;
+using System.Collections.Generic;
+
+namespace Quick.Repositories
+{
+	public class <#= _model.Name #>Repository : EfRepositoryBase<<#= _model.Name #>>, I<#= _model.Name #>Repository
+	{
+        public RoleRepository()
+            : base(new QuickDbContext())
+        { }
+	}
+}
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

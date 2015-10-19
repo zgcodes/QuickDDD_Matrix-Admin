@@ -53,6 +53,8 @@
     <Compile Include="Example\outPath\HelloWorld2.cs" />
     <Compile Include="Example\outPath\HelloWorld4.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="T4\Repositories\IUserRepository.cs" />
+    <Compile Include="T4\Repositories\UserRepository.cs" />
     <Compile Include="T4\Service\IUserService.cs" />
     <Compile Include="T4\Service\UserService.cs" />
     <Compile Include="T4\ViewScript.cs">
@@ -83,6 +85,9 @@
 </LastOutputs>
     </None>
     <None Include="Example\HelloWorldTemplate.tt" />
+    <None Include="T4\IRepositoryTemplate.tt" />
+    <None Include="T4\RepositoryTemplate.tt" />
+    <None Include="T4\DtoTemplate.tt" />
     <None Include="T4\ViewScript.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ViewScript.cs</LastGenOutput>
@@ -96,6 +101,9 @@
       <LastGenOutput>CodeScript.cs</LastGenOutput>
       <LastOutputs>
 .\CodeScript.cs
+.\Repositories\IUserRepository.cs
+.\Repositories\UserRepository.cs
+.\Service\Dto\UserDto.cs
 .\Service\IUserService.cs
 .\Service\UserService.cs
 </LastOutputs>
@@ -124,7 +132,10 @@
       <Name>Quick.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="T4\CodeTemplate\" />
+    <Folder Include="T4\Service\Dto\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

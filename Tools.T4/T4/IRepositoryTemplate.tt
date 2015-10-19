@@ -1,0 +1,47 @@
+﻿<#+
+    // <copyright file="ServiceTemplate.tt" company="Microsoft">
+    //  Copyright © Microsoft. All Rights Reserved.
+    // </copyright>
+    //模板定义类
+    public class IRepositoryTemplate : CSharpTemplate
+    {
+        private T4ModelInfo _model;
+        
+        public IRepositoryTemplate(T4ModelInfo model)
+        {
+            _model = model;
+        }
+
+        /// <summary>
+        /// 获生成的文件名，根据模型名定义
+        /// </summary>
+        public string FileName
+        {
+            get
+            { 
+                return string.Format("I{0}Repository.cs", _model.Name);
+            }
+        }
+
+        public override string TransformText()
+        {
+            base.TransformText();
+#>
+using System;
+using System.Linq;
+using System.ComponentModel.Composition;
+using System.Collections.Generic;
+
+namespace Quick.Domain
+{
+	/// <summary>
+    /// 仓储操作层接口 —— 
+    /// </summary>
+    public interface I<#=_model.Name #>Repository : IRepository<<#=_model.Name #>>
+    { }
+}
+<#+
+            return this.GenerationEnvironment.ToString();
+        }
+    }
+#>
