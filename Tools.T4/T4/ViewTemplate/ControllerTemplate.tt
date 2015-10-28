@@ -1,0 +1,107 @@
+﻿<#+
+    // <copyright file="ServiceTemplate.tt" company="Microsoft">
+    //  Copyright © Microsoft. All Rights Reserved.
+    // </copyright>
+    //模板定义类
+    public class ControllerTemplate : CSharpTemplate
+    {
+        private T4ModelInfo _model;
+        
+        public ControllerTemplate(T4ModelInfo model)
+        {
+            _model = model;
+        }
+
+        /// <summary>
+        /// 获生成的文件名，根据模型名定义
+        /// </summary>
+        public string FileName
+        {
+            get
+            { 
+                return string.Format("{0}Controller.cs", _model.Name);
+            }
+        }
+
+        public override string TransformText()
+        {
+            base.TransformText();
+#>
+using Quick.Application;
+using Quick.WebUI.Admin.Controllers;
+using System.Linq;
+using System.Web.Mvc;
+
+namespace Quick.WebUI.Admin
+{
+
+    public class <#=_model.Name#>Controller : BaseController
+    {
+        private readonly I<#=_model.Name#>Service _<#=_model.Name.ToLower()#>Service;
+
+        public <#=_model.Name#>Controller(I<#=_model.Name#>Service <#=_model.Name.ToLower()#>Service)
+        {
+            _<#=_model.Name.ToLower()#>Service = <#=_model.Name.ToLower()#>Service;
+        }
+        
+        [AdminLayout]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [PermissionValidation(false)]
+        public JsonResult List(<#=_model.Name#>QueryInput input)
+        {
+            var list = _<#=_model.Name.ToLower()#>Service.GetAll(input);
+
+            var json = new
+            {
+                iTotalRecords = list.total,
+                iTotalDisplayRecords = list.total,
+                aaData = list.rows
+            };
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
+
+        [PermissionValidation(false)]
+        public ActionResult Edit(int? id)
+        {
+            <#=_model.Name#>Dto model = null;
+            if (!id.HasValue)  //新建
+            {
+                model = new <#=_model.Name#>Dto();
+            }
+            else  //编辑
+            {
+                model = _<#=_model.Name.ToLower()#>Service.GetById(id.Value);
+            }
+            return View(model);
+        }
+
+        public JsonResult Delete(int id)
+        {
+            _<#=_model.Name.ToLower()#>Service.Delete(id);
+            return Json(1, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Create(<#=_model.Name#>Dto model)
+        {
+            _<#=_model.Name.ToLower()#>Service.Create(model);
+            return Json(1, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public JsonResult Update(<#=_model.Name#>Dto model)
+        {
+            _<#=_model.Name.ToLower()#>Service.Update(model);
+            return Json(1, JsonRequestBehavior.AllowGet);
+
+        }
+    }
+}
+<#+
+            return this.GenerationEnvironment.ToString();
+        }
+    }
+#>

@@ -28,16 +28,13 @@
             base.TransformText();
 #>
 using Quick.Domain;
-using Quick.Framework.Tool;
-using Quick.Repositories;
-using System.Collections.Generic;
-using System.Linq;
 using System;
+using System.Collections.Generic;
 
 namespace Quick.Application
 {
 
-public class <#=_model.Name#>Dto : DtoBase
+    public class <#=_model.Name#>Dto : DtoBase
     {
          <#+
         foreach(var propertie in _model.Properties)

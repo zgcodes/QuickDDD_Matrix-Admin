@@ -30,11 +30,7 @@ namespace Quick.WebUI.Admin
 
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            //权限拦截是否忽略
-            if (Validate == false)
-            {
-                return;
-            }
+         
 
             //验证用户是否登录
             var user = filterContext.HttpContext.Session["CurrentUser"] as UserDto;
@@ -42,6 +38,11 @@ namespace Quick.WebUI.Admin
             {
                 //跳转到登录页面
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
+            }
+            //权限拦截是否忽略
+            if (Validate == false)
+            {
+                return;
             }
             else
             {

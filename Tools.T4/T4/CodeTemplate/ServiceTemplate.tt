@@ -44,6 +44,8 @@ namespace Quick.Application
         {
             _<#= _model.Name.ToLower() #>Repository = <#= _model.Name.ToLower() #>Repository;
         }
+
+
 	}
 }
 <#+

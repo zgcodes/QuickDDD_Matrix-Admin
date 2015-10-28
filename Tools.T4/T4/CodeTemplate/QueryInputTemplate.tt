@@ -1,0 +1,45 @@
+﻿<#+
+    // <copyright file="ServiceTemplate.tt" company="Microsoft">
+    //  Copyright © Microsoft. All Rights Reserved.
+    // </copyright>
+    //模板定义类
+    public class QueryInputTemplate : CSharpTemplate
+    {
+        private T4ModelInfo _model;
+        
+        public QueryInputTemplate(T4ModelInfo model)
+        {
+            _model = model;
+        }
+
+        /// <summary>
+        /// 获生成的文件名，根据模型名定义
+        /// </summary>
+        public string FileName
+        {
+            get
+            { 
+                return string.Format("{0}QueryInput.cs", _model.Name);
+            }
+        }
+
+        public override string TransformText()
+        {
+            base.TransformText();
+#>
+using Quick.Framework.Tool;
+using System.Collections.Generic;
+
+namespace Quick.Application
+{
+
+    public class <#=_model.Name#>QueryInput : QueryRequestInput
+    {
+        
+    }
+}
+<#+
+            return this.GenerationEnvironment.ToString();
+        }
+    }
+#>

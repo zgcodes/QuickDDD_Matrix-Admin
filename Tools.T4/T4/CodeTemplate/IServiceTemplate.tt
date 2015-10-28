@@ -40,15 +40,15 @@ namespace Quick.Application
 	{
         #region <#= _model.Description #>公共方法
 
-        QueryRequestOut<UserItem> GetAll(<#= _model.Name #>QueryInput input);
+        QueryRequestOut<<#= _model.Name #>Item> GetAll(<#= _model.Name #>QueryInput input);
 
-        UserDto GetById(int id);
+        public <#= _model.Name #>Dto GetById(int id);
 
-        void Delete(int id);
+        public void Delete(int id);
 
-        void Create(<#= _model.Name #>Dto model);
+        public void Create(<#= _model.Name #>Dto model);
 
-        void Update(<#= _model.Name #>Dto model);
+        public void Update(<#= _model.Name #>Dto model);
 
         #endregion
 	}

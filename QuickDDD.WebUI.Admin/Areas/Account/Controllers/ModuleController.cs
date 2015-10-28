@@ -21,7 +21,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             _permissionService = permissionService;
         }
 
-        //这里action的权限没有让用户设置，也没默认存关联数据进数据库，二是通过代码判断模块有权限且action是Index就有权限
+        //这里action的权限没有让用户设置，也没默认存关联数据进数据库，而是通过代码判断模块有权限且action是Index就有权限
         [AdminLayout]
         public ActionResult Index()
         {
@@ -29,7 +29,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
         }
 
 
-        // /// TODO:这里不加权限，不知道可不可以加个虚拟action名叫Index
+        // /// TODO:这里不加权限，不知道可不可以加个虚拟action名叫Index，这里和模块统一权限，没有按钮权限。
         [PermissionValidation(false)]
         public JsonResult List(ModuleQueryInput input)
         {

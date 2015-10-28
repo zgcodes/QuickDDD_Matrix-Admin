@@ -14,11 +14,13 @@
 <#@ import namespace="Quick.Domain" #>
 <#@ Import Namespace="Tools.T4" #>
 <#@ include file="T4Toolbox.tt" #>
-<#@ include file="ServiceTemplate.tt" #>
-<#@ include file="IServiceTemplate.tt" #>
-<#@ include file="IRepositoryTemplate.tt" #>
-<#@ include file="RepositoryTemplate.tt" #>
-<#@ include file="DtoTemplate.tt" #>
+<#@ include file="CodeTemplate/ServiceTemplate.tt" #>
+<#@ include file="CodeTemplate/IServiceTemplate.tt" #>
+<#@ include file="CodeTemplate/IRepositoryTemplate.tt" #>
+<#@ include file="CodeTemplate/RepositoryTemplate.tt" #>
+<#@ include file="CodeTemplate/DtoTemplate.tt" #>
+<#@ include file="CodeTemplate/ItemTemplate.tt" #>
+<#@ include file="CodeTemplate/QueryInputTemplate.tt" #>
 
 <#
 
@@ -54,6 +56,16 @@
     DtoTemplate config5 = new DtoTemplate(model);
     config5.Output.Encoding = Encoding.UTF8;
     config5.RenderToFile(Path.Combine(dto_path, config5.FileName));
+
+    //Item
+    ItemTemplate config6 = new ItemTemplate(model);
+    config6.Output.Encoding = Encoding.UTF8;
+    config6.RenderToFile(Path.Combine(dto_path, config6.FileName));
+
+    //QueryInput
+    QueryInputTemplate config7 = new QueryInputTemplate(model);
+    config7.Output.Encoding = Encoding.UTF8;
+    config7.RenderToFile(Path.Combine(dto_path, config7.FileName));
 
 
     //批量生成
