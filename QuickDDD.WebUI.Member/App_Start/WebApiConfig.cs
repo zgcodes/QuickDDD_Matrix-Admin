@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace QuickDDD.WebUI.Member
+namespace Quick.WebUI.Member
 {
     public static class WebApiConfig
     {

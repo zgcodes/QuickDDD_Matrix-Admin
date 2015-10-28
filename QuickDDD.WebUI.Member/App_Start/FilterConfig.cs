@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace QuickDDD.WebUI.Member
+namespace Quick.WebUI.Member
 {
     public class FilterConfig
     {

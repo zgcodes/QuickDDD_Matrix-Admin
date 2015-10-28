@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过下列特性集
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("QuickDDD.WebUI.Admin")]
+[assembly: AssemblyTitle("Quick.WebUI.Admin")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("QuickDDD.WebUI.Admin")]
+[assembly: AssemblyProduct("Quick.WebUI.Admin")]
 [assembly: AssemblyCopyright("版权所有(C) Microsoft 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

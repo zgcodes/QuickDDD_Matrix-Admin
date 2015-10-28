@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace QuickDDD.WebUI.Member
+namespace Quick.WebUI.Member
 {
     public class RouteConfig
     {
