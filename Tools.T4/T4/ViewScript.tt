@@ -15,17 +15,23 @@
 <#@ Import Namespace="Tools.T4" #>
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="ViewTemplate/ControllerTemplate.tt" #>
-
+<#@ include file="ViewTemplate/IndexTemplate.tt" #>
 <#
 
     //调用
     string currentPath = Path.GetDirectoryName(Host.TemplateFile);
     T4ModelInfo model = new T4ModelInfo(typeof(User));
     string controllers_path = string.Format(@"{0}\Controllers", currentPath);
+    string indexView_path = string.Format(@"{0}\View", currentPath);
   
     //Controller
     ControllerTemplate config = new ControllerTemplate(model);
     config.Output.Encoding = Encoding.UTF8;
     config.RenderToFile(Path.Combine(controllers_path, config.FileName));
+
+     //Index
+    IndexTemplate config2 = new IndexTemplate(model);
+    config2.Output.Encoding = Encoding.UTF8;
+    config2.RenderToFile(Path.Combine(indexView_path, config2.FileName));
    
 #>

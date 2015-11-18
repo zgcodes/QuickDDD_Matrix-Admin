@@ -58,6 +58,7 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="T4\Controllers\UserController.cs" />
     <Compile Include="T4\ViewScript.cs">
       <DependentUpon>ViewScript.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -105,12 +106,15 @@
       <LastGenOutput>ViewScript.cs</LastGenOutput>
       <LastOutputs>
 .\Controllers\UserController.cs
+.\View\Index.cshtml
 .\ViewScript.cs
 </LastOutputs>
     </None>
     <None Include="T4\CodeTemplate\IServiceTemplate.tt" />
     <None Include="T4\CodeTemplate\ServiceTemplate.tt" />
+    <None Include="T4\ViewTemplate\IndexTemplate.tt" />
     <None Include="T4\ViewTemplate\ControllerTemplate.tt" />
+    <None Include="T4\View\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
