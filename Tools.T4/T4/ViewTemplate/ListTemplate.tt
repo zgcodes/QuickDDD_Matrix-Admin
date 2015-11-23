@@ -1,0 +1,46 @@
+﻿<#+
+    // <copyright file="ServiceTemplate.tt" company="Microsoft">
+    //  Copyright © Microsoft. All Rights Reserved.
+    // </copyright>
+    //模板定义类
+    public class ListTemplate : CSharpTemplate
+    {
+        private T4ModelInfo _model;
+        
+        public ListTemplate(T4ModelInfo model)
+        {
+            _model = model;
+        }
+
+        /// <summary>
+        /// 获生成的文件名，根据模型名定义
+        /// </summary>
+        public string FileName
+        {
+            get
+            { 
+                return "List.cshtml";
+            }
+        }
+
+        public override string TransformText()
+        {
+            base.TransformText();
+#>
+
+<div class="widget-box">
+    <div class="widget-title">
+        <span class="icon"><i class="icon-th"></i></span>
+        <h5> <#= _model.Description #></h5>
+    </div>
+    <div class="widget-content nopadding">
+        <table class="table table-bordered data-table">
+        </table>
+    </div>
+</div>   
+
+<#+
+            return this.GenerationEnvironment.ToString();
+        }
+    }
+#>

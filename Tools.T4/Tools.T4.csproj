@@ -106,15 +106,20 @@
       <LastGenOutput>ViewScript.cs</LastGenOutput>
       <LastOutputs>
 .\Controllers\UserController.cs
+.\View\Edit.cshtml
 .\View\Index.cshtml
+.\View\List.cshtml
+.\View\Search.cshtml
 .\ViewScript.cs
 </LastOutputs>
     </None>
     <None Include="T4\CodeTemplate\IServiceTemplate.tt" />
     <None Include="T4\CodeTemplate\ServiceTemplate.tt" />
+    <None Include="T4\ViewTemplate\SearchTemplate.tt" />
+    <None Include="T4\ViewTemplate\ListTemplate.tt" />
+    <None Include="T4\ViewTemplate\EditTemplate.tt" />
     <None Include="T4\ViewTemplate\IndexTemplate.tt" />
     <None Include="T4\ViewTemplate\ControllerTemplate.tt" />
-    <None Include="T4\View\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -137,7 +142,9 @@
       <Name>Quick.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="T4\View\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

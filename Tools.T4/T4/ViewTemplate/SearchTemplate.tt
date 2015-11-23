@@ -1,4 +1,34 @@
-﻿@{
+﻿<#+
+    // <copyright file="ServiceTemplate.tt" company="Microsoft">
+    //  Copyright © Microsoft. All Rights Reserved.
+    // </copyright>
+    //模板定义类
+    public class SearchTemplate : CSharpTemplate
+    {
+        private T4ModelInfo _model;
+        
+        public SearchTemplate(T4ModelInfo model)
+        {
+            _model = model;
+        }
+
+        /// <summary>
+        /// 获生成的文件名，根据模型名定义
+        /// </summary>
+        public string FileName
+        {
+            get
+            { 
+                return "Search.cshtml";
+            }
+        }
+
+        public override string TransformText()
+        {
+            base.TransformText();
+#>
+
+@{
     var buttonList = new List<ButtonModel>();
     buttonList = ViewBag.ButtonList;
 
@@ -14,16 +44,14 @@
     </div>
     <div class="widget-content nopadding">
         <form class="form-horizontal search-form" method="post" name="basic_validate" novalidate="novalidate">
-
             <div class="control-group">
                 <div class="search-group">
                     <label class="search-label">搜索</label>
                     <div class="span2 search-input">
-                        <input name="Keywords" placeholder="用户名" />
+                        <input name="Keywords" placeholder="名称" />
                     </div>
                 </div>
             </div>
-
             <div class="form-actions form-operate text-right ">
                 <button type="button" class="btn btn-success" onclick="Search()">
                     <span class="icon-search"></span> 搜索
@@ -35,7 +63,6 @@
                                 <span class="@createButton.Icon">@createButton.Text</span>
                             </button></text>
                     }
-
                 }
                 <button type="button" class="btn btn-danger" onclick="ClearForm($('.search-form'));">
                     <span class="icon-bullhorn"></span> 清空
@@ -43,6 +70,10 @@
             </div>
 
         </form>
-
     </div>
 </div>
+<#+
+            return this.GenerationEnvironment.ToString();
+        }
+    }
+#>

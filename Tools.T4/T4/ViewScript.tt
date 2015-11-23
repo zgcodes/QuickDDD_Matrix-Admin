@@ -16,13 +16,16 @@
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="ViewTemplate/ControllerTemplate.tt" #>
 <#@ include file="ViewTemplate/IndexTemplate.tt" #>
+<#@ include file="ViewTemplate/EditTemplate.tt" #>
+<#@ include file="ViewTemplate/ListTemplate.tt" #>
+<#@ include file="ViewTemplate/SearchTemplate.tt" #>
 <#
 
     //调用
     string currentPath = Path.GetDirectoryName(Host.TemplateFile);
     T4ModelInfo model = new T4ModelInfo(typeof(User));
     string controllers_path = string.Format(@"{0}\Controllers", currentPath);
-    string indexView_path = string.Format(@"{0}\View", currentPath);
+    string view_path = string.Format(@"{0}\View", currentPath);
   
     //Controller
     ControllerTemplate config = new ControllerTemplate(model);
@@ -32,6 +35,21 @@
      //Index
     IndexTemplate config2 = new IndexTemplate(model);
     config2.Output.Encoding = Encoding.UTF8;
-    config2.RenderToFile(Path.Combine(indexView_path, config2.FileName));
+    config2.RenderToFile(Path.Combine(view_path, config2.FileName));
+
+      //Edit
+    EditTemplate config3 = new EditTemplate(model);
+    config3.Output.Encoding = Encoding.UTF8;
+    config3.RenderToFile(Path.Combine(view_path, config3.FileName));
+
+     //List
+    ListTemplate config4 = new ListTemplate(model);
+    config4.Output.Encoding = Encoding.UTF8;
+    config4.RenderToFile(Path.Combine(view_path, config4.FileName));
+
+    //Search
+    SearchTemplate config5 = new SearchTemplate(model);
+    config5.Output.Encoding = Encoding.UTF8;
+    config5.RenderToFile(Path.Combine(view_path, config5.FileName));
    
 #>
