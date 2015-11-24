@@ -150,6 +150,7 @@
     <Compile Include="Areas\Account\Controllers\RoleController.cs" />
     <Compile Include="Areas\Account\Controllers\UserController.cs" />
     <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
+    <Compile Include="Areas\Content\Controllers\ArticleCategoryController.cs" />
     <Compile Include="Areas\SysConfig\Controllers\AppendixController.cs" />
     <Compile Include="Areas\SysConfig\SysConfigAreaRegistration.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -297,6 +298,12 @@
     <Content Include="Areas\SysConfig\Views\Web.config" />
     <Content Include="Areas\SysConfig\Views\Appendix\Icon.cshtml" />
     <Content Include="Areas\SysConfig\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Content\Views\ArticleCategory\Edit.cshtml" />
+    <Content Include="Areas\Content\Views\ArticleCategory\Index.cshtml" />
+    <Content Include="Areas\Content\Views\ArticleCategory\List.cshtml" />
+    <Content Include="Areas\Content\Views\ArticleCategory\Search.cshtml" />
+    <Content Include="Areas\Content\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Content\Views\Web.config" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />

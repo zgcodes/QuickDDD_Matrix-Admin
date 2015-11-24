@@ -71,6 +71,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Content\ArticleCategoryService.cs" />
+    <Compile Include="Content\Dto\ArticleCategoryDto.cs" />
+    <Compile Include="Content\Dto\ArticleCategoryItem.cs" />
+    <Compile Include="Content\Dto\ArticleCategoryQueryInput.cs" />
+    <Compile Include="Content\IArticleCategoryService.cs" />
     <Compile Include="Core\Dto\DtoBase.cs" />
     <Compile Include="Core\Dto\ModuleDto.cs" />
     <Compile Include="Core\Dto\PermissionDto.cs" />

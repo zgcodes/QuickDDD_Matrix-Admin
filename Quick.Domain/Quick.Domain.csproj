@@ -64,6 +64,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Content\Article.cs" />
+    <Compile Include="Entities\Content\ArticleCategory.cs" />
     <Compile Include="Entities\Core\Module.cs" />
     <Compile Include="Entities\Core\ModulePermission.cs" />
     <Compile Include="Entities\Core\Permission.cs" />
@@ -72,14 +74,15 @@
     <Compile Include="Entities\Core\User.cs" />
     <Compile Include="Entities\Core\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Content\IArticleCategoryRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Repositories\IRoleRepository.cs" />
-    <Compile Include="Repositories\IUserRepository.cs" />
-    <Compile Include="Repositories\IUserRoleRepository.cs" />
-    <Compile Include="Repositories\IModuleRepository.cs" />
-    <Compile Include="Repositories\IPermissionRepository.cs" />
-    <Compile Include="Repositories\IModulePermissionRepository.cs" />
-    <Compile Include="Repositories\IRoleModulePermissionRepository.cs" />
+    <Compile Include="Repositories\Core\IRoleRepository.cs" />
+    <Compile Include="Repositories\Core\IUserRepository.cs" />
+    <Compile Include="Repositories\Core\IUserRoleRepository.cs" />
+    <Compile Include="Repositories\Core\IModuleRepository.cs" />
+    <Compile Include="Repositories\Core\IPermissionRepository.cs" />
+    <Compile Include="Repositories\Core\IModulePermissionRepository.cs" />
+    <Compile Include="Repositories\Core\IRoleModulePermissionRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Events\" />

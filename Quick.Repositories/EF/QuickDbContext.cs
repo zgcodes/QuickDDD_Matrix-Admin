@@ -29,7 +29,7 @@ namespace Quick.Repositories
 
         #endregion
 
-        #region 属性  (针对每个聚合根都会定义一个DbSet的属性)
+        #region Core模块  (针对每个聚合根都会定义一个DbSet的属性)
 
         public DbSet<Role> Roles { get; set; }
 
@@ -47,12 +47,19 @@ namespace Quick.Repositories
 
         #endregion
 
+        #region Content模块
+
+        public DbSet<Article> Article { get; set; }
+
+        public DbSet<ArticleCategory> ArticleCategory { get; set; }
+
+        #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);
 
-           //modelBuilder.Filter("SoftDelete", (ISoftDelete d) => d.IsDeleted, false);
+            //modelBuilder.Filter("SoftDelete", (ISoftDelete d) => d.IsDeleted, false);
 
             modelBuilder.Entity<User>().ToTable("Auth_User");
             modelBuilder.Entity<Role>().ToTable("Auth_Role");
@@ -62,6 +69,8 @@ namespace Quick.Repositories
             modelBuilder.Entity<ModulePermission>().ToTable("Auth_ModulePermission");
             modelBuilder.Entity<RoleModulePermission>().ToTable("Auth_RoleModulePermission");
 
+            modelBuilder.Entity<Article>().ToTable("Content_Article");
+            modelBuilder.Entity<ArticleCategory>().ToTable("Content_ArticleCategory");
 
             //移除一对多的级联删除约定，想要级联删除可以在 EntityTypeConfiguration<TEntity>的实现类中进行控制
             //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();

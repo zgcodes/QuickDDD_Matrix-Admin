@@ -69,6 +69,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Content\ArticleCategoryRepository.cs" />
     <Compile Include="Core\UserRepository.cs" />
     <Compile Include="Core\ModuleRepository.cs" />
     <Compile Include="Core\RoleRepository.cs" />

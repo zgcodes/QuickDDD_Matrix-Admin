@@ -27,7 +27,7 @@
     //调用
     string currentPath = Path.GetDirectoryName(Host.TemplateFile);
     //string solutionPath = currentPath.Substring(0, currentPath.IndexOf(@"\QuickDDD_Matrix-Admin"));
-    T4ModelInfo model = new T4ModelInfo(typeof(User));
+    T4ModelInfo model = new T4ModelInfo(typeof(ArticleCategory));
     string service_path = string.Format(@"{0}\Service", currentPath);
     string repository_path = string.Format(@"{0}\Repositories", currentPath);
     string dto_path = string.Format(@"{0}\Service\Dto", currentPath);

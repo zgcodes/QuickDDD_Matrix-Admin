@@ -42,13 +42,13 @@ namespace Quick.Application
 
         QueryRequestOut<<#= _model.Name #>Item> GetAll(<#= _model.Name #>QueryInput input);
 
-        public <#= _model.Name #>Dto GetById(int id);
+        <#= _model.Name #>Dto GetById(int id);
 
-        public void Delete(int id);
+        void Delete(int id);
 
-        public void Create(<#= _model.Name #>Dto model);
+        void Create(<#= _model.Name #>Dto model);
 
-        public void Update(<#= _model.Name #>Dto model);
+        void Update(<#= _model.Name #>Dto model);
 
         #endregion
 	}

@@ -32,6 +32,11 @@ namespace Quick.Framework.Tool
         public virtual bool IsDeleted { get; set; }
 
         /// <summary>
+        /// 删除日期
+        /// </summary>
+        public virtual DateTime? DeletedTime { get; set; }
+
+        /// <summary>
         /// 创建者Id
         /// </summary>
         public virtual int? CreateId { get; set; }

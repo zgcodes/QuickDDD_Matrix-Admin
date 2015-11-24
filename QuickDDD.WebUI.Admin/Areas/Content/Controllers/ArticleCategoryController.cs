@@ -11,13 +11,13 @@ using System.Web.Mvc;
 namespace Quick.WebUI.Admin
 {
 
-    public class UserController : BaseController
+    public class ArticleCategoryController : BaseController
     {
-        private readonly IUserService _userService;
+        private readonly IArticleCategoryService _articlecategoryService;
 
-        public UserController(IUserService userService)
+        public ArticleCategoryController(IArticleCategoryService articlecategoryService)
         {
-            _userService = userService;
+            _articlecategoryService = articlecategoryService;
         }
         
         [AdminLayout]
@@ -27,9 +27,9 @@ namespace Quick.WebUI.Admin
         }
 
         [PermissionValidation(false)]
-        public JsonResult List(UserQueryInput input)
+        public JsonResult List(ArticleCategoryQueryInput input)
         {
-            var list = _userService.GetAll(input);
+            var list = _articlecategoryService.GetAll(input);
 
             var json = new
             {
@@ -43,34 +43,34 @@ namespace Quick.WebUI.Admin
         [PermissionValidation(false)]
         public ActionResult Edit(int? id)
         {
-            UserDto model = null;
+            ArticleCategoryDto model = null;
             if (!id.HasValue)  //新建
             {
-                model = new UserDto();
+                model = new ArticleCategoryDto();
             }
             else  //编辑
             {
-                model = _userService.GetById(id.Value);
+                model = _articlecategoryService.GetById(id.Value);
             }
             return View(model);
         }
 
         public JsonResult Delete(int id)
         {
-            _userService.Delete(id);
+            _articlecategoryService.Delete(id);
             return Json(1, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Create(UserDto model)
+        public JsonResult Create(ArticleCategoryDto model)
         {
-            _userService.Create(model);
+            _articlecategoryService.Create(model);
             return Json(1, JsonRequestBehavior.AllowGet);
 
         }
 
-        public JsonResult Update(UserDto model)
+        public JsonResult Update(ArticleCategoryDto model)
         {
-            _userService.Update(model);
+            _articlecategoryService.Update(model);
             return Json(1, JsonRequestBehavior.AllowGet);
 
         }

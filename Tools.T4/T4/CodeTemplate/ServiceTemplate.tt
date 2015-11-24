@@ -45,6 +45,34 @@ namespace Quick.Application
             _<#= _model.Name.ToLower() #>Repository = <#= _model.Name.ToLower() #>Repository;
         }
 
+        public QueryRequestOut<<#=_model.Name#>Item> GetAll(<#=_model.Name#>QueryInput input)
+        {
+            return _<#= _model.Name.ToLower() #>Repository.GetAll()
+                .WhereIf(!input.Keywords.IsNullOrWhiteSpace(),m=>m.Name.Contains(input.Keywords))
+                .ToOutPut<<#=_model.Name#>Item>(input);
+        }
+
+        public <#=_model.Name#>Dto GetById(int id)
+        {
+            var entity = _<#= _model.Name.ToLower() #>Repository.GetById(id);
+            return entity.MapTo<<#=_model.Name#>Dto>();
+        }
+
+        public void Create(<#=_model.Name#>Dto model)
+        {
+            _<#= _model.Name.ToLower() #>Repository.Insert(model.MapTo<<#=_model.Name#>>());
+        }
+
+        public void Update(<#=_model.Name#>Dto model)
+        {
+            var entity = _<#= _model.Name.ToLower() #>Repository.GetById(model.Id);
+            _<#= _model.Name.ToLower() #>Repository.Update(model.MapTo(entity));
+        }
+
+        public void Delete(int id)
+        {
+            _<#= _model.Name.ToLower() #>Repository.Delete(id);
+        }
 
 	}
 }
