@@ -76,15 +76,11 @@
         <#+
                 }}
         #> {
+                    "sTitle": "操作",
                     "mDataProp": "Id",
                     "bSortable": false,
                     "fnRender": function (obj, data) {
                         var btnArray = "";
-                        @if (setButtonButton != null)
-                            {
-                            <text>btnArray += '<button type="submit" id="add" class="btn btn-primary btn-normal" title="@setButtonButton.Text" onclick="SetButton(' + data + ')"><span class="@setButtonButton.Icon"></span></button>'</text>
-                               }
-                        //btnArray += '<button type="submit" id="add" class="btn btn-primary btn-normal" title="" onclick="SetButton(' + data + ')"><span class="">8</span></button>'
                         @if (editButton != null)
                             {
                                 <text> btnArray += '<button type="submit" id="add" class="btn btn-primary btn-normal" title="" onclick="Edit(' + data + ')"><span class="@editButton.Icon"></span></button>'</text>

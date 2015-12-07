@@ -53,6 +53,74 @@
     <Compile Include="Example\outPath\HelloWorld2.cs" />
     <Compile Include="Example\outPath\HelloWorld4.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="T4\CodeScript.cs">
+      <DependentUpon>CodeScript.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="T4\CodeTemplate\DtoTemplate.cs">
+      <DependentUpon>DtoTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="T4\CodeTemplate\IRepositoryTemplate.cs">
+      <DependentUpon>IRepositoryTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="T4\CodeTemplate\IServiceTemplate.cs">
+      <DependentUpon>IServiceTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="T4\CodeTemplate\ItemTemplate.cs">
+      <DependentUpon>ItemTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="T4\CodeTemplate\QueryInputTemplate.cs">
+      <DependentUpon>QueryInputTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="T4\CodeTemplate\RepositoryTemplate.cs">
+      <DependentUpon>RepositoryTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="T4\CodeTemplate\ServiceTemplate.cs">
+      <DependentUpon>ServiceTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="T4\T4ModelInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="T4\ViewScript.cs">
+      <DependentUpon>ViewScript.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="T4\ViewTemplate\ControllerTemplate.cs">
+      <DependentUpon>ControllerTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="T4\ViewTemplate\EditTemplate.cs">
+      <DependentUpon>EditTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="T4\ViewTemplate\IndexTemplate.cs">
+      <DependentUpon>IndexTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="T4\ViewTemplate\ListTemplate.cs">
+      <DependentUpon>ListTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Example\HelloWorld.tt">
@@ -70,6 +138,58 @@
 </LastOutputs>
     </None>
     <None Include="Example\HelloWorldTemplate.tt" />
+    <None Include="T4\CodeScript.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CodeScript.cs</LastGenOutput>
+    </None>
+    <None Include="T4\CodeTemplate\DtoTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DtoTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="T4\CodeTemplate\IRepositoryTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IRepositoryTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="T4\CodeTemplate\IServiceTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IServiceTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="T4\CodeTemplate\ItemTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ItemTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="T4\CodeTemplate\QueryInputTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>QueryInputTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="T4\CodeTemplate\RepositoryTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RepositoryTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="T4\CodeTemplate\ServiceTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ServiceTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="T4\ViewScript.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ViewScript.cs</LastGenOutput>
+    </None>
+    <None Include="T4\ViewTemplate\ControllerTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ControllerTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="T4\ViewTemplate\EditTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EditTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="T4\ViewTemplate\IndexTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IndexTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="T4\ViewTemplate\ListTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ListTemplate.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -92,7 +212,10 @@
       <Name>Quick.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="T4\Controllers\" />
+    <Folder Include="T4\View\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

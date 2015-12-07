@@ -27,7 +27,7 @@
         {
             base.TransformText();
 #>
-@model Quick.Application.ModuleDto
+@model Quick.Application.<#= _model.Name #>Dto
 @{
     Layout = null;
 }

@@ -150,6 +150,7 @@
     <Compile Include="Areas\Account\Controllers\RoleController.cs" />
     <Compile Include="Areas\Account\Controllers\UserController.cs" />
     <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
+    <Compile Include="Areas\Content\ContentAreaRegistration.cs" />
     <Compile Include="Areas\Content\Controllers\ArticleCategoryController.cs" />
     <Compile Include="Areas\SysConfig\Controllers\AppendixController.cs" />
     <Compile Include="Areas\SysConfig\SysConfigAreaRegistration.cs" />

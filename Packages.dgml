@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="基础设施层\EF\Quick.Framework.Tool" Label="Quick.Framework.Tool" Category="项目" />
+    <Node Id="AutoMapper 3.3.0" Label="AutoMapper 3.3.0" Category="包" />
+    <Node Id="EntityFramework 6.1.3" Label="EntityFramework 6.1.3" Category="包" />
+    <Node Id="Newtonsoft.Json 6.0.8" Label="Newtonsoft.Json 6.0.8" Category="包" />
+    <Node Id="UI层\Quick.WebUI.Member" Label="Quick.WebUI.Member" Category="项目" />
+    <Node Id="Microsoft.AspNet.Mvc 4.0.20710.0" Label="Microsoft.AspNet.Mvc 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.Mvc.FixedDisplayModes 1.0.0" Label="Microsoft.AspNet.Mvc.FixedDisplayModes 1.0.0" Category="包" />
+    <Node Id="Microsoft.AspNet.Mvc.zh-Hans 4.0.20710.0" Label="Microsoft.AspNet.Mvc.zh-Hans 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.Razor 2.0.20715.0" Label="Microsoft.AspNet.Razor 2.0.20715.0" Category="包" />
+    <Node Id="Microsoft.AspNet.Razor.zh-Hans 2.0.20715.0" Label="Microsoft.AspNet.Razor.zh-Hans 2.0.20715.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebApi 4.0.20710.0" Label="Microsoft.AspNet.WebApi 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Label="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebApi.Client.zh-Hans 4.0.20710.0" Label="Microsoft.AspNet.WebApi.Client.zh-Hans 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebApi.Core 4.0.20710.0" Label="Microsoft.AspNet.WebApi.Core 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebApi.Core.zh-Hans 4.0.20710.0" Label="Microsoft.AspNet.WebApi.Core.zh-Hans 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Label="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebApi.WebHost.zh-Hans 4.0.20710.0" Label="Microsoft.AspNet.WebApi.WebHost.zh-Hans 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebPages 2.0.20710.0" Label="Microsoft.AspNet.WebPages 2.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebPages.zh-Hans 2.0.20710.0" Label="Microsoft.AspNet.WebPages.zh-Hans 2.0.20710.0" Category="包" />
+    <Node Id="Microsoft.Net.Http 2.0.20710.0" Label="Microsoft.Net.Http 2.0.20710.0" Category="包" />
+    <Node Id="Microsoft.Net.Http.zh-Hans 2.0.20710.0" Label="Microsoft.Net.Http.zh-Hans 2.0.20710.0" Category="包" />
+    <Node Id="Microsoft.Web.Infrastructure 1.0.0.0" Label="Microsoft.Web.Infrastructure 1.0.0.0" Category="包" />
+    <Node Id="Newtonsoft.Json 4.5.11" Label="Newtonsoft.Json 4.5.11" Category="包" />
+    <Node Id="UI层\Quick.WebUI.Admin" Label="Quick.WebUI.Admin" Category="项目" />
+    <Node Id="Antlr 3.4.1.9004" Label="Antlr 3.4.1.9004" Category="包" />
+    <Node Id="Autofac 2.6.3.862" Label="Autofac 2.6.3.862" Category="包" />
+    <Node Id="Autofac.Mvc4 2.6.2.859" Label="Autofac.Mvc4 2.6.2.859" Category="包" />
+    <Node Id="EntityFramework 6.1.3" Label="EntityFramework 6.1.3" Category="包" />
+    <Node Id="Microsoft.AspNet.Mvc 4.0.20710.0" Label="Microsoft.AspNet.Mvc 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.Mvc.FixedDisplayModes 1.0.0" Label="Microsoft.AspNet.Mvc.FixedDisplayModes 1.0.0" Category="包" />
+    <Node Id="Microsoft.AspNet.Mvc.zh-Hans 4.0.20710.0" Label="Microsoft.AspNet.Mvc.zh-Hans 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.Razor 2.0.20715.0" Label="Microsoft.AspNet.Razor 2.0.20715.0" Category="包" />
+    <Node Id="Microsoft.AspNet.Razor.zh-Hans 2.0.20715.0" Label="Microsoft.AspNet.Razor.zh-Hans 2.0.20715.0" Category="包" />
+    <Node Id="Microsoft.AspNet.Web.Optimization 1.0.0" Label="Microsoft.AspNet.Web.Optimization 1.0.0" Category="包" />
+    <Node Id="Microsoft.AspNet.Web.Optimization.zh-Hans 1.0.0" Label="Microsoft.AspNet.Web.Optimization.zh-Hans 1.0.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebApi 4.0.20710.0" Label="Microsoft.AspNet.WebApi 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Label="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebApi.Client.zh-Hans 4.0.20710.0" Label="Microsoft.AspNet.WebApi.Client.zh-Hans 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebApi.Core 4.0.20710.0" Label="Microsoft.AspNet.WebApi.Core 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebApi.Core.zh-Hans 4.0.20710.0" Label="Microsoft.AspNet.WebApi.Core.zh-Hans 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Label="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebApi.WebHost.zh-Hans 4.0.20710.0" Label="Microsoft.AspNet.WebApi.WebHost.zh-Hans 4.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebPages 2.0.20710.0" Label="Microsoft.AspNet.WebPages 2.0.20710.0" Category="包" />
+    <Node Id="Microsoft.AspNet.WebPages.zh-Hans 2.0.20710.0" Label="Microsoft.AspNet.WebPages.zh-Hans 2.0.20710.0" Category="包" />
+    <Node Id="Microsoft.Net.Http 2.0.20710.0" Label="Microsoft.Net.Http 2.0.20710.0" Category="包" />
+    <Node Id="Microsoft.Net.Http.zh-Hans 2.0.20710.0" Label="Microsoft.Net.Http.zh-Hans 2.0.20710.0" Category="包" />
+    <Node Id="Microsoft.Web.Infrastructure 1.0.0.0" Label="Microsoft.Web.Infrastructure 1.0.0.0" Category="包" />
+    <Node Id="Newtonsoft.Json 6.0.8" Label="Newtonsoft.Json 6.0.8" Category="包" />
+    <Node Id="Ninject 3.2.2.0" Label="Ninject 3.2.2.0" Category="包" />
+    <Node Id="WebGrease 1.5.2" Label="WebGrease 1.5.2" Category="包" />
+    <Node Id="应用层\Quick.Application" Label="Quick.Application" Category="项目" />
+    <Node Id="AutoMapper 3.3.0" Label="AutoMapper 3.3.0" Category="包" />
+    <Node Id="Newtonsoft.Json 6.0.8" Label="Newtonsoft.Json 6.0.8" Category="包" />
+    <Node Id="仓储层\Quick.Repositories" Label="Quick.Repositories" Category="项目" />
+    <Node Id="EntityFramework 6.1.3" Label="EntityFramework 6.1.3" Category="包" />
+    <Node Id="EntityFramework.DynamicFilters 1.3.13" Label="EntityFramework.DynamicFilters 1.3.13" Category="包" />
+    <Node Id="领域层\Quick.Domain" Label="Quick.Domain" Category="项目" />
+    <Node Id="EntityFramework 6.1.3" Label="EntityFramework 6.1.3" Category="包" />
+  </Nodes>
+  <Links>
+    <Link Source="基础设施层\EF\Quick.Framework.Tool" Target="AutoMapper 3.3.0" Category="安装的程序包" />
+    <Link Source="基础设施层\EF\Quick.Framework.Tool" Target="EntityFramework 6.1.3" Category="安装的程序包" />
+    <Link Source="基础设施层\EF\Quick.Framework.Tool" Target="Newtonsoft.Json 6.0.8" Category="安装的程序包" />
+    <Link Source="Microsoft.AspNet.Mvc 4.0.20710.0" Target="Microsoft.AspNet.WebPages 2.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.Mvc 4.0.20710.0" Target="Microsoft.AspNet.Razor 2.0.20715.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.Mvc.FixedDisplayModes 1.0.0" Target="Microsoft.AspNet.Mvc 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.Mvc.zh-Hans 4.0.20710.0" Target="Microsoft.AspNet.Mvc 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.Razor.zh-Hans 2.0.20715.0" Target="Microsoft.AspNet.Razor 2.0.20715.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi 4.0.20710.0" Target="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Target="Microsoft.Net.Http 2.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Target="Newtonsoft.Json 4.5.11" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.Client.zh-Hans 4.0.20710.0" Target="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.Core 4.0.20710.0" Target="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.Core.zh-Hans 4.0.20710.0" Target="Microsoft.AspNet.WebApi.Core 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Target="Microsoft.Web.Infrastructure 1.0.0.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Target="Microsoft.AspNet.WebApi.Core 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.WebHost.zh-Hans 4.0.20710.0" Target="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebPages 2.0.20710.0" Target="Microsoft.Web.Infrastructure 1.0.0.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebPages 2.0.20710.0" Target="Microsoft.AspNet.Razor 2.0.20715.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebPages.zh-Hans 2.0.20710.0" Target="Microsoft.AspNet.WebPages 2.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.Net.Http.zh-Hans 2.0.20710.0" Target="Microsoft.Net.Http 2.0.20710.0" Category="程序包依赖项" />
+    <Link Source="UI层\Quick.WebUI.Member" Target="Microsoft.AspNet.Mvc.FixedDisplayModes 1.0.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Member" Target="Microsoft.AspNet.Mvc.zh-Hans 4.0.20710.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Member" Target="Microsoft.AspNet.Razor.zh-Hans 2.0.20715.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Member" Target="Microsoft.AspNet.WebApi 4.0.20710.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Member" Target="Microsoft.AspNet.WebApi.Client.zh-Hans 4.0.20710.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Member" Target="Microsoft.AspNet.WebApi.Core.zh-Hans 4.0.20710.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Member" Target="Microsoft.AspNet.WebApi.WebHost.zh-Hans 4.0.20710.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Member" Target="Microsoft.AspNet.WebPages.zh-Hans 2.0.20710.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Member" Target="Microsoft.Net.Http.zh-Hans 2.0.20710.0" Category="安装的程序包" />
+    <Link Source="Autofac.Mvc4 2.6.2.859" Target="Autofac 2.6.3.862" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.Mvc 4.0.20710.0" Target="Microsoft.AspNet.WebPages 2.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.Mvc 4.0.20710.0" Target="Microsoft.AspNet.Razor 2.0.20715.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.Mvc.FixedDisplayModes 1.0.0" Target="Microsoft.AspNet.Mvc 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.Mvc.zh-Hans 4.0.20710.0" Target="Microsoft.AspNet.Mvc 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.Razor.zh-Hans 2.0.20715.0" Target="Microsoft.AspNet.Razor 2.0.20715.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.Web.Optimization 1.0.0" Target="Microsoft.Web.Infrastructure 1.0.0.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.Web.Optimization 1.0.0" Target="WebGrease 1.5.2" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.Web.Optimization.zh-Hans 1.0.0" Target="Microsoft.AspNet.Web.Optimization 1.0.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi 4.0.20710.0" Target="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Target="Microsoft.Net.Http 2.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Target="Newtonsoft.Json 6.0.8" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.Client.zh-Hans 4.0.20710.0" Target="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.Core 4.0.20710.0" Target="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.Core.zh-Hans 4.0.20710.0" Target="Microsoft.AspNet.WebApi.Core 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Target="Microsoft.Web.Infrastructure 1.0.0.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Target="Microsoft.AspNet.WebApi.Core 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebApi.WebHost.zh-Hans 4.0.20710.0" Target="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebPages 2.0.20710.0" Target="Microsoft.Web.Infrastructure 1.0.0.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebPages 2.0.20710.0" Target="Microsoft.AspNet.Razor 2.0.20715.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.AspNet.WebPages.zh-Hans 2.0.20710.0" Target="Microsoft.AspNet.WebPages 2.0.20710.0" Category="程序包依赖项" />
+    <Link Source="Microsoft.Net.Http.zh-Hans 2.0.20710.0" Target="Microsoft.Net.Http 2.0.20710.0" Category="程序包依赖项" />
+    <Link Source="WebGrease 1.5.2" Target="Antlr 3.4.1.9004" Category="程序包依赖项" />
+    <Link Source="WebGrease 1.5.2" Target="Newtonsoft.Json 6.0.8" Category="程序包依赖项" />
+    <Link Source="UI层\Quick.WebUI.Admin" Target="Autofac.Mvc4 2.6.2.859" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Admin" Target="EntityFramework 6.1.3" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Admin" Target="Microsoft.AspNet.Mvc.FixedDisplayModes 1.0.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Admin" Target="Microsoft.AspNet.Mvc.zh-Hans 4.0.20710.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Admin" Target="Microsoft.AspNet.Razor.zh-Hans 2.0.20715.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Admin" Target="Microsoft.AspNet.Web.Optimization.zh-Hans 1.0.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Admin" Target="Microsoft.AspNet.WebApi 4.0.20710.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Admin" Target="Microsoft.AspNet.WebApi.Client.zh-Hans 4.0.20710.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Admin" Target="Microsoft.AspNet.WebApi.Core.zh-Hans 4.0.20710.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Admin" Target="Microsoft.AspNet.WebApi.WebHost.zh-Hans 4.0.20710.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Admin" Target="Microsoft.AspNet.WebPages.zh-Hans 2.0.20710.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Admin" Target="Microsoft.Net.Http.zh-Hans 2.0.20710.0" Category="安装的程序包" />
+    <Link Source="UI层\Quick.WebUI.Admin" Target="Ninject 3.2.2.0" Category="安装的程序包" />
+    <Link Source="应用层\Quick.Application" Target="AutoMapper 3.3.0" Category="安装的程序包" />
+    <Link Source="应用层\Quick.Application" Target="Newtonsoft.Json 6.0.8" Category="安装的程序包" />
+    <Link Source="EntityFramework.DynamicFilters 1.3.13" Target="EntityFramework 6.1.3" Category="程序包依赖项" />
+    <Link Source="仓储层\Quick.Repositories" Target="EntityFramework.DynamicFilters 1.3.13" Category="安装的程序包" />
+    <Link Source="领域层\Quick.Domain" Target="EntityFramework 6.1.3" Category="安装的程序包" />
+  </Links>
+  <Categories>
+    <Category Id="项目" />
+    <Category Id="包" />
+  </Categories>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="项目" ValueLabel="True">
+      <Condition Expression="HasCategory('项目')" />
+      <Setter Property="Background" Value="Blue" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="程序包依赖项" ValueLabel="True">
+      <Condition Expression="HasCategory('程序包依赖项')" />
+      <Setter Property="Background" Value="Yellow" />
+    </Style>
+  </Styles>
+</DirectedGraph>

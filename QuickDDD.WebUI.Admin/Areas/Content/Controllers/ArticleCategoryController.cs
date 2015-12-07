@@ -8,7 +8,7 @@ using Quick.WebUI.Admin.Controllers;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace Quick.WebUI.Admin
+namespace Quick.WebUI.Admin.Areas.Content
 {
 
     public class ArticleCategoryController : BaseController
