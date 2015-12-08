@@ -23,7 +23,7 @@
 
     //调用
     string currentPath = Path.GetDirectoryName(Host.TemplateFile);
-    T4ModelInfo model = new T4ModelInfo(typeof(ArticleCategory));
+    T4ModelInfo model = new T4ModelInfo(typeof(Article));
     string controllers_path = string.Format(@"{0}\Controllers", currentPath);
     string view_path = string.Format(@"{0}\View", currentPath);
   

@@ -159,7 +159,9 @@ $(document).ready(function () {
     var locationUrl = location.href;
     $(".childmenu a").each(function () {
         var rel = $(this).attr('rel');
-        if (locationUrl.indexOf(rel) > -1) {//如果当前打开的href连接包含a的rel，则这个a被选中（如果某个a的rel被首页的连接包含，那么它会被认为被选中）
+        //if (locationUrl.indexOf(rel) > -1) {//如果当前打开的href连接包含a的rel，则这个a被选中（如果某个a的rel被首页的连接包含，那么它会被认为被选中）
+        var action = locationUrl.split("/");
+        if (action[4] == rel) {
             $(this).parent().addClass("child-active");
             $(this).parent().parent().parent().addClass("open");
 
@@ -391,7 +393,7 @@ renderBool = function (obj, data) {
     return html;
 }
 
-renderDateTime = function (obj,data) {
+renderDateTime = function (obj, data) {
     return data == null ? "" : data;
 }
 

@@ -75,7 +75,7 @@
            #>{ "sTitle": "<#=propertie.Name#>", "mDataProp": "<#=propertie.Name #>", "bSortable": false },
         <#+
                 }}
-        #> {
+        #>     {
                     "sTitle": "操作",
                     "mDataProp": "Id",
                     "bSortable": false,
@@ -92,7 +92,7 @@
 
                         return btnArray;
                     }
-                }
+             }
         ];
         //初始化表格
         oTable = InitDatatables($(".data-table"), actionUrl, aoColumns, oTable);
@@ -120,7 +120,6 @@
         var param = { id: id }
         ShowModal(actionUrl, saveActionUrl, param, "编辑");
     }
-
 
     //删除
     function Delete(id) {

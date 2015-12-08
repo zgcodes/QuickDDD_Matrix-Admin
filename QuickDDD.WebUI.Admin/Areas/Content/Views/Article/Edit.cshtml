@@ -1,0 +1,39 @@
+﻿@model Quick.Application.ArticleDto
+@{
+    Layout = null;
+}
+<input type="hidden" name="Id" value="@Model.Id" />
+
+<div class="control-group">
+    <label class="control-label-form">
+        <label class="red">*</label>标题:
+    </label>
+    <div class="controls">
+        @Html.TextBoxFor(t => t.Name, new { @class = "form-control" })
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label-form">
+        <label class="red">*</label>简介:
+    </label>
+    <div class="controls">
+        @Html.TextAreaFor(t => t.Introduction, new { @class = "form-control" })
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label-form">
+        <label class="red">*</label>文章内容:
+    </label>
+    <div class="controls">
+        @Html.TextBoxFor(t => t.Content, new { @class = "form-control" })
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label-form">
+        <label class="red"></label>备注:
+    </label>
+    <div class="controls">
+        @Html.TextAreaFor(t => t.Remark, new { @class = "form-control" })
+    </div>
+</div>
+

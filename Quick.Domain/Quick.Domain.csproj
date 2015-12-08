@@ -75,6 +75,7 @@
     <Compile Include="Entities\Core\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Content\IArticleCategoryRepository.cs" />
+    <Compile Include="Repositories\Content\IArticleRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\Core\IRoleRepository.cs" />
     <Compile Include="Repositories\Core\IUserRepository.cs" />
