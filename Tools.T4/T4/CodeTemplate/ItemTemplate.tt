@@ -38,7 +38,7 @@ namespace Quick.Application
         foreach(var propertie in _model.Properties)
         {
          #>
-           public string <#=propertie.Name #> { get; set; }
+           public <#=ropertie.PropertyType #> <#=propertie.Name #> { get; set; }
         <#+
         }
         #> 

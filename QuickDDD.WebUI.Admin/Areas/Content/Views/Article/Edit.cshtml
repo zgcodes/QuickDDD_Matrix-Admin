@@ -2,6 +2,7 @@
 @{
     Layout = null;
 }
+
 <input type="hidden" name="Id" value="@Model.Id" />
 
 <div class="control-group">
@@ -25,7 +26,7 @@
         <label class="red">*</label>文章内容:
     </label>
     <div class="controls">
-        @Html.TextBoxFor(t => t.Content, new { @class = "form-control" })
+        <textarea class="form-control" rows="8" name="Content">@Model.Content</textarea>
     </div>
 </div>
 <div class="control-group">
@@ -37,3 +38,17 @@
     </div>
 </div>
 
+    <link href="~/Content/summernote/dist/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/summernote/dist/summernote.css" rel="stylesheet" />
+@*
+    <script src="~/Content/summernote/dist/jquery.min.js"></script>
+    <script src="~/Content/summernote/dist/bootstrap.js"></script>
+    <script src="~/Content/summernote/dist/summernote.min.js"></script>
+    <script src="~/Content/summernote/lang/summernote-zh-CN.js"></script>*@
+<script src="~/Content/summernote/dist/summernote.min.js"></script>
+<script src="~/Content/summernote/lang/summernote-zh-CN.js"></script>
+    <script>
+        $(function () {
+            $('.summernote').summernote({ lang: 'zh-CN' });
+        });
+    </script>

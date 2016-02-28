@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<h2>Index</h2>
+<button id="btnNew">弹出框</button>
+<link href="~/Content/demo/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/demo/jquery-1.10.2.min.js"></script>
+<script src="~/Content/demo/bootstrap.min.js"></script>
+<script src="~/Content/demo/bootbox.js"></script>
+
+@*<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />  
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>*@
+<script src="http://bootboxjs.com/bootbox.js"></script>  
+<script>
+        $(function () {
+            $("#btnNew").click(function () {
+                bootbox.alert("Hello world!", function () {
+                   
+                });
+                //bootbox.confirm("Are you sure?", function (result) {
+                  
+                //});
+                //bootbox.dialog({
+                //    width: "500px",
+                //    height: "650px",
+                //    title: "新增文章",
+                //    href: '/Content/Article/Edit',
+                //    buttons: {
+                //        success: {
+                //            label: "Success!",
+                //            className: "btn-success",
+                //            callback: function () {
+                //                Example.show("great success");
+                //            }
+                //        },
+                //        danger: {
+                //            label: "Danger!",
+                //            className: "btn-danger",
+                //            callback: function () {
+                //                Example.show("uh oh, look out!");
+                //            }
+                //        }
+                //    }
+                //});
+            });
+
+        });
+</script>

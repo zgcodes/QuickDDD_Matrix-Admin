@@ -190,7 +190,7 @@ function ClearForm(obj) {
 function RegisterForm() {
     $('#modal-content').removeData('validator');
     $('#modal-content').removeData('unobtrusiveValidation');
-    $.validator.unobtrusive.parse('#modal-content');
+    //$.validator.unobtrusive.parse('#modal-content');
 }
 
 /*******关闭弹出框*********/

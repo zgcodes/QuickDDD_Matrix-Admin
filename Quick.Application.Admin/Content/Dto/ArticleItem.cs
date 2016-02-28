@@ -22,7 +22,5 @@ namespace Quick.Application
                    public string ModifyId { get; set; }
                    public string ModifyBy { get; set; }
                    public string ModifyTime { get; set; }
-                   public string Id { get; set; }
-         
     }
 }

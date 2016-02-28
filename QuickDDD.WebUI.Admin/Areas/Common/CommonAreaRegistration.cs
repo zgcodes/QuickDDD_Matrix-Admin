@@ -18,7 +18,7 @@ namespace Quick.WebUI.Admin.Areas.Common
                 "Common_default",
                 "Common/{controller}/{action}/{id}",
                 new {action = "Index", id = UrlParameter.Optional },
-                new string[] { "Quick.WebUI.Admin.Areas.Common.Controllers" }
+                new string[] { "Quick.WebUI.Admin.Areas.Common" }
             );
         }
     }
