@@ -1,64 +1,205 @@
 ﻿@{
-    ViewBag.Title = "Home - QucikRMS";
+    Layout = null;
 }
-<div class="row-fluid">
-    <div class="span12">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon"><i class="icon-briefcase"></i></span>
-                <h5>首页</h5>
-            </div>
-            <div class="widget-content">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <table class="">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h4>QuickRMS</h4>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Your Town</td>
-                                </tr>
-                                <tr>
-                                    <td>Your Region/State</td>
-                                </tr>
-                                <tr>
-                                    <td>Mobile Phone: +4530422244</td>
-                                </tr>
-                                <tr>
-                                    <td>me@company.com</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="span6">
-                        <table class="table table-bordered table-invoice">
-                            <tbody>
-                                <tr>
-                                    <tr>
-                                        <td class="width30">Invoice ID:</td>
-                                        <td class="width70"><strong></strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Issue Date:</td>
-                                        <td><strong>March 23, 2013</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Due Date:</td>
-                                        <td><strong></strong></td>
-                                    </tr>
-                                    <td class="width30">Client Address:</td>
-                                    <td class="width70"><strong></strong>
-                                        </td>
-                                </tr>
-                            </tbody>
-
-                        </table>
-                    </div>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <meta name="full-screen" content="yes">
+	    <meta name="x5-fullscreen" content="true">
+	    <meta name="browsermode" content="application">
+	    <meta name="x5-page-mode" content="app">
+	    <meta name="author" content="jinyu" />
+    	<title>后台管理系统</title>
+	      @Html.Partial("base_head")
+	    <link href="~/css/index.css" rel="stylesheet" />
+	    <!-- 子页面在顶层弹出框裁剪会用到该样式文件 -->
+	    <link href="~/content/jquery.Jcrop.css" rel="stylesheet" />
+  	</head>
+  
+  	<body>
+  		<!-- 顶部 -->
+  		<nav class="navbar navbar-default navbar-fixed-top menu-head">
+  			<div class="navbar-container">
+  				<div class="navbar-header pull-left">
+	                <a href="#" class="navbar-brand">
+	                	<span>CMS管理平台</span>
+	                </a>
+	            </div>
+	            <div class="sidebar-collapse">
+                	<i class="glyphicon glyphicon-hand-left"></i>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+                <!-- 顶部主菜单信息 -->
+                <div class="pull-left">
+                	<ul class="nav navbar-nav menu"></ul>
+                </div>
+                <!-- 顶部右边用户信息菜单 -->
+	            <div class="navbar-header pull-right" role="navigation">
+	          		<ul class="nav navbar-nav menu">
+	          			<li class="warning refresh">
+	            			<a href="javascript:void(0);">
+	            				<i class="glyphicon glyphicon-refresh"></i>
+	            				<span class="menu-text">刷新当前页</span>
+	            			</a>
+	            		</li>
+	          			<li class="info tabNav" data-status="open">
+	            			<a href="javascript:void(0);">
+	            				<i class="glyphicon glyphicon-sort"></i>
+	            				<span class="menu-text">隐藏TAB栏</span>
+	            			</a>
+	            		</li>
+	            		<li class="danger logout">
+	            			<a href="javascript:void(0);">
+	            				<i class="glyphicon glyphicon-log-out"></i>
+	            				<span class="menu-text">退出</span>
+	            			</a>
+	            		</li>
+	            		<li>
+	            			<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+              					<img alt="" src="~/images/test/headerImage_thum.jpg" class="headPhoto">
+              					<span class="menu-text">管理员</span>
+              					<span class="caret"></span>
+              				</a>
+              				<ul class="dropdown-menu pull-right user-menu">
+                				<li>
+                					<a data-href="#" data-id="usermenu01">
+                						<i class="glyphicon glyphicon-camera"></i>
+                						<span>修改头像</span>
+                					</a>
+                				</li>
+                				<li>
+                					<a data-href="#" data-id="usermenu02">
+                						<i class="glyphicon glyphicon-user"></i>
+                						<span>我的账户</span>
+                					</a>
+                				</li>
+                				<li>
+                					<a data-href="#" data-id="usermenu03">
+                						<i class="glyphicon glyphicon-edit"></i>
+                						<span>修改登录密码</span>
+                					</a>
+                				</li>
+                				<li role="separator" class="divider"></li>
+                				<li>
+                					<a data-href="#" data-id="usermenu04">
+                						<i class="glyphicon glyphicon-phone-alt"></i>
+                						<span>联系我们</span>
+                					</a>
+                				</li>
+              				</ul>
+	            		</li>
+	          		</ul>
+        		</div>
+  			</div>
+  		</nav>
+  		<!-- 左边菜单 -->
+		<div class="sidebar-left hide"></div>
+		<div class="content">
+			<div class="row content-tabs">
+				<button class="roll-nav roll-left hidden">
+					<i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs">
+                    <div class="page-tabs-content"></div>
+                </nav>
+                <button class="roll-nav roll-right hidden">
+                	<i class="fa fa-forward"></i>
+                </button>
+                <div class="roll-nav roll-close">
+	                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+	                	<span class="caret menu-text"></span>
+	                </a>
+	                <ul class="dropdown-menu pull-right">
+	     				<li data-code="closeCurrentTab">
+	     					<a>
+	     						<i class="glyphicon glyphicon glyphicon-remove"></i>
+	     						<span>关闭当前</span>
+	     					</a>
+	     				</li>
+	     				<li data-code="closeOtherTab">
+	     					<a>
+	     						<i class="glyphicon glyphicon-transfer"></i>
+	     						<span>关闭其他</span>
+	     					</a>
+	     				</li>
+	     				<li data-code="closeAllTab">
+	     					<a>
+	     						<i class="glyphicon glyphicon-folder-close"></i>
+	     						<span>全部关闭</span>
+	     					</a>
+	     				</li>
+	     				<li role="separator" class="divider"></li>
+	     				<li data-code="hiddenTabBar">
+	     					<a>
+	     						<i class="glyphicon glyphicon-eye-close"></i>
+	     						<span class="menu-text">隐藏tab栏</span>
+	     					</a>
+	     				</li>
+					</ul>
+				</div>
+			</div>
+			 <iframe frameborder="0" data-id="defaultFrame" class="contentFrame" src="/Home/Welcome"></iframe>
+		</div>
+  		 @Html.Partial("base_foot")
+  		<script src="~/scripts/jquery.Jcrop.js"></script>
+  		<script src="~/js/modal/bootstrap-modalmanager.js"></script>
+		<script src="~/js/modal/bootstrap-modal.js"></script>
+		<script src="~/js/modal/bootbox.js"></script>
+		<script src="~/js/site-dialog.js"></script>
+  		<script src="~/js/site-template.js"></script>
+  		<script src="~/scripts/iscroll.js"></script>
+  		<script src="~/js/index.js"></script>
+  		<script type="text/template" id="head-menu">
+			{$each _ as item}
+			<li>
+				<div class="head-module" data-id="^{item.Id}">
+					<i class="^{item.Icon}"></i>
+					<span class="menu-text">^{item.Name}</span>
+				</div>
+			</li>
+			{$/each}
+		</script>
+		<script type="text/template" id="left-menu">
+			<div></div>
+			{$each _ as topitems}
+			<div data-id="^{topitems.Id}">
+				<div class="head" data-id="^{topitems.Id}">
+					<i class="^{topitems.Icon}"></i>
+					<span class="menu-text">^{topitems.Name}</span>
+				</div>
+				{$if topitems.ChildModule != null && topitems.ChildModule.length > 0}
+				<ul class="nav sidebar-menu" data-id="^{topitems.Id}">
+					{$each topitems.ChildModule as item,a}
+					<li{$if a == 0}{$if item.ChildModule != null && item.ChildModule.length > 0} class="open"{$else} class="active"{$/if} class="active"{$/if}>
+						<a data-href="^{item.LinkUrl}" data-id="^{item.Id}"{$if item.ChildModule != null && item.ChildModule.length > 0} class="menu-dropdown"{$/if}>
+	                     	<i class="^{item.Icon}"></i>
+	                        <span class="menu-text">^{item.Name}</span>
+							{$if item.ChildModule != null && item.ChildModule.length > 0}
+							<i class="expand"></i>
+							{$/if}
+	                    </a>
+						{$if item.ChildModule != null && item.ChildModule.length > 0}
+						<ul class="submenu"{$if a == 0} style="display: block;"{$/if}>
+						{$each item.ChildModule as i,b}
+	                    	<li {$if a == 0 && b == 0} class="active"{$/if}>
+	                   			<a data-href="^{i.LinkUrl}" data-id="^{i.Id}">
+	                       			<span class="menu-text">^{i.Name}</span>
+	                       		</a>
+	                      	</li>					
+						{$/each}
+						</ul>
+						{$/if}
+					</li>
+					{$/each}
+				</ul>
+				{$/if}
+			</div>
+			{$/each}
+		</script>
+  	</body>
+</html>

@@ -1,0 +1,101 @@
+{
+	"success": true,
+	"result":[{
+	    "code": "MultiImages",
+	    "name": "幻灯片",
+	    "icon": "icon-images",
+	    "type": "multiImages",
+	    "tip": ""
+	},{
+	    "code": "Scene",
+	    "name": "场景",
+	    "icon": "icon-double-angle-down",
+	    "type": "scene",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "MultiButtons",
+	    "name": "并排导航栏",
+	    "icon": "icon-th",
+	    "type": "abreast",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "MultiButtons",
+	    "name": "色块导航栏",
+	    "icon": "/images/test/fl_w_mimage.png",
+	    "type": "tiles",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "NavBar",
+	    "name": "底部快捷导航",
+	    "icon": "icon-globe",
+	    "type": "tiles",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "List",
+	    "name": "图文列表",
+	    "icon": "icon-list",
+	    "type": "list",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "Image",
+	    "name": "图片",
+	    "icon": "icon-picture",
+	    "type": "image",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "Search",
+	    "name": "搜索",
+	    "icon": "icon-search",
+	    "type": "search",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "Button",
+	    "name": "按钮",
+	    "icon": "icon-youtube2",
+	    "type": "button",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "Button",
+	    "name": "标题栏",
+	    "icon": "icon-tag2",
+	    "type": "title",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "Links",
+	    "name": "链接",
+	    "icon": "icon-link",
+	    "type": "links",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "Text",
+	    "name": "文字",
+	    "icon": "icon-edit",
+	    "type": "text",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "Call",
+	    "name": "一键拨号",
+	    "icon": "icon-phone",
+	    "type": "call",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "Call",
+	    "name": "空白占位组件",
+	    "icon": "icon-file4",
+	    "type": "space",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "ShareButton",
+	    "name": "分享按钮组件",
+	    "icon": "icon-share2",
+	    "type": "shareButton",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	        "code": "HtmlBlock",
+	        "name": "Html块组件",
+	        "icon": "icon-code2",
+	        "type": "HtmlBlock",
+	        "tip": "可将此组件拖动到手机模拟框中进行设计"
+	}],
+	"error":""
+}

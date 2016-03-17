@@ -1,0 +1,41 @@
+{
+	"success": true,
+	"result":[{
+	    "code": "MultiImages",
+	    "name": "幻灯片",
+	    "icon": "glyphicon glyphicon-film",
+	    "type": "multiImages",
+	    "tip": ""
+	},{
+	    "code": "MultiButtons",
+	    "name": "并排导航栏",
+	    "icon": "glyphicon glyphicon-th",
+	    "type": "abreast",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "MultiButtons",
+	    "name": "色块导航栏",
+	    "icon": "/images/w_nav_water.png",
+	    "type": "tiles",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "NavBar",
+	    "name": "底部快捷导航",
+	    "icon": "glyphicon glyphicon-globe",
+	    "type": "navbar",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "List",
+	    "name": "图文列表",
+	    "icon": "glyphicon glyphicon-th-list",
+	    "type": "list",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	},{
+	    "code": "Image",
+	    "name": "图片",
+	    "icon": "glyphicon glyphicon-picture",
+	    "type": "image",
+	    "tip": "可将此组件拖动到手机模拟框中进行设计"
+	}],
+	"error":""
+}

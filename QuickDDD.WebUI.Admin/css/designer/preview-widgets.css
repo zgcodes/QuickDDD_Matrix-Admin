@@ -1,0 +1,424 @@
+/** 预览页面中的组件样式 */
+body, h1, h2, h3, h4, h5, h6, hr, p, dl, dt, dd, ul, ol, li, td, div {
+    margin: 0;
+    padding: 0;
+}
+
+ul,li {
+	list-style-type: none;
+}
+
+ul,ol {
+	margin-bottom: 0px;
+}
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+/** 幻灯片组件 */
+section.wMultiImages .wx-carousel-container {
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+section.wMultiImages .box_swipe {
+	overflow: hidden;
+	visibility: hidden;
+	position: relative;
+}
+
+section.wMultiImages .box_swipe ul {
+	-webkit-padding-start: 0;
+	overflow: hidden;
+	position: relative;
+}
+
+section.wMultiImages .box_swipe ul li {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+
+section.wMultiImages .box_swipe>ul>li .title {
+	position: relative;
+	margin-top: -22px;
+	text-align: left;
+	color: #fff;
+	font-size: 12px;
+	padding-left: 5px;
+	line-height: 22px;
+	background-color: rgba(0, 0, 0, 0.2);
+	bottom: 0;
+}
+
+section.wMultiImages .box_swipe>ol {
+	height: 22px;
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.0);
+	width: 100%;
+	margin-top: -22px;
+	text-align: right;
+	padding-right: 15px;
+	margin-bottom: 0px;
+}
+
+section.wMultiImages .box_swipe>ol>li {
+	display: inline-block;
+	margin: 5px 1px;
+	width: 10px;
+	height: 10px;
+	background-color: #444;
+	border-radius: 10px;
+}
+
+section.wMultiImages .box_swipe>ol>li.on {
+	background-color: #ffffff;
+}
+
+/*导航组件样式*/
+section.wMultiButtons {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+section.wMultiButtons li {
+	overflow: hidden;
+	color: #fff;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 25%;
+	display: inline-block;
+	float: left;
+	padding: 1px;
+	text-align: center;
+	-webkit-box-flex: 1;
+	margin: 0;
+}
+
+section.wMultiButtons li a {
+	color: #fff;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	-moz-background-size: 100% 100%;
+	-o-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+
+section.wMultiButtons.Waterfall li a {
+	padding: 1px;
+}
+
+section.wMultiButtons .divicon {
+	font-size: 32px;
+	text-align: center;
+	line-height: 1em;
+	overflow: hidden;
+	position: relative;
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+}
+
+section.wMultiButtons li.small .divicon {
+	
+}
+
+section.wMultiButtons .divicon i {
+	border-radius: inherit;
+}
+
+section.wMultiButtons .divtext {
+	font-size: 14px;
+	text-align: center;
+	padding: 0 2px;
+}
+
+section.wMultiButtons i[class^="micon-"] {
+	display: inline-block;
+}
+
+/*列表组件样式*/
+section.wList {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+section.wList li {
+	overflow: hidden;
+	color: #fff;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	display: inline-block;
+	float: left;
+	padding: 1px;
+	text-align: center;
+	-webkit-box-flex: 1;
+	margin: 0;
+}
+
+section.wList li a {
+	color: #fff;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	-moz-background-size: 100% 100%;
+	-o-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+
+section.wList .divicon {
+	overflow: hidden;
+	position: relative;
+	display: inline-block;
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+}
+
+section.wList .divicon img {
+	width: 100%;
+	height: 100%;
+	/*position: relative;*/
+	border-radius: inherit;
+}
+
+section.wList .divicon i {
+	/*position: relative;*/
+	border-radius: inherit;
+}
+
+section.wList .divtext {
+	padding: 0 10px;
+	width: auto;
+}
+
+section.wList .divtext .divtitle {
+	font-size: 14px;
+	text-align: left;
+	line-height: 1.5;
+}
+
+section.wList .divtext .divsummary {
+	font-size: 12px;
+	text-align: left;
+	line-height: 1.6;
+}
+
+section.wList .divarrow {
+	font-size: 12px;
+	float: right;
+	width: 10px;
+	height: 20px;
+	line-height: 20px;
+	position: absolute;
+	right: 8px;
+	top: 50%;
+	margin-top: -10px;
+}
+
+section.wList i[class^="micon-"] {
+	display: inline-block;
+	/*background:#fff;*/
+}
+
+/*底部快捷导航栏组件样式*/
+section.wNavBar {
+	/*background-image: -webkit-linear-gradient(270deg, #454955, #373A43 80%, #313540);
+    background-color: #333C45;*/
+	border-top: 1px solid transparent;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 100;
+	/*box-shadow: 0 0 3px #DDD;*/
+}
+
+.show-node section.wNavBar{
+	position: relative;
+	z-index: 0;
+}
+
+section.wNavBar ul {
+	list-style-type: none;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+}
+
+section.wNavBar ul li {
+	display: inline-block;
+	float: left;
+	width: 20%;
+	/*height: 48px;*/
+	float: left;
+	text-align: center;
+	font-size: 11px;
+	padding: 0;
+	margin: 0;
+	/*-webkit-box-flex: 1;
+            box-flex: 1;*/
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	overflow: hidden;
+	box-shadow: none !important;
+	/*border-right: 1px solid #0E111A;*/
+	border-left: 1px solid transparent;
+}
+
+section.wNavBar ul a {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	cursor: default;
+	text-align: center;
+}
+
+section.wNavBar ul .active a {
+	color: #3D8ECA;
+}
+
+section.wNavBar ul a i,section.wNavBar ul a img {
+	display: block;
+	width: 24px;
+	height: 24px;
+	font-size: 22px;
+	margin: 3px auto;
+}
+
+.nav_for_list_ul ul:first-of-type {
+	text-align: center;
+	background: #fff;
+	text-align: center;
+	display: none;
+}
+
+.nav_for_list_ul ul:first-of-type li {
+	width: 8px;
+	height: 8px;
+	background: #eaeaea;
+	border-radius: 5px;
+	display: inline-block;
+	margin: 8px 3px;
+}
+
+.nav_for_list_ul ul:first-of-type li.on {
+	background: #cacaca;
+}
+
+.nav_for_list_ul ul:nth-of-type(2) {
+	height: 45px;
+	background-color: #f4f4f4;
+	border-top: 1px solid white;
+	border-bottom: 1px solid #c5c7cb;
+	background: -webkit-gradient(linear, 0 0, 0 80%, from(#f4f4f4),
+		to(#e1e3e4));
+	-webkit-box-sizing: border-box;
+	white-space: nowrap;
+	width: 100%;
+	overflow: hidden;
+}
+
+.nav_for_list_ul ul:nth-of-type(2) li {
+	width: 33.3%;
+	display: inline-block;
+	-webkit-box-sizing: border-box;
+}
+
+.nav_for_list_ul ul:nth-of-type(2) li a {
+	display: block;
+	height: 43px;
+	line-height: 40px;
+	text-align: center;
+	color: #6898a1;
+	overflow: hidden;
+	margin: 0 5px;
+	color: #666666;
+	font-size: 14px;
+}
+
+.nav_for_list_ul ul:nth-of-type(2) li a.on {
+	color: #6898a1;
+	height: 40px;
+	border-bottom: 3px solid #6898a1;
+}
+
+.list_uls li {
+	
+}
+
+.list_uls dl {
+	overflow: hidden;
+	min-height: 200px;
+	margin-top: 5px;
+}
+
+.list_uls dl dd {
+	display: inline-block;
+	width: 33.33%;
+	float: left;
+	text-align: center;
+	border-bottom: 1px solid white;
+}
+
+.list_uls dl dd:nth-child(3n) a {
+	border-right: 0px solid rgba(223, 224, 225, 0);
+}
+
+.list_uls dl dd a {
+	display: block;
+	padding: 5px;
+	border-right: 1px solid #dfe0e1;
+	border-bottom: 1px solid #dfe0e1;
+}
+
+.list_uls dl dd a figure>div {
+	width: 90%;
+	overflow: hidden;
+	border-radius: 3px;
+	margin: auto;
+	margin-top: 5px;
+	display: none;
+}
+
+.list_uls dl dd a figure>div img {
+	width: 100%;
+}
+
+.list_uls dl dd a figcaption label {
+	display: block;
+	line-height: 25px;
+	height: 25px;
+	color: #333333;
+	font-size: 14px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#nav_uls li img {
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+#nav_uls ol li {
+	float: left;
+}

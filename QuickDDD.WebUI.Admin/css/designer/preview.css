@@ -1,0 +1,96 @@
+/** 预览页面中的样式 */
+.show_panel_content {
+	position: relative;
+	background: url('edit_phone_tips.png') no-repeat scroll 30px 130px #FEFEFE;
+	min-height: 510px;
+	overflow-x: hidden;
+	font-size: 14px;
+	word-wrap: break-word;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+.show_panel_content .show-node-selected, .show_panel_content .show-node:hover {
+    border: 1px dashed #D15B47;
+    outline: 1px dashed #D15B47;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+    outline: 0 none;
+    opacity: 1;
+}
+
+.show_panel_content.not_empty  {
+	background: none repeat scroll 0 0 #FEFEFE;
+}
+
+.show_panel_content .show-node {
+	position: relative;
+	min-height: 20px;
+	cursor: move;
+}
+
+.show_panel_content .show-node-selected,.show_panel_content .show-node:hover {
+	outline: 0 none;
+}
+
+.show_panel_content .show-node-selected:before,.show_panel_content .show-node:hover:before {
+	content: " ";
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	border: 1px solid rgba(255, 255, 255, 0.9);
+	z-index: 20;
+}
+
+.show_panel_content .show-node-selected:after,.show_panel_content .show-node:hover:after {
+	content: " ";
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	border: 1px dashed #D15B47;
+	z-index: 20;
+}
+
+.show_panel_content .show-node-error {
+	border-color: #953B39;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #D59392;
+}
+
+.show_panel_content .show-node:hover .delete-btn {
+	background-image: url(../img/icon_remove.png);
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 20px;
+	width: 20px;
+	cursor: pointer;
+	z-index: 100;
+}
+
+.show_panel_content .show-node .message {
+	/*padding: 4px;*/
+	background-color: #D9EDF7;
+	text-align: center;
+	line-height: 24px;
+	color: #999;
+	font-size: 12px;
+	/*height: 24px;*/
+	bottom: 0;
+}
+
+.bgimage {
+    opacity: 0.8;
+}
+
+.wPageSetting {
+    opacity: 0.8;
+    display:block !important;
+}
+

@@ -1,0 +1,103 @@
+/** 过滤器样式start **/
+.alert {
+    padding: 8px 15px;
+    margin-bottom: 10px;
+}
+.fs12 {
+    font-size: 12px !important;
+}
+.alert-lightsGray {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #e8e8e8;
+}
+
+.w-small{
+	width: 150px !important;
+    max-width: 100%;
+}
+
+.w-middle{
+	width: 220px !important;
+    max-width: 100%;
+}
+
+.w-large{
+	width: 350px !important;
+    max-width: 100%;
+}
+/** 过滤器样式end **/
+
+.buttons-panel {
+    padding-bottom: 10px;
+}
+
+.buttons-panel button {
+    margin: 2px 1px;
+}
+
+table > tbody > tr.selected {
+    background-color: #E7EAEC !important;
+}
+
+table label {
+    display: inline-block;
+    font-size: 13px;
+    margin-bottom: 0;
+    line-height: inherit;
+}
+
+.icon-move {
+	font-size: 16px;
+	cursor: move;
+}
+
+/**** bootstrap.datatable 样式  start ******/
+.table-bootstrap thead tr{
+    color: #707070;
+    font-weight: normal;
+    background: #f2f2f2;
+    background-image: -webkit-gradient(linear,left 0,left 100%,from(#f8f8f8),to(#ececec));
+    background-image: -webkit-linear-gradient(top,#f8f8f8,0%,#ececec,100%);
+    background-image: -moz-linear-gradient(top,#f8f8f8 0,#ececec 100%);
+    background-image: linear-gradient(to bottom,#f8f8f8 0,#ececec 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff8f8f8',endColorstr='#ffececec',GradientType=0);
+}
+
+table.table-bootstrap > tbody > tr {
+	height: 35px;
+}
+
+table.table-bootstrap > tbody > tr.selected > td{
+    background-color: #cce6ee !important;
+}
+
+table.table-bootstrap > tbody > tr:hover > td{
+    background-color: #eff3f8;
+}
+
+.table-container > .clearfix {
+    background-color: #eff3f8;
+}
+
+.fixed-table-pagination {
+	margin: 5px 10px;
+}
+/**** bootstrap.datatable 样式  end ******/
+
+/**** jquery.datatable 样式  start ******/
+.center {
+	text-align: center;
+}
+
+td.details-control {
+    background: transparent url("img/details_open.png") no-repeat scroll center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: transparent url("img/details_close.png") no-repeat scroll center center;
+}
+
+/**** jquery.datatable 样式  end ******/

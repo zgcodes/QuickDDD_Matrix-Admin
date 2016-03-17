@@ -1,0 +1,16 @@
+.panel-body>.btn, .panel-body>.btn-group {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.show-grid {
+    margin-bottom: 15px;
+}
+
+.panel-body {
+    background-color: #f0f0f0;
+}
+
+.panel-body button {
+    margin: 2px 1px;
+}

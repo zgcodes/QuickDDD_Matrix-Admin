@@ -1,0 +1,210 @@
+[
+    {
+        "id": "001",
+        "Name": "常用组件",
+        "Icon": "glyphicon glyphicon-globe",
+        "items": [
+            {
+                "id": "00101",
+                "name": "按钮",
+                "icon": "glyphicon glyphicon-bell",
+                "url": "/Button/Index"
+            },
+            {
+                "id": "00102",
+                "name": "数据表格",
+                "icon": "glyphicon glyphicon-th-large",
+                "items": [
+                    {
+                        "id": "0010201",
+                        "name": "jquery.dataTables",
+                        "url": "/Table/JqueryDatatables"
+                    },
+                    {
+                        "id": "0010202",
+                        "name": "bootstrap.table",
+                        "url": "/Table/BootstrapTable"
+                    }
+                ]
+            },
+            {
+                "id": "00103",
+                "name": "表单",
+                "icon": "glyphicon glyphicon-list-alt",
+                "items": [
+                    {
+                        "id": "0010301",
+                        "name": "基本表单",
+                        "url": "Form/Form"
+                    },
+                    {
+                        "id": "0010302",
+                        "name": "表单验证",
+                        "url": "Form/JqueryValidate"
+                    },
+                    {
+                        "id": "0010303",
+                        "name": "表单构建器",
+                        "url": "Form/BuildForm"
+                    },
+                    {
+                        "id": "0010304",
+                        "name": "下拉框",
+                        "url": "Form/Select"
+                    },
+                    {
+                        "id": "0010305",
+                        "name": "时间选择器",
+                        "url": "Form/BootstrapDatetimepicker"
+                    },
+                    {
+                        "id": "0010306",
+                        "name": "搜索自动补全",
+                        "url": "Form/BootstrapSearch"
+                    },
+                    {
+                        "id": "0010307",
+                        "name": "富文本框",
+                        "url": "Form/Summernote"
+                    },
+                    {
+                        "id": "0010308",
+                        "name": "其他表单",
+                        "url": "Form/Other"
+                    }
+                ]
+            },
+            {
+                "id": "00104",
+                "name": "设计器",
+                "icon": "glyphicon glyphicon-scissors",
+                "url": "jsp/designer/designer.jsp"
+            },
+            {
+                "id": "00105",
+                "name": "消息提示",
+                "icon": "glyphicon glyphicon-envelope",
+                "items": [
+                    {
+                        "id": "0010501",
+                        "name": "bootbox弹出框",
+                        "url": "Modal/Bootbox"
+                    },
+                    {
+                        "id": "0010502",
+                        "name": "toastr提示",
+                        "url": "Modal/Toastr"
+                    },
+                    {
+                        "id": "0010503",
+                        "name": "noty提示",
+                        "url": "Modal/Noty"
+                    },
+                    {
+                        "id": "0010504",
+                        "name": "数据加载提示",
+                        "url": "Modal/Spin"
+                    }
+                ]
+            },
+            {
+                "id": "00106",
+                "name": "上传组件",
+                "icon": "glyphicon glyphicon-upload",
+                "items": [
+                    {
+                        "id": "0010601",
+                        "name": "Ajax上传(html5)",
+                        "url": "upload/file",
+                        "icon": "glyphicon glyphicon-chevron-right"
+                    },
+                    {
+                        "id": "0010602",
+                        "name": "单图上传",
+                        "url": "upload/SingleImage",
+                        "icon": "glyphicon glyphicon-chevron-right"
+                    },
+                    {
+                        "id": "0010603",
+                        "name": "多图上传",
+                        "url": "upload/MultipleImage",
+                        "icon": "glyphicon glyphicon-chevron-right"
+                    },
+                    {
+                        "id": "0010603",
+                        "name": "图片JS压缩",
+                        "url": "upload/ImageCompress",
+                        "icon": "glyphicon glyphicon-chevron-right"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "002",
+        "name": "其他 ",
+        "icon": "glyphicon glyphicon-tree-conifer",
+        "items": [
+            {
+                "id": "00202",
+                "name": "图表",
+                "url": "submenu.jsp?key=0010604",
+                "icon": "glyphicon glyphicon-picture"
+            },
+            {
+                "id": "00203",
+                "name": "字体图标",
+                "icon": "glyphicon glyphicon-text-size",
+                "items": [
+                    {
+                        "id": "0020301",
+                        "name": "bootstrap",
+                        "url": "font/bootstrapGlyphicons"
+                    },
+                    {
+                        "id": "0020302",
+                        "name": "Awesome",
+                        "url": "font/bootstrapAwesome"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "003",
+        "name": "界面示例",
+        "icon": "glyphicon glyphicon-facetime-video",
+        "items": [
+            {
+                "id": "00301",
+                "name": "表单向导",
+                "url": "sample/BootstrapWizard",
+                "icon": "glyphicon glyphicon-remove-sign"
+            },
+            {
+                "id": "00302",
+                "name": "时间轴",
+                "url": "submenu.jsp?key=0010604",
+                "icon": "glyphicon glyphicon-time"
+            },
+            {
+                "id": "00303",
+                "name": "数据列表查询页",
+                "url": "submenu.jsp?key=00303",
+                "icon": "glyphicon glyphicon-align-justify"
+            },
+            {
+                "id": "00304",
+                "name": "任务列表",
+                "url": "sample/WorkflowTaskList",
+                "icon": "glyphicon glyphicon-tasks"
+            },
+            {
+                "id": "00305",
+                "name": "高德地图",
+                "url": "sample/gaodeMap",
+                "icon": "glyphicon glyphicon-map-marker"
+            }
+        ]
+    }
+]

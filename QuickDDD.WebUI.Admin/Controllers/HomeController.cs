@@ -16,10 +16,23 @@ namespace Quick.WebUI.Admin.Controllers
 
         public ActionResult Index()
         {
-           return View();
+            if (Session["CurrentUser"] == null)
+            {
+                Response.Redirect("/Login/Index");
+                return null;
+            }
+            else
+            {
+                return View();
+            }
         }
 
-        public ActionResult Unauthorized() 
+        public ActionResult Welcome()
+        {
+            return View();
+        }
+
+        public ActionResult Unauthorized()
         {
             return View();
         }

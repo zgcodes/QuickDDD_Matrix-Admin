@@ -1,74 +1,204 @@
-﻿
-<!DOCTYPE html>
-
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-
-    <title>@ViewBag.Title</title>
-    @*@Styles.Render("~/bundles/css/bootstrap2")*@
-    <link href="~/Content/admin/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/admin/css/bootstrap-responsive.min.css" rel="stylesheet" />
-    @RenderSection("css", false)
-    @*@Styles.Render("~/bundles/css/admin")*@   
-    <link href="~/Content/admin/css/uniform.css" rel="stylesheet" />
-    <link href="~/Content/admin/css/select2.css" rel="stylesheet" />
-    <link href="~/Content/admin/css/matrix-style.css" rel="stylesheet" />
-    <link href="~/Content/admin/css/matrix-media.css" rel="stylesheet" />
-    <link href="~/Content/admin/css/font.css" rel="stylesheet" />
-    <link href="~/Content/admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="author" content="jinyu" />
+    <title>后台管理系统</title>
+    @Html.Partial("base_head")
+    <link href="~/css/index.css" rel="stylesheet" />
+    <!-- 子页面在顶层弹出框裁剪会用到该样式文件 -->
+    <link href="~/content/jquery.Jcrop.css" rel="stylesheet" />
 </head>
+
 <body>
-
-    <!--Header-Part-->
-    <div id="header">
-        <h1><a href="dashboard.html">Matrix Admin</a></h1>
-    </div>
-    <!--Header-Part-->
-
-    @Html.Partial("_HeaderMenu")
-
-    @Html.Partial("_TopSearch")
-
-     @Html.Partial("_SidebarMenu")
-    <!--main-container-part-->
-    <div id="content">
-        <!--BreadCrumbs-->
-        @*@Html.Partial("_BreadCrumb")*@
-        <!--BreadCrumbs-->
-
-        <!--Body-->
-        <div class="container-fluid">
-            @RenderBody()
+    <!-- 顶部 -->
+    <nav class="navbar navbar-default navbar-fixed-top menu-head">
+        <div class="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="#" class="navbar-brand">
+                    <span>CMS管理平台</span>
+                </a>
+            </div>
+            <div class="sidebar-collapse">
+                <i class="glyphicon glyphicon-hand-left"></i>
+            </div>
+            <!-- 顶部主菜单信息 -->
+            <div class="pull-left">
+                <ul class="nav navbar-nav menu"></ul>
+            </div>
+            <!-- 顶部右边用户信息菜单 -->
+            <div class="navbar-header pull-right" role="navigation">
+                <ul class="nav navbar-nav menu">
+                    <li class="warning refresh">
+                        <a href="javascript:void(0);">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                            <span class="menu-text">刷新当前页</span>
+                        </a>
+                    </li>
+                    <li class="info tabNav" data-status="open">
+                        <a href="javascript:void(0);">
+                            <i class="glyphicon glyphicon-sort"></i>
+                            <span class="menu-text">隐藏TAB栏</span>
+                        </a>
+                    </li>
+                    <li class="danger logout">
+                        <a href="javascript:void(0);">
+                            <i class="glyphicon glyphicon-log-out"></i>
+                            <span class="menu-text">退出</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <img alt="" src="~/images/test/headerImage_thum.jpg" class="headPhoto">
+                            <span class="menu-text">管理员</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-right user-menu">
+                            <li>
+                                <a data-href="#" data-id="usermenu01">
+                                    <i class="glyphicon glyphicon-camera"></i>
+                                    <span>修改头像</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-href="#" data-id="usermenu02">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    <span>我的账户</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-href="#" data-id="usermenu03">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                    <span>修改登录密码</span>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a data-href="#" data-id="usermenu04">
+                                    <i class="glyphicon glyphicon-phone-alt"></i>
+                                    <span>联系我们</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <!--Body-->
+    </nav>
+    <!-- 左边菜单 -->
+    <div class="sidebar-left hide"></div>
+    <div class="content">
+        <div class="row content-tabs">
+            <button class="roll-nav roll-left hidden">
+                <i class="fa fa-backward"></i>
+            </button>
+            <nav class="page-tabs">
+                <div class="page-tabs-content"></div>
+            </nav>
+            <button class="roll-nav roll-right hidden">
+                <i class="fa fa-forward"></i>
+            </button>
+            <div class="roll-nav roll-close">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                    <span class="caret menu-text"></span>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    <li data-code="closeCurrentTab">
+                        <a>
+                            <i class="glyphicon glyphicon glyphicon-remove"></i>
+                            <span>关闭当前</span>
+                        </a>
+                    </li>
+                    <li data-code="closeOtherTab">
+                        <a>
+                            <i class="glyphicon glyphicon-transfer"></i>
+                            <span>关闭其他</span>
+                        </a>
+                    </li>
+                    <li data-code="closeAllTab">
+                        <a>
+                            <i class="glyphicon glyphicon-folder-close"></i>
+                            <span>全部关闭</span>
+                        </a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li data-code="hiddenTabBar">
+                        <a>
+                            <i class="glyphicon glyphicon-eye-close"></i>
+                            <span class="menu-text">隐藏tab栏</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <iframe frameborder="0" data-id="defaultFrame" class="contentFrame" src="~/welcome.html"></iframe>
     </div>
-    <!--end-main-container-part-->
-    
-    <!--Footer-part-->
-    @Html.Partial("_Footer") 
-    <!--end-Footer-part-->
-    @*@Scripts.Render("~/bundles/js/admin-jq")*@
-    <script src="~/Content/admin/js/jquery.min.js"></script>
-
-    @*@Scripts.Render("~/bundles/js/bootstrap2")*@ 
-    <script src="~/Content/admin/js/bootstrap.min.js"></script>
-    <script src="~/Content/admin/js/bootbox.min.js"></script>
-
-    @*@Scripts.Render("~/bundles/js/jqdataTables")*@ 
-    <script src="~/Content/admin/js/jquery.dataTables.min.js"></script>
-    <script src="~/Content/admin/js/jquery.dataTables.AjaxSource.min.js"></script>
-
-    @Scripts.Render("~/bundles/jqueryval")
-
-    @*<script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
-
-    @*@Scripts.Render("~/bundles/js/admin-plugin")*@
-    <script src="~/Content/admin/js/select2.min.js"></script>
-    <script src="~/Content/admin/js/matrix.js"></script>
-
-    @RenderSection("scripts", required: false)
+    @Html.Partial("base_foot")
+    <script src="~/scripts/jquery.Jcrop.js"></script>
+    <script src="~/js/modal/bootstrap-modalmanager.js"></script>
+    <script src="~/js/modal/bootstrap-modal.js"></script>
+    <script src="~/js/modal/bootbox.js"></script>
+    <script src="~/js/site-dialog.js"></script>
+    <script src="~/js/site-template.js"></script>
+    <script src="~/scripts/iscroll.js"></script>
+    <script src="~/js/index.js"></script>
+    <script type="text/template" id="head-menu">
+        {$each _ as item}
+        <li>
+            <div class="head-module" data-id="^{item.id}">
+                <i class="^{item.icon}"></i>
+                <span class="menu-text">^{item.name}</span>
+            </div>
+        </li>
+        {$/each}
+    </script>
+    <script type="text/template" id="left-menu">
+        <div></div>
+        {$each _ as topitems}
+        <div data-id="^{topitems.id}">
+            <div class="head" data-id="^{topitems.id}">
+                <i class="^{topitems.icon}"></i>
+                <span class="menu-text">^{topitems.name}</span>
+            </div>
+            {$if topitems.childModule != null && topitems.childModule.length > 0}
+            <ul class="nav sidebar-menu" data-id="^{topitems.id}">
+                {$each topitems.childModule as item,a}
+                <li{$if a= =0}{$if item.childModule !=null && item.childModule.length>
+                    0} class="open" {$else} class="active" {$ />if} class="active"{$/if}>
+                    <a data-href="^{item.linkUrl}" data-id="^{item.id}" {$if item.childModule !=null && item.childModule.length>
+                        0} class="menu-dropdown" {$ />if}>
+                        <i class="^{item.icon}"></i>
+                        <span class="menu-text">^{item.name}</span>
+                        {$if item.childModule != null && item.childModule.length > 0}
+                        <i class="expand"></i>
+                        {$/if}
+                    </a>
+                    {$if item.childModule != null && item.childModule.length > 0}
+                    <ul class="submenu" {$if a= =0} style="display: block;" {$ />if}>
+                    {$each item.childModule as i,b}
+                    <li {$if a= =0 && b= =0} class="active" {$ />if}>
+                    <a data-href="^{i.linkUrl}" data-id="^{i.id}">
+                        <span class="menu-text">^{i.name}</span>
+                    </a>
+                    </li>
+                    {$/each}
+            </ul>
+            {$/if}
+            </li>
+            {$/each}
+            </ul>
+            {$/if}
+        </div>
+        {$/each}
+    </script>
 </body>
 </html>
