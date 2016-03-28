@@ -1,7 +1,4 @@
-﻿@section css{
-    @Styles.Render("~/bundles/css/jqueryui")
-}
-@{
+﻿@{
     var buttonList = new List<ButtonModel>();
     buttonList = ViewBag.ButtonList ?? buttonList;
 
@@ -11,91 +8,160 @@
     editButton = buttonList.FirstOrDefault(m => m.Code.ToLower() == "update");
     deleteButton = buttonList.FirstOrDefault(m => m.Code.ToLower() == "delete");
 }
-<div id="content-body" class="row-fluid">
-    <div class="span22">
-        <!--操作 -->
-        @Html.Partial("Search")
+<div class="container">
+    <div class="table-container">
+        <div class="page-header">
+            <h2>jquery-datatables</h2>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <!-- 过滤条件start -->
+                <div id="filterbar" class="alert alert-lightsGray fs12 clearfix">
+                    <div class="clearfix" style="margin-right:30px;">
+                        <div class="clearfix pull-left" style="line-height: 30px; margin: 3px 5px;">
+                            <div class="pull-left">搜索：</div>
+                            <div class="input-group input-group-sm w-small pull-left ">
+                                <input class="form-control pull-left" placeholder="要搜索的关键字" name="Keywords" filterfield="Keywords" autopostback="true" type="text">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btnSearch" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="clearfix pull-left" style="line-height: 30px; margin: 3px 5px; ">
+                            <div class="pull-left">分类：</div>
+                            <div class="pull-left">
+                                <select autopostback="true" class="form-control input-sm" filterfield="ArticleCategoryId" id="ArticleCategoryId" name="ArticleCategoryId">
+                                    <option value="1">分类一</option>
+                                    <option value="2">分类二</option>
+                                    <option value="3">分类三</option>
+                                    <option value="4">分类四</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 过滤条件end -->
 
-        <!--列表-->
-        @Html.Partial("List")
+                <div class="buttons-panel">
+                    <button id="getTableData" class="btn btn-default">表格数据</button>
+                    <button id="getMoveData" class="btn btn-default">拖拽后的表格数据</button>
+                    <button id="getSelectData" class="btn btn-default">选中列数据 </button>
+                    <button id="columnRadio" class="btn btn-info">单选</button>
+                    <button id="columnCheckbox" class="btn btn-default">复选</button>
+                    <button id="columnMove" class="btn btn-default">拖拽</button>
+                    <button id="columnDetail" class="btn btn-default">详情</button>
 
-        @Html.Partial("_FormModal")
-
+                    @if (editButton != null)
+                    {
+                        <button id="btnReload" class="btn btn-default"><span class="@editButton.Icon"></span>"@editButton.Text"</button>
+                    }
+                    @if (deleteButton != null)
+                    {
+                        <button id="btnReload" class="btn btn-default"><span class="@editButton.Icon"></span>"@editButton.Text"</button>
+                    }
+                    <button id="btnReload" class="btn btn-default">刷新 </button>
+                </div>
+                <table id="mytable" class="wx-listview table table-bordered"></table>
+            </div>
+        </div>
     </div>
 </div>
-
-@section scripts{
-    @Scripts.Render("~/bundles/jqueryui")
+@section js{
+    @Scripts.Render("~/js/datatables")
     <script type="text/javascript">
-        var oTable = null;
-
         $(function () {
-            var actionUrl = "@Url.Action("List")?rand=" + Math.random();
-            var aoColumns = [
-                    { "sTitle": "用户名", "mDataProp": "LoginName", "bSortable": false },
-                    { "sTitle": "Email", "mDataProp": "Email", "bSortable": false },
-                    { "sTitle": "昵称", "mDataProp": "FullName", "bSortable": false },
-                    { "sTitle": "电话", "mDataProp": "Phone", "bSortable": false },
-                    { "sTitle": "是否激活", "mDataProp": "Enabled", "bSortable": false, "fnRender": renderBool },
-                    { "sTitle": "注册时间", "mDataProp": "RegisterTime", "bSortable": false },
-                    { "sTitle": "最后登录", "mDataProp": "LastLoginTime", "bSortable": false },
-                    {
-                        "sTitle": "操作",
-                        "mDataProp": "Id",
-                        "bSortable": false,
-                        "fnRender": function (obj, data) {
-                            var btnArray = "";
-                            @if (editButton != null)
-                            {
-                            <text> btnArray += '<button type="submit" id="add" class="btn btn-primary btn-normal" title="@editButton.Text" onclick="Edit(' + data + ')"><span class="@editButton.Icon"></span></button>'</text>
-                             }
-                            @if (deleteButton != null)
-                               {
-                            <text>btnArray += '<button type="submit"  class="btn btn-danger btn-normal" title="@deleteButton.Text" onclick="Delete(' + data + ')"><span class="@deleteButton.Icon"></span></button>'</text>
-                                }
-                            return btnArray;
+            var defaults = {
+                firstColumn: "radio",// radio、checkbox、move、detail //{type:null, detailRenderFun: function(index, row){}, moveCallbackFun: function(){}}
+                colVis: true,
+                onEditableSave: function ($a, cellData, submitValue, rowData, row, e) {
+                    console.info($a, cellData, submitValue, rowData, row, e);
+                },
+                colReorder: true, //经过测试发现对于复杂的表头JS会报错
+                "columns": [{
+                    "data": "orderNo", "name": "orderNo", "title": "订单号"
+                }, {
+                    "data": "sendMan"
+                }, {
+                    "data": "receiveMan"
+                }, {
+                    "data": "receiveManTel"
+                }, {
+                    "data": "price",
+                    "editable": true //{options}具体配置见bootstrap-editable官网的配置参数
+                }, {
+                    "data": "createTime",
+                    "render": function (data, type, row) {
+                        if (data && data.time) {
+                            return site.utils.dateFormat(new Date(data.time), "yyyy-MM-dd hh:ss:mm");
+                        } else {
+                            return "空";
                         }
                     }
-            ];
-            //初始化表格
-            oTable = InitDatatables($(".data-table"), actionUrl, aoColumns, oTable);
+                }, {
+                    "data": "remark",
+                    "title": "备注",
+                    //   		            	"width": "100px"
+                    "visible": false
+                }],
+                ajax: site.tables.ajax({
+                    type: "GET",
+                    url: "/data/paging.json"
+                })
+            };
+            site.tables.init($("table"), defaults);
+            $("#getTableData").on("click", function () {
+                console.info(site.tables.getTableData());
+                site.success("按下[F12]键，看控制台输出！");
+            });
+            $("#getMoveData").on("click", function () {
+                console.info(site.tables.getMoveData());
+                site.success("按下[F12]键，看控制台输出！");
+            });
+            $("#getSelectData").on("click", function () {
+                console.info(site.tables.getSelectData());
+                site.success("按下[F12]键，看控制台输出！");
+            });
+            $("#columnRadio").on("click", function () {
+                $("div.buttons-panel").find("button.btn-info").removeClass("btn-info").addClass("btn-default");
+                $(this).removeClass("btn-default").addClass("btn-info");
+                site.tables.destroy();
+                defaults.firstColumn = "radio";
+                site.tables.init($("table"), defaults);
+            });
+            $("#columnCheckbox").on("click", function () {
+                $("div.buttons-panel").find("button.btn-info").removeClass("btn-info").addClass("btn-default");
+                $(this).removeClass("btn-default").addClass("btn-info");
+                site.tables.destroy();
+                defaults.firstColumn = "checkbox";
+                site.tables.init($("table"), defaults);
+            });
+            $("#columnMove").on("click", function () {
+                $("div.buttons-panel").find("button.btn-info").removeClass("btn-info").addClass("btn-default");
+                $(this).removeClass("btn-default").addClass("btn-info");
+                site.tables.destroy();
+                defaults.firstColumn = {
+                    type: "move",
+                    moveCallbackFun: function (tableData, oldIndex, moveToIndex) {
+                        //拖拽后的回调函数 |参数：tableData（表格数据）,oldIndex(未移动前的索引位置),moveToIndex(移动至目的的索引位置)
+                        console.info(tableData, oldIndex, moveToIndex);
+                    }
+                };
+                site.tables.init($("table"), defaults);
+            });
+            $("#columnDetail").on("click", function () {
+                $("div.buttons-panel").find("button.btn-info").removeClass("btn-info").addClass("btn-default");
+                $(this).removeClass("btn-default").addClass("btn-info");
+                site.tables.destroy();
+                defaults.firstColumn = {
+                    type: "detail",
+                    detailRenderFun: function (tableData, oldIndex, moveToIndex) {
+                        return "测试信息 数据....";
+                    }
+                };
+                site.tables.init($("table"), defaults);
+            });
         });
-
-        //查询
-        function Search() {
-            var filterdata = $(".search-form").serialize();
-            var actionUrl = "@Url.Action("List")?rand=" + Math.random() + "&" + filterdata;
-            SearchRecord(actionUrl, oTable);
-        }
-
-        //新增
-        function Create() {
-            var actionUrl = "@Url.Action("Edit")";
-            var saveActionUrl = "@Url.Action("Create")";
-            var param = {};
-            ShowModal(actionUrl, saveActionUrl, param, "新增用户");
-        }
-
-        //编辑
-        function Edit(id) {
-            var actionUrl = "@Url.Action("Edit")";
-            var saveActionUrl = "@Url.Action("Update")";
-            var param = { id: id }
-            ShowModal(actionUrl, saveActionUrl, param, "编辑用户");
-        }
-
-        //修改密码
-        function ChangePwd(id) {
-            var actionUrl = "@Url.Action("ChangePwd")";
-            var param = { Id: id }
-            ShowModal(actionUrl, param, "修改密码");
-        }
-
-        //删除
-        function Delete(id) {
-            var actionUrl = "@Url.Action("Delete")";
-            var param = { id: id }
-            DeleteRecord(actionUrl, param, oTable);
-        }
     </script>
 }
+
+

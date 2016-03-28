@@ -16,7 +16,7 @@
 	    <meta name="x5-page-mode" content="app">
 	    <meta name="author" content="jinyu" />
     	<title>后台管理系统</title>
-	      @Html.Partial("base_head")
+	     @Styles.Render("~/css/base")
 	    <link href="~/css/index.css" rel="stylesheet" />
 	    <!-- 子页面在顶层弹出框裁剪会用到该样式文件 -->
 	    <link href="~/content/jquery.Jcrop.css" rel="stylesheet" />
@@ -145,12 +145,8 @@
 			</div>
 			 <iframe frameborder="0" data-id="defaultFrame" class="contentFrame" src="/Home/Welcome"></iframe>
 		</div>
-  		 @Html.Partial("base_foot")
+    	@Scripts.Render("~/js/base")
   		<script src="~/scripts/jquery.Jcrop.js"></script>
-  		<script src="~/js/modal/bootstrap-modalmanager.js"></script>
-		<script src="~/js/modal/bootstrap-modal.js"></script>
-		<script src="~/js/modal/bootbox.js"></script>
-		<script src="~/js/site-dialog.js"></script>
   		<script src="~/js/site-template.js"></script>
   		<script src="~/scripts/iscroll.js"></script>
   		<script src="~/js/index.js"></script>
