@@ -32,9 +32,8 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
 
             var json = new
             {
-                iTotalRecords = list.total,
-                iTotalDisplayRecords = list.total,
-                aaData = list.rows
+                pageCount = list.total,
+                pageData = list.rows
             };
             return Json(json, JsonRequestBehavior.AllowGet);
         }

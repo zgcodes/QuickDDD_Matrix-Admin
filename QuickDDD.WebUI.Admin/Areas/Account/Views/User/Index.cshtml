@@ -8,11 +8,8 @@
     editButton = buttonList.FirstOrDefault(m => m.Code.ToLower() == "update");
     deleteButton = buttonList.FirstOrDefault(m => m.Code.ToLower() == "delete");
 }
-<div class="container">
+<div class="page-content">
     <div class="table-container">
-        <div class="page-header">
-            <h2>jquery-datatables</h2>
-        </div>
         <div class="panel panel-default">
             <div class="panel-body">
                 <!-- 过滤条件start -->
@@ -104,8 +101,8 @@
                     "visible": false
                 }],
                 ajax: site.tables.ajax({
-                    type: "GET",
-                    url: "/data/paging.json"
+                    type: "POST",
+                    url: "/User/List"
                 })
             };
             site.tables.init($("table"), defaults);

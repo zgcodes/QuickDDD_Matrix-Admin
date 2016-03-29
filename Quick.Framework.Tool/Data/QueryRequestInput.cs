@@ -17,11 +17,11 @@ namespace Quick.Framework.Tool
         /// <summary>
         /// 分页时跳过几行
         /// </summary>
-        public int iDisplayStart { get; set; }
+        public int iDisplayStart { get { return pageSize * (pageNumber - 1); } }
 
-        public int iDisplayLength { get; set; }//每页行数
+        public int pageSize { get; set; }//每页行数
 
-        public int page { get; set; }//当前页是第几页
+        public int pageNumber { get; set; }//当前页是第几页
 
         public string order { get; set; }//排序方式（升，降）
 
@@ -40,9 +40,9 @@ namespace Quick.Framework.Tool
         /// </summary>
         public string sColumns { get; set; }
 
-        public virtual DateTime? StartTime{ get; set; }
+        public virtual DateTime? StartTime { get; set; }
 
-        public virtual DateTime? EndTime{ get; set; }
+        public virtual DateTime? EndTime { get; set; }
 
     }
 }

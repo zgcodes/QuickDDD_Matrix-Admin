@@ -15,7 +15,13 @@ namespace Quick.WebUI.Admin
                       "~/css/modal/bootstrap-modal.css",
                       "~/css/modal/modal.css",
                       "~/content/font-awesome.css",
-                      "~/css/site.css"
+                      "~/css/site.css",
+                      "~/content/jqueryDataTables/dataTables.bootstrap.css",
+                      "~/content/jqueryDataTables/plugin/dataTables.colvis.jqueryui.css",
+                      "~/content/jqueryDataTables/plugin/dataTables.colVis.css",
+                      "~/content/jqueryDataTables/plugin/colReorder.bootstrap.css",
+                      "~/content/bootstrap-editable.css",
+                      "~/css/table.css"
                       ));
 
 

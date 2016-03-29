@@ -40,7 +40,7 @@ namespace System.Linq
 
             QueryRequestOut<T> result = new QueryRequestOut<T>();
             //分页
-            var newQueryable = queryable.OrderBy(m => input.order).Skip(input.iDisplayStart).Take(input.iDisplayLength);
+            var newQueryable = queryable.OrderBy(m => input.order).Skip(input.iDisplayStart).Take(input.pageSize);
             IList<object> list = newQueryable.ToList();
             result.rows = list.MapToList<T>().ToArray();
             result.total = queryable.Count();//总页数
