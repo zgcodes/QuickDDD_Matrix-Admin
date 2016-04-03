@@ -24,37 +24,18 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="clearfix pull-left" style="line-height: 30px; margin: 3px 5px; ">
-                            <div class="pull-left">分类：</div>
-                            <div class="pull-left">
-                                <select autopostback="true" class="form-control input-sm" filterfield="ArticleCategoryId" id="ArticleCategoryId" name="ArticleCategoryId">
-                                    <option value="1">分类一</option>
-                                    <option value="2">分类二</option>
-                                    <option value="3">分类三</option>
-                                    <option value="4">分类四</option>
-                                </select>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!-- 过滤条件end -->
 
                 <div class="buttons-panel">
-                    <button id="getTableData" class="btn btn-default">表格数据</button>
-                    <button id="getMoveData" class="btn btn-default">拖拽后的表格数据</button>
-                    <button id="getSelectData" class="btn btn-default">选中列数据 </button>
-                    <button id="columnRadio" class="btn btn-info">单选</button>
-                    <button id="columnCheckbox" class="btn btn-default">复选</button>
-                    <button id="columnMove" class="btn btn-default">拖拽</button>
-                    <button id="columnDetail" class="btn btn-default">详情</button>
-
                     @if (editButton != null)
                     {
-                        <button id="btnReload" class="btn btn-default"><span class="@editButton.Icon"></span>"@editButton.Text"</button>
+                        <button id="editButton" class="btn btn-default"><span class=@editButton.Icon></span>@editButton.Text</button>
                     }
                     @if (deleteButton != null)
                     {
-                        <button id="btnReload" class="btn btn-default"><span class="@editButton.Icon"></span>"@editButton.Text"</button>
+                        <button id="deleteButton" class="btn btn-default"><span class=@deleteButton.Icon></span>@deleteButton.Text</button>
                     }
                     <button id="btnReload" class="btn btn-default">刷新 </button>
                 </div>
@@ -75,87 +56,38 @@
                 },
                 colReorder: true, //经过测试发现对于复杂的表头JS会报错
                 "columns": [{
-                    "data": "orderNo", "name": "orderNo", "title": "订单号"
+                    "data": "LoginName", "name": "LoginName", "title": "用户名"
                 }, {
-                    "data": "sendMan"
+                    "data": "Email", "name": "Email", "title": "邮箱"
                 }, {
-                    "data": "receiveMan"
+                    "data": "Phone", "name": "Phone", "title": "手机号"
                 }, {
-                    "data": "receiveManTel"
+                    "data": "Enabled", "name": "Enabled", "title": "启用", "render": renderBool
                 }, {
-                    "data": "price",
-                    "editable": true //{options}具体配置见bootstrap-editable官网的配置参数
+                    "data": "RegisterTime", "name": "RegisterTime", "title": "注册时间"
                 }, {
-                    "data": "createTime",
-                    "render": function (data, type, row) {
-                        if (data && data.time) {
-                            return site.utils.dateFormat(new Date(data.time), "yyyy-MM-dd hh:ss:mm");
-                        } else {
-                            return "空";
-                        }
-                    }
-                }, {
-                    "data": "remark",
-                    "title": "备注",
-                    //   		            	"width": "100px"
-                    "visible": false
-                }],
+                    "data": "LastLoginTime", "name": "LastLoginTime", "title": "最后登录时间"
+                }, ],
                 ajax: site.tables.ajax({
                     type: "POST",
-                    url: "/User/List"
+                    url: "/Account/User/List"
                 })
             };
             site.tables.init($("table"), defaults);
-            $("#getTableData").on("click", function () {
-                console.info(site.tables.getTableData());
-                site.success("按下[F12]键，看控制台输出！");
-            });
-            $("#getMoveData").on("click", function () {
-                console.info(site.tables.getMoveData());
-                site.success("按下[F12]键，看控制台输出！");
-            });
-            $("#getSelectData").on("click", function () {
-                console.info(site.tables.getSelectData());
-                site.success("按下[F12]键，看控制台输出！");
-            });
-            $("#columnRadio").on("click", function () {
-                $("div.buttons-panel").find("button.btn-info").removeClass("btn-info").addClass("btn-default");
-                $(this).removeClass("btn-default").addClass("btn-info");
-                site.tables.destroy();
-                defaults.firstColumn = "radio";
-                site.tables.init($("table"), defaults);
-            });
-            $("#columnCheckbox").on("click", function () {
-                $("div.buttons-panel").find("button.btn-info").removeClass("btn-info").addClass("btn-default");
-                $(this).removeClass("btn-default").addClass("btn-info");
-                site.tables.destroy();
-                defaults.firstColumn = "checkbox";
-                site.tables.init($("table"), defaults);
-            });
-            $("#columnMove").on("click", function () {
-                $("div.buttons-panel").find("button.btn-info").removeClass("btn-info").addClass("btn-default");
-                $(this).removeClass("btn-default").addClass("btn-info");
-                site.tables.destroy();
-                defaults.firstColumn = {
-                    type: "move",
-                    moveCallbackFun: function (tableData, oldIndex, moveToIndex) {
-                        //拖拽后的回调函数 |参数：tableData（表格数据）,oldIndex(未移动前的索引位置),moveToIndex(移动至目的的索引位置)
-                        console.info(tableData, oldIndex, moveToIndex);
-                    }
-                };
-                site.tables.init($("table"), defaults);
-            });
-            $("#columnDetail").on("click", function () {
-                $("div.buttons-panel").find("button.btn-info").removeClass("btn-info").addClass("btn-default");
-                $(this).removeClass("btn-default").addClass("btn-info");
-                site.tables.destroy();
-                defaults.firstColumn = {
-                    type: "detail",
-                    detailRenderFun: function (tableData, oldIndex, moveToIndex) {
-                        return "测试信息 数据....";
-                    }
-                };
-                site.tables.init($("table"), defaults);
+
+            $("#editButton").on("click", function () {
+                var row = site.tables.getSelectedOneRowData();
+                if (!row) {
+                    top.site.error("请选择一行数据！");
+                    return;
+                }
+                top.site.dialog({
+                    href: "/Account/User/Edit?id=" + row.Id,
+                    height: 600,
+                    width: 1000,
+                    title: "编辑"
+                });
+
             });
         });
     </script>

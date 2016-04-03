@@ -35,7 +35,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
                 pageCount = list.total,
                 pageData = list.rows
             };
-            return Json(json, JsonRequestBehavior.AllowGet);
+            return ToJson(list);
         }
 
         [PermissionValidation(false)]

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Quick.Framework.Tool;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,25 @@ namespace Quick.WebUI.Admin.Controllers
     [PermissionValidation]
     public class BaseController : Controller
     {
+        protected JsonResult ToJson<T>(QueryRequestOut<T> data)
+        {
+            return new ToJsonResult
+            {
+                Data = new
+                        {
+                            success = "true",
+                            result = new
+                            {
+                                pageCount = data.total,
+                                pageData = data.rows
+                            }
+                        },
+                FormateStr = "yyyy-MM-dd HH:mm:ss"
+
+            };
+
+        }
+
         /// <summary>
         /// 返回JsonResult
         /// </summary>

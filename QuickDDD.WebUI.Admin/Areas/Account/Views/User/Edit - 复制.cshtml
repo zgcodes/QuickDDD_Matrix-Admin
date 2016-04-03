@@ -1,0 +1,66 @@
+﻿@model Quick.Application.UserDto
+@{
+    Layout = null;
+}
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#base" data-toggle="tab">基本信息</a></li>
+    <li><a href="#role" data-toggle="tab">角色</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane active" id="base">
+
+        <div class="control-group">
+            <input type="hidden" name="Id" value="@Model.Id"/>
+            <label class="control-label-form">
+                <label class="red">*</label>用户名:
+            </label>
+            <div class="controls">
+                <input class="form-control" name="LoginName" value="@Model.LoginName"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label-form">
+                <label class="red">*</label>邮箱:
+            </label>
+            <div class="controls">
+                <input class="form-control" name="Email" value="@Model.Email"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label-form">
+                <label class="red">*</label>密码:
+            </label>
+            <div class="controls">
+                <input class="form-control" name="LoginPwd" value="@Model.LoginPwd"/>
+            </div>
+        </div>
+
+    </div>
+    @* <div class="tab-pane" id="role">
+        @Html.CheckBoxListFor(t => t.SelectedRoleList, DisplayDirection.Horizon, new { style = "display:inline-block;width:500px;margin:0 10px;" }, new { style = "display:inline-block;width:150px;" })
+    </div>*@
+    <div class="tab-pane" id="role">
+        @{
+            if (ViewBag.roleList != null)
+            {
+                foreach (Quick.Application.RoleDto role in ViewBag.roleList)
+                {
+                    var ischecked = "";
+                    if (ViewBag.SelectedRoleIds != null && ViewBag.SelectedRoleIds.Contains(role.Id))
+                    {
+
+                        ischecked = "checked='checked'";
+                    }
+            <input type="checkbox" name="SelectedRoleIds" value="@role.Id" id="@role.Id" @ischecked/>
+            <label for="@role.Id">@role.Name</label>
+                }
+            }
+        }
+    </div>
+</div>
+
