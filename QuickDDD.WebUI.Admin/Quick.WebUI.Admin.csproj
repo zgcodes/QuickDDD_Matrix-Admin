@@ -178,7 +178,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Areas\Account\Views\Module\SetButton.cshtml" />
     <Content Include="Areas\Account\Views\Permission\Edit.cshtml" />
-    <Content Include="Areas\Account\Views\Permission\Index.cshtml" />
     <Content Include="Areas\Account\Views\Permission\List.cshtml" />
     <Content Include="Areas\Account\Views\Permission\Search.cshtml" />
     <Content Include="Areas\Account\Views\Role\Permission.cshtml" />
@@ -200,6 +199,7 @@
     <Content Include="content\bootstrap.min.css" />
     <Content Include="content\font-awesome.css" />
     <Content Include="content\font-awesome.min.css" />
+    <Content Include="content\font.css" />
     <Content Include="content\icheck-skins\all.css" />
     <Content Include="content\icheck-skins\flat\aero%402x.png" />
     <Content Include="content\icheck-skins\flat\aero.css" />
@@ -746,6 +746,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Account\Views\Role\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Account\Views\Permission\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

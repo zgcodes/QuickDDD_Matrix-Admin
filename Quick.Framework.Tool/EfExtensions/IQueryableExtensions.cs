@@ -42,8 +42,8 @@ namespace System.Linq
             //分页
             var newQueryable = queryable.OrderBy(m => input.order).Skip(input.iDisplayStart).Take(input.pageSize);
             IList<object> list = newQueryable.ToList();
-            result.rows = list.MapToList<T>().ToArray();
-            result.total = queryable.Count();//总页数
+            result.pageData = list.MapToList<T>().ToArray();
+            result.pageCount = queryable.Count();//总页数
             return result;
         }
     }

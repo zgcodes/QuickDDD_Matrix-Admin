@@ -25,14 +25,7 @@ namespace Quick.WebUI.Admin.Areas.Content
         public JsonResult List(ArticleQueryInput input)
         {
             var list = _articleService.GetAll(input);
-
-            var json = new
-            {
-                iTotalRecords = list.total,
-                iTotalDisplayRecords = list.total,
-                aaData = list.rows
-            };
-            return Json(json, JsonRequestBehavior.AllowGet);
+            return ToJson(list);
         }
 
         [PermissionValidation(false)]

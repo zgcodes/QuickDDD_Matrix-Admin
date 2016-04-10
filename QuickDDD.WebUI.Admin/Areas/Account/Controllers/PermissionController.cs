@@ -27,14 +27,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
         public JsonResult List(PermissionQueryInput input)
         {
             var list = _permissionService.GetAll(input);
-
-            var json = new
-            {
-                iTotalRecords = list.total,
-                iTotalDisplayRecords = list.total,
-                aaData = list.rows
-            };
-            return Json(json, JsonRequestBehavior.AllowGet);
+            return ToJson(list);
         }
 
         [PermissionValidation(false)]
@@ -56,7 +49,20 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
         {
             _permissionService.Delete(id);
             return Json(1, JsonRequestBehavior.AllowGet);
+        }
 
+        [PermissionValidation(false)]
+        public JsonResult CreateOrUpdate(PermissionDto model)
+        {
+            if (model.Id == 0)
+            {
+                this.Create(model);
+            }
+            else
+            {
+                this.Update(model);
+            }
+            return Json(1, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Create(PermissionDto model)
@@ -66,7 +72,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
 
         }
 
-          [PermissionValidation(false)]
+        [PermissionValidation(false)]
         public JsonResult Update(PermissionDto model)
         {
             _permissionService.Update(model);

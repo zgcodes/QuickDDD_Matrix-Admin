@@ -20,11 +20,7 @@ namespace Quick.WebUI.Admin.Controllers
                 Data = new
                         {
                             success = "true",
-                            result = new
-                            {
-                                pageCount = data.total,
-                                pageData = data.rows
-                            }
+                            result = data
                         },
                 FormateStr = "yyyy-MM-dd HH:mm:ss"
 

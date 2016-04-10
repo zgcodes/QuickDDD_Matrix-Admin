@@ -10,9 +10,9 @@ namespace Quick.Framework.Tool
     public class QueryRequestOut<T>
     {
 
-        public  int total { get; set; }//行数
+        public int pageCount { get; set; }//行数
 
-        public T[] rows { get; set; }//数据
+        public T[] pageData { get; set; }//数据
 
     }
 }

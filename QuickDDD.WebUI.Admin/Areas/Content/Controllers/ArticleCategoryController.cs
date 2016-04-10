@@ -19,7 +19,7 @@ namespace Quick.WebUI.Admin.Areas.Content
         {
             _articlecategoryService = articlecategoryService;
         }
-        
+
         [AdminLayout]
         public ActionResult Index()
         {
@@ -30,14 +30,7 @@ namespace Quick.WebUI.Admin.Areas.Content
         public JsonResult List(ArticleCategoryQueryInput input)
         {
             var list = _articlecategoryService.GetAll(input);
-
-            var json = new
-            {
-                iTotalRecords = list.total,
-                iTotalDisplayRecords = list.total,
-                aaData = list.rows
-            };
-            return Json(json, JsonRequestBehavior.AllowGet);
+            return ToJson(list);
         }
 
         [PermissionValidation(false)]
