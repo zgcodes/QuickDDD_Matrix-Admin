@@ -13,7 +13,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">用户名：<span class="asterisk">*</span></label>
                         <div class="col-sm-6">
-                            <input class="form-control inlinerequired" type="text" id="LoginName" name="LoginName" maxlength="50" value="@Model.LoginName" />
+                            <input class="form-control inline required" type="text" id="LoginName" name="LoginName" maxlength="50" value="@Model.LoginName" />
                             <span class="help-inline"></span>
                         </div>
                     </div>
@@ -31,6 +31,14 @@
                             <span class="help-inline"></span>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            启用:
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="checkbox" name="Enabled" value="true" checked="@Model.Enabled" />
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane" id="role">
                     @{
@@ -44,17 +52,48 @@
 
                                     ischecked = "checked='checked'";
                                 }
-                                <input type="checkbox" name="SelectedRoleIds" value="@role.Id" id="@role.Id" @ischecked />
-                                <label for="@role.Id">@role.Name</label>
+                                <div class="form-group">
+                                    <input type="checkbox" class="ace-checkbox-2" name="SelectedRoleIds" value="@role.Id" id="@role.Id" @ischecked />
+                                    <label for="@role.Id">@role.Name</label>
+                                </div>
                             }
                         }
                     }
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-sm-offset-5 footer fixed">
+        <div class="wx-form-footer fixed">
             <button id="btn-save" type="submit" class="btn btn-primary btn-lg w100">保存</button>
             <button id="btn-cancel" type="button" class="btn btn-default btn-lg w100">取消</button>
         </div>
     </form>
 </div>
+@section js{
+    @Scripts.Render("~/js/form")
+    <script type="text/javascript">
+        $(function () {
+            site.validate.form("#myform", {
+                url: "/Account/User/CreateOrUpdate",
+                success: function (data) {
+                },
+                error: function (xhr) {
+                    site.error("保存失败！");
+                }
+            }, {
+                //successStyle: true,
+                rules: {
+                    "LoginName": {
+                        required: true
+                    },
+                    "Email": {
+                        required: true,
+                        email: true
+                    },
+                    "LoginPwd": {
+                        required: true
+                    }
+                }
+            });
+        });
+    </script>
+}

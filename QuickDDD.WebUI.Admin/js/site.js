@@ -5,7 +5,7 @@
  */
 var site = site || {};
 $(function () {
-	 //站点配置
+    //站点配置
     site.config = {};
     //项目相对路径
     site.config.contextPath = "";
@@ -32,8 +32,8 @@ $(function () {
             error: function (xhr, errorType, error) {
                 console.info(xhr, errorType, error);
             },
-            success: function(data, status, xhr){
-            	console.info(data);
+            success: function (data, status, xhr) {
+                console.info(data);
             },
             complete: function (xhr, status) {
                 site.hidePreloader();
@@ -51,7 +51,11 @@ $(function () {
                 site.hidePreloader();
             }
         }
-        $.ajax(_defalut);
+        //return $.Deferred(function ($dfd) {        //    $.ajax(options);
+        //});
+        return $.ajax(options);
+
+
     }
 
     //显示提示加载框
@@ -66,20 +70,38 @@ $(function () {
 
     //初始化页面事件
     site.initEvent = function () {
-    	if($.fn.tooltip){
-    		$("body").tooltip({selector: "[data-toggle='tooltip']", container: 'body', animation: false });
-    	}
+        if ($.fn.tooltip) {
+            $("body").tooltip({ selector: "[data-toggle='tooltip']", container: 'body', animation: false });
+        }
     }
-    
+
     //在弹出窗口中调用此方法关闭自身窗口，并调用回调方法返回参数值
-	site.closeIFrameDialog = function() {
-		if (window.modalDialog != null) {
-			var dialog = window.modalDialog;
-			if ($.isFunction(dialog.callback)) {
-				dialog.callback.apply(null, arguments);
-			}
-			window.modalDialog.close();
-		}
-	};
+    site.closeDialog = function (args) {
+        if (window.modalDialog != null && window.modalDialog.options != null) {
+            var dialog = window.modalDialog;
+            if ($.isFunction(dialog.options.callback)) {
+                dialog.options.callback(args);
+            }
+            window.modalDialog.close();
+        }
+    };
+
+
+
     site.init();
+
+    /*表单页底部“取消”按钮 czg*/
+    $(".wx-form-footer #btn-cancel").click(function () {
+        if (window == top.frames["main"]) {
+            //在主窗口中
+            window.history.go(-1);
+        }
+        else {
+            //在弹出窗口中关闭自己
+            if (window.modalDialog != null) {
+                window.modalDialog.close();
+            }
+        }
+    });
+
 });

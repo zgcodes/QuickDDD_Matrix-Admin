@@ -1,40 +1,59 @@
 ﻿@model Quick.Application.RoleDto
-@{
-    Layout = null;
+<div class="page-content">
+    <form id="myform" method="post">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="container form-horizontal padding-top-30">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">
+                    <label class="red">*</label>角色名称:
+                </label>
+                <div class="col-sm-6">
+                    @Html.TextBoxFor(t => t.Name, new { @class = "form-control required" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">
+                    描述:
+                </label>
+                <div class="col-sm-6">
+                    @Html.TextBoxFor(t => t.Description, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">
+                    排序:
+                </label>
+                <div class="col-sm-6">
+                    @Html.TextBoxFor(t => t.OrderSort, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">
+                    启用:
+                </label>
+                <div class="col-sm-6">
+                    <input type="checkbox" name="Enabled" value="true" checked="@Model.Enabled" />
+                </div>
+            </div>
+        </div>
+        <div class="wx-form-footer fixed">
+            <button id="btn-save" type="submit" class="btn btn-primary btn-lg w100">保存</button>
+            <button id="btn-cancel" type="button" class="btn btn-default btn-lg w100">取消</button>
+        </div>
+    </form>
+</div>
+@section js{
+    @Scripts.Render("~/js/form")
+    <script type="text/javascript">
+        $(function () {
+            site.validate.form("#myform", {
+                url: "/Account/Role/CreateOrUpdate",
+            }, {
+                rules: {
+
+                }
+            });
+        });
+    </script>
 }
-
-<div class="control-group">
-    <input type="hidden" name="Id" value="@Model.Id"/>
-    <label class="control-label-form">
-        <label class="red">*</label>角色名称:
-    </label>
-    <div class="controls">
-        @Html.TextBoxFor(t => t.Name, new { @class = "form-control" })
-    </div>
-</div>
-
-<div class="control-group">
-    <label class="control-label-form">
-        <label class="red">*</label>描述:
-    </label>
-    <div class="controls">
-        @Html.TextBoxFor(t => t.Description, new { @class = "form-control" })
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label-form">
-        <label class="red">*</label>排序:
-    </label>
-    <div class="controls">
-        @Html.TextBoxFor(t => t.OrderSort, new { @class = "form-control" })
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label-form">
-        激活: 
-    </label>
-    <div class="controls">
-        @Html.CheckBoxFor(t => t.Enabled)
-    </div>
-</div>
-

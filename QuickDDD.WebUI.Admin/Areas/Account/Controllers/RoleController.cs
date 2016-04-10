@@ -33,14 +33,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
         public JsonResult List(RoleQueryInput input)
         {
             var list = _roleService.GetAll(input);
-
-            var json = new
-            {
-                iTotalRecords = list.total,
-                iTotalDisplayRecords = list.total,
-                aaData = list.rows
-            };
-            return Json(json, JsonRequestBehavior.AllowGet);
+            return ToJson(list);
         }
 
         [PermissionValidation(false)]
@@ -63,6 +56,20 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             _roleService.Delete(id);
             return Json(1, JsonRequestBehavior.AllowGet);
 
+        }
+
+        [PermissionValidation(false)]
+        public JsonResult CreateOrUpdate(RoleDto model)
+        {
+            if (model.Id == 0)
+            {
+                this.Create(model);
+            }
+            else
+            {
+                this.Update(model);
+            }
+            return Json(1, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Create(RoleDto model)

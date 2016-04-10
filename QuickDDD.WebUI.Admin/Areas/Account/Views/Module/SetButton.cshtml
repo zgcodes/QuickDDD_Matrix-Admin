@@ -1,25 +1,45 @@
-﻿@model ModuleDto
-@{
-    Layout = null;
-}
-
-
-<h2>@Model.Name</h2>
-<input type="hidden" name="ModuleId" value="@Model.Id" />
-@{
-    if (ViewBag.PermissionList != null)
-    {
-        foreach (PermissionItem permission in ViewBag.PermissionList)
-        {
-            var ischecked = "";
-            if (ViewBag.SelectedPermissionIds != null && ViewBag.SelectedPermissionIds.Contains(permission.Id))
-            {
-
-                ischecked = "checked='checked'";
+﻿
+<div class="page-content">
+    <form id="myform" method="post">
+        <input type="hidden" name="ModuleId" value="@Model.Id" />
+        <div class="container form-horizontal">
+            @{
+                if (ViewBag.PermissionList != null)
+                {
+                    foreach (PermissionItem permission in ViewBag.PermissionList)
+                    {
+                        var ischecked = "";
+                        if (ViewBag.SelectedPermissionIds != null && ViewBag.SelectedPermissionIds.Contains(permission.Id))
+                        {
+                            ischecked = "checked='checked'";
+                        }
+                        <input type="checkbox" name="SelectedPermissionIds" value="@permission.Id" id="@permission.Id" @ischecked />
+                        <label for="@permission.Id">@permission.Name</label>
+                    }
+                }
             }
-    <input type="checkbox" name="SelectedPermissionIds" value="@permission.Id" id="@permission.Id" @ischecked/>
-    <label for="@permission.Id">@permission.Name</label>
-        }
-    }
+        </div>
+        <div class="wx-form-footer fixed">
+            <button id="btn-save" type="submit" class="btn btn-primary btn-lg w100">保存</button>
+            <button id="btn-cancel" type="button" class="btn btn-default btn-lg w100">取消</button>
+        </div>
+    </form>
+</div>
+@section js{
+    @Scripts.Render("~/js/form")
+    <script type="text/javascript">
+        $(function () {
+            site.validate.form("#myform", {
+                url: "/Account/Module/SetButton",
+                success: function (data) {
+                },
+                error: function (xhr) {
+                    site.error("保存失败！");
+                }
+            }, {
+                rules: {
+                }
+            });
+        });
+    </script>
 }
-

@@ -165,32 +165,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AjaxResponse.cs" />
+    <Compile Include="Models\AjaxResponseOfTResult.cs" />
+    <Compile Include="Models\ErrorInfo.cs" />
+    <Compile Include="Models\MvcAjaxResponse.cs" />
+    <Compile Include="Models\MvcAjaxResponseOfTResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="Areas\Account\Views\Module\Edit.cshtml" />
-    <Content Include="Areas\Account\Views\Module\Index.cshtml" />
-    <Content Include="Areas\Account\Views\Module\List.cshtml" />
-    <Content Include="Areas\Account\Views\Module\Search.cshtml" />
     <Content Include="Areas\Account\Views\Module\SetButton.cshtml" />
     <Content Include="Areas\Account\Views\Permission\Edit.cshtml" />
     <Content Include="Areas\Account\Views\Permission\Index.cshtml" />
     <Content Include="Areas\Account\Views\Permission\List.cshtml" />
     <Content Include="Areas\Account\Views\Permission\Search.cshtml" />
-    <Content Include="Areas\Account\Views\Role\Edit.cshtml" />
-    <Content Include="Areas\Account\Views\Role\Index.cshtml" />
-    <Content Include="Areas\Account\Views\Role\List.cshtml" />
     <Content Include="Areas\Account\Views\Role\Permission.cshtml" />
-    <Content Include="Areas\Account\Views\Role\Search.cshtml" />
     <Content Include="Areas\Account\Views\Role\SetPermission.cshtml" />
-    <Content Include="Areas\Account\Views\Role\_FormModalPermission.cshtml" />
     <Content Include="Areas\Account\Views\User\Edit.cshtml" />
     <Content Include="Areas\Account\Views\User\Index.cshtml" />
-    <Content Include="Areas\Account\Views\User\List.cshtml" />
-    <Content Include="Areas\Account\Views\User\Search.cshtml" />
     <Content Include="Areas\Account\Views\Web.config" />
     <Content Include="Areas\Account\Views\_ViewStart.cshtml" />
     <Content Include="content\bootstrap-datetimepicker.css" />
@@ -661,7 +655,6 @@
     <Folder Include="Areas\SysConfig\Models\" />
     <Folder Include="Extension\HtmlHelper\" />
     <Folder Include="Extension\Ioc\" />
-    <Folder Include="Models\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
@@ -743,7 +736,16 @@
     <Content Include="Views\Home\Welcome.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Account\Views\User\Edit - 复制.cshtml" />
+    <Content Include="Areas\Account\Views\Module\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Account\Views\Module\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Account\Views\Role\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Account\Views\Role\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

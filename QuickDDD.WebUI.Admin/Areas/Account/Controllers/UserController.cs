@@ -1,5 +1,6 @@
 ﻿using Quick.Application;
 using Quick.WebUI.Admin.Controllers;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -29,12 +30,6 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
         public JsonResult List(UserQueryInput input)
         {
             var list = _userService.GetAll(input);
-
-            var json = new
-            {
-                pageCount = list.total,
-                pageData = list.rows
-            };
             return ToJson(list);
         }
 
@@ -64,18 +59,30 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             return Json(1, JsonRequestBehavior.AllowGet);
         }
 
+        [PermissionValidation(false)]
+        public JsonResult CreateOrUpdate(UserDto model)
+        {
+            if (model.Id == 0)
+            {
+                this.Create(model);
+            }
+            else
+            {
+                this.Update(model);
+            }
+            return Json(1, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult Create(UserDto model)
         {
             _userService.Create(model);
             return Json(1, JsonRequestBehavior.AllowGet);
-
         }
 
         public JsonResult Update(UserDto model)
         {
             _userService.Update(model);
             return Json(1, JsonRequestBehavior.AllowGet);
-
         }
 
     }

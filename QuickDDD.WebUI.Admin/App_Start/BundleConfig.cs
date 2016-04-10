@@ -30,11 +30,11 @@ namespace Quick.WebUI.Admin
                         "~/scripts/jquery-1.11.3.js",
                         "~/scripts/bootstrap.js",
                         "~/scripts/juicer.js",
-                        "~/js/site.js",
                         "~/scripts/jquery-ui.js",
                         "~/js/modal/bootstrap-modal.js",
                          "~/js/modal/bootstrap-modalmanager.js",
                         "~/js/modal/bootbox.js",
+                        "~/js/site.js",
                          "~/js/site-dialog.js"
                         ));
 
@@ -54,6 +54,7 @@ namespace Quick.WebUI.Admin
             //        //表单页面需引用的js
             bundles.Add(new ScriptBundle("~/js/form").Include(
                       "~/scripts/jquery.validate.js",
+                      "~/scripts/additional-methods.js",
                       "~/js/site-form.js",
                       "~/js/site-validate.js"));
         }

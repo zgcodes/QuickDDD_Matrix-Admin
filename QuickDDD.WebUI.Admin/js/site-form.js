@@ -5,27 +5,27 @@
  * 描述：站点页面表单工具类
  */
 var site = site || {};
-$(function() {
-	site.form = {};
-	
-	//ajax form提交
-	site.form.ajax = function (selector, options) {
-		options = options || {};
-		var _default = {
-			method: 'POST'
-		};
+$(function () {
+    site.form = {};
+
+    //ajax form提交
+    site.form.ajax = function (selector, options) {
+        options = options || {};
+        var _default = {
+            method: 'POST'
+        };
         $.extend(true, _default, options);
 
         var model = site.form.serializeObject(selector);
         _default.data = $.extend({}, options.data || {}, model);
         var submitButton = $(selector).find(":submit");
         submitButton.prop("disabled", true);
-        site.ajax(_default);
+        return site.ajax(_default);
     };
-    
+
     //序列化form里的表单
-    site.form.serializeObject =  function (form) {
-    	var _form = $(form);
+    site.form.serializeObject = function (form) {
+        var _form = $(form);
         if (_form.length < 1) {
             return false;
         }
@@ -56,5 +56,5 @@ $(function() {
         _form.find(selector).each(parse);
         return data;
     };
-    
+
 });

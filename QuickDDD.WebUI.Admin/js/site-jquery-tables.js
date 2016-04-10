@@ -127,9 +127,9 @@ $(function () {
 
         refresh: function (isRepeatLoad) {
             var table = this.$selector.DataTable();
-            // 局部绘制列表刷新
-            if (isRepeatLoad !== true) {
-                isRepeatLoad = false;
+            // 局部绘制列表刷新 czg
+            if (isRepeatLoad !== false) {
+                isRepeatLoad = true;
                 var selectArray = [];
                 this.$selector.find("tbody > tr").each(function (i, el) {
                     if ($(el).find("td:eq(0) input[type=checkbox]").prop("checked") && $(el).closest('tr').attr("id")) {
@@ -406,7 +406,11 @@ $(function () {
             var _this = this;
             //绑定刷新按钮
             $("#btnReload").on("click", function () {
-                _this.refresh(false);
+                $("#filterbar").find("input,select").not("input[type='hidden']").not("[reset='false']").each(function (i, v) {
+                    $(v).val("");
+                    console.info($(v).attr("placeholder"), $(v).val() + "***看看*前面有值吗?");
+                });
+                _this.refresh(true);
             });
         }
     }
@@ -595,31 +599,31 @@ function fillFilterParams() {
 }
 
 /********Render方法********/
-renderBool = function (obj, data) {
+renderBool = function (val) {
     var html = '';
-    if (data === true)
-        html = '<i class="icon-ok" style="color:#009000;">启用</i>';
+    if (val == true)
+        html = '<i style="color:green;">启用</i>';
     else
-        html = '<i class="icon-remove" style="color:#bbb; font-size:60%">停用</i>';
+        html = '<i style="color:red; font-size:60%">停用</i>';
     return html;
 }
 
-renderDateTime = function (obj, data) {
-    return data == null ? "" : data;
+renderDateTime = function (val) {
+    return val == null ? "" : val;
 }
 
-renderDatetimeShort = function (obj, data) {
-    return data == null ? "" : data.substr(0, 16);
+renderDatetimeShort = function (val) {
+    return val == null ? "" : val.substr(0, 16);
 }
 
-renderDate = function (obj, data) {
-    return data == null ? "" : data.substr(0, 10);
+renderDate = function (val) {
+    return val == null ? "" : val.substr(0, 10);
 }
 
-renderIcon = function (obj, data) {
-    return '<i class="' + data + '"></i>';
+renderIcon = function (val) {
+    return '<i class="' + val + '"></i>';
 }
 
-renderPicUrl = function (obj, data) {
-    return '<img src="' + abp.resourcePath + data + '" width="45" height="30"/>';
+renderPicUrl = function (val) {
+    return '<img src="' + site.resourcePath + val + '" width="45" height="30"/>';
 }

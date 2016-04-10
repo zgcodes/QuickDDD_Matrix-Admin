@@ -6,6 +6,11 @@ namespace Quick.Application
 {
     public class UserDto : DtoBase
     {
+        public UserDto()
+        {
+            SelectedRoleIds = new List<int>();
+            UserRole = new List<UserRole>();
+        }
 
         public string LoginName { get; set; }
         public string LoginPwd { get; set; }

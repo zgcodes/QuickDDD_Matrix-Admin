@@ -30,7 +30,7 @@ namespace Quick.WebUI.Admin
 
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-         
+
 
             //验证用户是否登录
             var user = filterContext.HttpContext.Session["CurrentUser"] as UserDto;
@@ -62,6 +62,10 @@ namespace Quick.WebUI.Admin
 
         public bool IsAllowed(UserDto user, string controller, string action)
         {
+            if (user.UserRole == null)
+            {
+                return false;
+            }
             var roleIds = user.UserRole.Select(t => t.RoleId);
             var isHavaPermission = _roleService.IsHavaPermission(new GetUserPermissionInput() { RoleIdList = roleIds.ToList(), Controller = controller, Action = action });
             return isHavaPermission;

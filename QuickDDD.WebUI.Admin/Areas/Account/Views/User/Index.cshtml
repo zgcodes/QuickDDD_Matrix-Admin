@@ -2,9 +2,11 @@
     var buttonList = new List<ButtonModel>();
     buttonList = ViewBag.ButtonList ?? buttonList;
 
+    var createButton = new ButtonModel();
     var editButton = new ButtonModel();
     var deleteButton = new ButtonModel();
 
+    createButton = buttonList.FirstOrDefault(m => m.Code.ToLower() == "create");
     editButton = buttonList.FirstOrDefault(m => m.Code.ToLower() == "update");
     deleteButton = buttonList.FirstOrDefault(m => m.Code.ToLower() == "delete");
 }
@@ -29,6 +31,10 @@
                 <!-- 过滤条件end -->
 
                 <div class="buttons-panel">
+                    @if (createButton != null)
+                    {
+                        <button id="addButton" class="btn btn-default"><span class=@createButton.Icon></span>@createButton.Text</button>
+                    }
                     @if (editButton != null)
                     {
                         <button id="editButton" class="btn btn-default"><span class=@editButton.Icon></span>@editButton.Text</button>
@@ -75,19 +81,46 @@
             };
             site.tables.init($("table"), defaults);
 
+            $("#addButton").on("click", function () {
+                site.dialog({
+                    href: "/Account/User/Edit",
+                    height: 600,
+                    width: 1000,
+                    title: "新增",
+                    callback: site.tables.refresh
+                });
+            });
+
             $("#editButton").on("click", function () {
                 var row = site.tables.getSelectedOneRowData();
                 if (!row) {
                     top.site.error("请选择一行数据！");
                     return;
                 }
-                top.site.dialog({
+                site.dialog({
                     href: "/Account/User/Edit?id=" + row.Id,
                     height: 600,
                     width: 1000,
-                    title: "编辑"
+                    title: "编辑",
+                    callback: site.tables.refresh
                 });
+            });
 
+            $("#deleteButton").on("click", function () {
+                var row = site.tables.getSelectedOneRowData();
+                if (!row) {
+                    site.error("请选择一行数据！");
+                    return;
+                }
+                site.confirm("您确认要删除选中的行吗？", function (result) {
+                    if (!result) return; //取消
+                    site.ajax({
+                        url: "/Account/User/Delete?id=" + row.Id
+                    }).done(function (ret) {
+                        site.success("删除成功");
+                        site.tables.refresh();
+                    });
+                });
             });
         });
     </script>

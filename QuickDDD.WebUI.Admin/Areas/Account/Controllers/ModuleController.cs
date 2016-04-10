@@ -34,14 +34,7 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
         public JsonResult List(ModuleQueryInput input)
         {
             var list = _moduleService.GetAll(input);
-
-            var json = new
-            {
-                iTotalRecords = list.total,
-                iTotalDisplayRecords = list.total,
-                aaData = list.rows
-            };
-            return Json(json, JsonRequestBehavior.AllowGet);
+            return ToJson(list);
         }
 
         /// <summary>
@@ -90,6 +83,21 @@ namespace Quick.WebUI.Admin.Areas.Account.Controllers
             _moduleService.SetButton(dto);
             return Json(1, JsonRequestBehavior.AllowGet);
         }
+
+        [PermissionValidation(false)]
+        public JsonResult CreateOrUpdate(ModuleDto model)
+        {
+            if (model.Id == 0)
+            {
+                this.Create(model);
+            }
+            else
+            {
+                this.Update(model);
+            }
+            return Json(1, JsonRequestBehavior.AllowGet);
+        }
+
 
         public JsonResult Create(ModuleDto model)
         {
