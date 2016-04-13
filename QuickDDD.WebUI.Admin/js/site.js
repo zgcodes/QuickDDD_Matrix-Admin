@@ -29,6 +29,8 @@ $(function () {
         var _defalut = {
             type: "POST",
             dataType: "json",
+            data: {},
+            cache: false,
             error: function (xhr, errorType, error) {
                 console.info(xhr, errorType, error);
             },
@@ -51,11 +53,7 @@ $(function () {
                 site.hidePreloader();
             }
         }
-        //return $.Deferred(function ($dfd) {        //    $.ajax(options);
-        //});
         return $.ajax(options);
-
-
     }
 
     //显示提示加载框

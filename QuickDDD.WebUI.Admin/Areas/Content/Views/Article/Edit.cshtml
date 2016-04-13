@@ -1,54 +1,104 @@
 ﻿@model Quick.Application.ArticleDto
-@{
-    Layout = null;
+@section css{
+    <link href="~/content/summernote.css" rel="stylesheet" />
 }
+<div class="page-content">
+    <form id="myform" method="post">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="hidden" name="Content" id="Content" value="@Model.Content" />
+        <div class="container form-horizontal padding-top-30">
+            <div class="clearfix">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        标题:<span class="asterisk">*</span>
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(t => t.Name, new { @class = "form-control required" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        简介:
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.TextAreaFor(t => t.Introduction, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        文章内容:<span class="asterisk">*</span>
+                    </label>
+                    <div class="col-sm-8">
+                        <div class="summernote"><p>@Model.Content</p></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        备注:
+                    </label>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" rows="2" name="Remark">@Model.Remark</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="wx-form-footer fixed">
+                <button id="btn-save" type="submit" class="btn btn-primary btn-lg w100">保存</button>
+                <button id="btn-cancel" type="button" class="btn btn-default btn-lg w100">取消</button>
+            </div>
+        </div>
+    </form>
+</div>
+@section js{
+    <script src="~/scripts/summernote.js"></script>
+    <script src="~/scripts/summernote-zh-CN.js"></script>
+    @Scripts.Render("~/js/form")
 
-<input type="hidden" name="Id" value="@Model.Id" />
-
-<div class="control-group">
-    <label class="control-label-form">
-        <label class="red">*</label>标题:
-    </label>
-    <div class="controls">
-        @Html.TextBoxFor(t => t.Name, new { @class = "form-control" })
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label-form">
-        <label class="red">*</label>简介:
-    </label>
-    <div class="controls">
-        @Html.TextAreaFor(t => t.Introduction, new { @class = "form-control" })
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label-form">
-        <label class="red">*</label>文章内容:
-    </label>
-    <div class="controls">
-        <textarea class="form-control" rows="8" name="Content">@Model.Content</textarea>
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label-form">
-        <label class="red"></label>备注:
-    </label>
-    <div class="controls">
-        @Html.TextAreaFor(t => t.Remark, new { @class = "form-control" })
-    </div>
-</div>
-
-    <link href="~/Content/summernote/dist/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/summernote/dist/summernote.css" rel="stylesheet" />
-@*
-    <script src="~/Content/summernote/dist/jquery.min.js"></script>
-    <script src="~/Content/summernote/dist/bootstrap.js"></script>
-    <script src="~/Content/summernote/dist/summernote.min.js"></script>
-    <script src="~/Content/summernote/lang/summernote-zh-CN.js"></script>*@
-<script src="~/Content/summernote/dist/summernote.min.js"></script>
-<script src="~/Content/summernote/lang/summernote-zh-CN.js"></script>
-    <script>
+    <script type="text/javascript">
         $(function () {
-            $('.summernote').summernote({ lang: 'zh-CN' });
+            $('.summernote').summernote({
+                height: 200,
+                lang: 'zh-CN',
+                placeholder: '属于我的文章'
+                //onImageUpload: function (files, editor, welEditable) {
+                //    //sendFile(files[0], editor, welEditable);
+                //}
+            });
+
+            function sendFile(file, editor, welEditable) {
+                data = new FormData();
+                data.append("file", file);
+                site.ajax({
+                    data: data,
+                    type: "POST",
+                    url: "",
+                    cache: false,
+                    success: function (data) {
+                        editor.insertImage(welEditable, data.url);
+                    }
+                });
+            }
+
+            //没效果
+            //$('.summernote').summernote({
+            //    onblur: function (e) {
+            //var sHTML = $('.summernote').code();
+            ////赋值
+            //$('#Content').code(sHTML);
+            //    }
+            //});
+
+            site.validate.form("#myform", {
+                url: "/Content/Article/CreateOrUpdate"
+            }, {
+                rules: {
+                },
+                beforeSubmit: function () { //取值
+                    var sHTML = $('.summernote').summernote('code');
+                    //赋值
+                    $('#Content').val(sHTML);
+                    return true;
+                }
+            });
         });
     </script>
+}

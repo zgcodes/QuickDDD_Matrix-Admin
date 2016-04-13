@@ -146,7 +146,8 @@ $(function () {
                 try {
                     var _defalut_ajax_options = {};
                     if (typeof _default_validate_options.beforeSubmit === "function") {
-                        var funResult = validOpt.beforeSubmit(setting);
+                        //TODO ： 这里会报错，优化 czg
+                        var funResult = validateOptions.beforeSubmit(_defalut_ajax_options);
                         if (!funResult) {
                             console.info("不提交了");
                             return;
@@ -156,12 +157,15 @@ $(function () {
                         }
                     }
                     $.extend(true, _defalut_ajax_options, ajaxFormOptions);
+
                     site.form.ajax(selector, ajaxFormOptions)
                         .done(function (result) {
                             site.success("操作成功");
                             site.closeDialog();
                         }).fail(function (result) {
                             site.error("保存失败！");
+                            var submitButton = $(selector).find(":submit");
+                            submitButton.prop("disabled", false);
                         });
                     return false;
                 } catch (e) {

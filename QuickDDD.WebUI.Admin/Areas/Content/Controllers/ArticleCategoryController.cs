@@ -54,6 +54,20 @@ namespace Quick.WebUI.Admin.Areas.Content
             return Json(1, JsonRequestBehavior.AllowGet);
         }
 
+        [PermissionValidation(false)]
+        public JsonResult CreateOrUpdate(ArticleCategoryDto model)
+        {
+            if (model.Id == 0)
+            {
+                this.Create(model);
+            }
+            else
+            {
+                this.Update(model);
+            }
+            return Json(1, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult Create(ArticleCategoryDto model)
         {
             _articlecategoryService.Create(model);

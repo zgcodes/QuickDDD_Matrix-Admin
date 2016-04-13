@@ -30,6 +30,11 @@ namespace Quick.WebUI.Admin.Controllers
         //登录界面
         public ActionResult Index()
         {
+            if (Session["CurrentUser"] != null)
+            {
+                //检查用户是否已经登录，如已经登录，直接进入操作界面
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 

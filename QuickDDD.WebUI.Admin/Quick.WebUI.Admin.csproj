@@ -387,15 +387,9 @@
     <Content Include="Areas\SysConfig\Views\Appendix\Icon.cshtml" />
     <Content Include="Areas\SysConfig\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Content\Views\ArticleCategory\Edit.cshtml" />
-    <Content Include="Areas\Content\Views\ArticleCategory\Index.cshtml" />
-    <Content Include="Areas\Content\Views\ArticleCategory\List.cshtml" />
-    <Content Include="Areas\Content\Views\ArticleCategory\Search.cshtml" />
     <Content Include="Areas\Content\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Content\Views\Web.config" />
     <Content Include="Areas\Content\Views\Article\Edit.cshtml" />
-    <Content Include="Areas\Content\Views\Article\Index.cshtml" />
-    <Content Include="Areas\Content\Views\Article\List.cshtml" />
-    <Content Include="Areas\Content\Views\Article\Search.cshtml" />
     <Content Include="Areas\Common\Views\Demo\Index.cshtml" />
     <Content Include="images\door.jpg" />
     <Content Include="images\goldfish.ico" />
@@ -749,6 +743,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Account\Views\Permission\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Content\Views\ArticleCategory\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Content\Views\Article\Index - 复制.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Content\Views\Article\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
