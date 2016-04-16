@@ -178,8 +178,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Areas\Account\Views\Module\SetButton.cshtml" />
     <Content Include="Areas\Account\Views\Permission\Edit.cshtml" />
-    <Content Include="Areas\Account\Views\Permission\List.cshtml" />
-    <Content Include="Areas\Account\Views\Permission\Search.cshtml" />
     <Content Include="Areas\Account\Views\Role\Permission.cshtml" />
     <Content Include="Areas\Account\Views\Role\SetPermission.cshtml" />
     <Content Include="Areas\Account\Views\User\Edit.cshtml" />
@@ -746,9 +744,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Content\Views\ArticleCategory\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Content\Views\Article\Index - 复制.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Content\Views\Article\Index.cshtml" />

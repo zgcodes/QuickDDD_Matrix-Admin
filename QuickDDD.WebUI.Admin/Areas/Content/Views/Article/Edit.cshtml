@@ -29,7 +29,7 @@
                         文章内容:<span class="asterisk">*</span>
                     </label>
                     <div class="col-sm-8">
-                        <div class="summernote"><p>@Model.Content</p></div>
+                        <div class="summernote" on-image-upload="uploadImage(files[0])"></div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -48,6 +48,7 @@
         </div>
     </form>
 </div>
+
 @section js{
     <script src="~/scripts/summernote.js"></script>
     <script src="~/scripts/summernote-zh-CN.js"></script>
@@ -57,35 +58,29 @@
         $(function () {
             $('.summernote').summernote({
                 height: 200,
-                lang: 'zh-CN',
-                placeholder: '属于我的文章'
-                //onImageUpload: function (files, editor, welEditable) {
-                //    //sendFile(files[0], editor, welEditable);
-                //}
+                lang: 'zh-CN'
             });
 
-            function sendFile(file, editor, welEditable) {
+            $('.summernote').on('summernote.image.upload', function (editor, files) {
+                uploadImage(files[0]);
+            })
+
+            function uploadImage(file) {
                 data = new FormData();
                 data.append("file", file);
                 site.ajax({
                     data: data,
                     type: "POST",
-                    url: "",
-                    cache: false,
-                    success: function (data) {
-                        editor.insertImage(welEditable, data.url);
+                    contentType: false,   // 告诉jQuery不要去设置Content-Type请求头，请求类型是request payload，设为true则是FormData
+                    processData: false,// 告诉jQuery不要去处理发送的数据
+                    url: site.config.uploadPath + "/UploadImage",
+                    success: function (url) {
+                        $('.summernote').summernote('editor.insertImage', site.config.resourecePath + "/UploadImages/" + url);
                     }
                 });
             }
 
-            //没效果
-            //$('.summernote').summernote({
-            //    onblur: function (e) {
-            //var sHTML = $('.summernote').code();
-            ////赋值
-            //$('#Content').code(sHTML);
-            //    }
-            //});
+            $('.summernote').summernote('code', $('#Content').val())
 
             site.validate.form("#myform", {
                 url: "/Content/Article/CreateOrUpdate"

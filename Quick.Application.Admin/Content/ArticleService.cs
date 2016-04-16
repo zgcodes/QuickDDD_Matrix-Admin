@@ -24,6 +24,7 @@ namespace Quick.Application
         public QueryRequestOut<ArticleItem> GetAll(ArticleQueryInput input)
         {
             return _articleRepository.GetAll()
+                .Where(m=>!m.IsDeleted)
                 .WhereIf(!input.Keywords.IsNullOrWhiteSpace(),m=>m.Name.Contains(input.Keywords))
                 .ToOutPut<ArticleItem>(input);
         }

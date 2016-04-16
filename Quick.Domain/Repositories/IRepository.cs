@@ -6,8 +6,8 @@ using System.Linq;
 namespace Quick.Domain
 {
     // 仓储接口
-    public interface IRepository<TEntity> :IDependency
-        where TEntity :Entity
+    public interface IRepository<TEntity> : IDependency
+        where TEntity : Entity
     {
         IQueryable<TEntity> GetAll();
 

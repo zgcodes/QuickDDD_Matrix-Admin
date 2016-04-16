@@ -12,10 +12,10 @@ using System;
 
 namespace Quick.Application
 {
-	public class ArticleCategoryService : IArticleCategoryService
-	{
+    public class ArticleCategoryService : IArticleCategoryService
+    {
         private readonly IArticleCategoryRepository _articlecategoryRepository;
-		
+
         public ArticleCategoryService(IArticleCategoryRepository articlecategoryRepository)
         {
             _articlecategoryRepository = articlecategoryRepository;
@@ -24,7 +24,8 @@ namespace Quick.Application
         public QueryRequestOut<ArticleCategoryItem> GetAll(ArticleCategoryQueryInput input)
         {
             return _articlecategoryRepository.GetAll()
-                .WhereIf(!input.Keywords.IsNullOrWhiteSpace(),m=>m.Name.Contains(input.Keywords))
+                .Where(m => !m.IsDeleted)
+                .WhereIf(!input.Keywords.IsNullOrWhiteSpace(), m => m.Name.Contains(input.Keywords))
                 .ToOutPut<ArticleCategoryItem>(input);
         }
 
@@ -50,5 +51,5 @@ namespace Quick.Application
             _articlecategoryRepository.Delete(id);
         }
 
-	}
+    }
 }

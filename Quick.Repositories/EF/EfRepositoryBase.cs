@@ -57,7 +57,8 @@ namespace Quick.Repositories
 
         public virtual void DeleteList(List<int> idList)
         {
-            foreach (int id in idList) {
+            foreach (int id in idList)
+            {
                 TEntity entity = dbSet.Find(id);
                 Delete(entity);
             }
@@ -71,7 +72,8 @@ namespace Quick.Repositories
                 (entity as ISoftDelete).IsDeleted = true;
                 Update(entity);
             }
-            else {
+            else
+            {
                 //真删
                 //EntityState.Detached:对象存在，但没有被跟踪。 在创建实体之后、但将其添加到对象上下文之前，该实体处于此状态
                 if (context.Entry(entity).State == EntityState.Detached)
@@ -82,7 +84,7 @@ namespace Quick.Repositories
                 context.SaveChanges();
                 DetachedAllEntities();
             }
-           
+
         }
 
         public virtual void Update(TEntity entity)

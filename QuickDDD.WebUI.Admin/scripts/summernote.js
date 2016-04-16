@@ -6676,7 +6676,7 @@
         onKeyup: null,
         onKeydown: null,
         onSubmit: null,
-        onImageUpload: null,
+        onImageUpload: function () { },
         onImageUploadError: null
       },
 
