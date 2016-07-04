@@ -1,0 +1,446 @@
+
+@font-face {
+    font-family: 'iconfont';
+    src: url('//at.alicdn.com/t/font_1464620747_6430833.eot'); /* IE9*/
+    src: url('//at.alicdn.com/t/font_1464620747_6430833.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//at.alicdn.com/t/font_1464620747_6430833.woff') format('woff'), /* chrome、firefox */
+    url('//at.alicdn.com/t/font_1464620747_6430833.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/font_1464620747_6430833.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+/* iconfont的一种使用方法上面及下面（另一种是直接引用css，省去这些类的定义）
+
+
+.iconfont {
+    font-family: iconfont !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-stroke-width: .2px
+}
+
+.icon-wenzhang:before {
+    content: "\e604"
+}
+*/
+/*基本格式*/
+body {
+    color: #666;
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    -webkit-overflow-scrolling: touch;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: none;
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.4, .01, .165, .99);
+    transition: transform .2s cubic-bezier(.4, .01, .165, .99), -webkit-transform .2s cubic-bezier(.4, .01, .165, .99)
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    margin: 0;
+    padding: 0
+}
+
+a, a:hover {
+    color: #2479CC;
+    text-decoration: none
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+ul, ol {
+    padding: 0
+}
+
+body.side {
+    position: fixed;
+    -webkit-transform: translate3D(250px, 0, 0);
+    -ms-transform: translate3D(250px, 0, 0);
+    transform: translate3D(250px, 0, 0)
+}
+
+/*左边栏*/
+#sidebar {
+    left: 0;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    width: 250px;
+    background-color:#202020;
+}
+
+/*sidebar-mask 与header begain*/
+#sidebar-mask {
+    background-color: rgba(255, 255, 255, 0);
+    bottom: 0;
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 999
+}
+
+#sidebar-mask, #header {
+    left: 0;
+    overflow: hidden;
+    top: 0
+}
+
+#header {
+    display: none;
+    background-color: #323436;
+    height: 50px;
+    line-height: 50px;
+    position: fixed;
+    width: 100%;
+    z-index: 9
+}
+
+#header h1 {
+    font-size: 16px;
+    text-align: center
+}
+
+#header h1 a {
+    color: #999
+}
+
+#header .btn-bar {
+    height: 50px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 50px
+}
+
+body.side #header .btn-bar i {
+    opacity: 0
+}
+
+body.side #header .btn-bar:before {
+    top: 25px;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    width: 24px
+}
+
+body.side #header .btn-bar:after {
+    bottom: 24px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 24px
+}
+
+#header .btn-bar i, #header .btn-bar:after, #header .btn-bar:before {
+    background-color: #999;
+    height: 1px;
+    left: 14px;
+    position: absolute;
+    -webkit-transition: all .2s cubic-bezier(.4, .01, .165, .99) .3s;
+    transition: all .2s cubic-bezier(.4, .01, .165, .99) .3s;
+    width: 22px
+}
+
+#header .btn-bar i {
+    opacity: 1;
+    top: 25px
+}
+
+#header .btn-bar:before {
+    content: '';
+    top: 17px
+}
+
+#header .btn-bar:after {
+    bottom: 16px;
+    content: ''
+}
+
+#header a.me {
+    position: absolute;
+    right: 10px;
+    top: 10px
+}
+
+#header a.me, #header a.me img {
+    border-radius: 30px;
+    height: 30px;
+    overflow: hidden;
+    width: 30px
+}
+
+/*sidebar-mask 与header end*/
+
+#main {
+    background-color: #fff;
+    max-width: 1390px;
+    -webkit-overflow-scrolling: touch;
+    padding-left: 290px;
+    padding-right: 40px
+}
+
+article {
+    padding: 30px 0;
+}
+
+article h1 .title {
+    font-size: 2em;
+    font-weight: 300;
+    line-height: 35px;
+    margin-bottom: 25px;
+}
+
+article h1.title, article h1.title a {
+    color: #333;
+}
+
+article h1.title a:hover {
+    color: #2479CC;
+    transition: color .3s
+}
+
+article .entry-content {
+    font-size: 16px;
+    line-height: 1.8;
+    word-wrap: break-word;
+}
+
+article p.more {
+    font-size: 14px;
+    margin: 5px 0
+}
+
+article, .pagination {
+    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #ffffff;
+    position: relative;
+}
+
+.pagination {
+    line-height: 20px;
+    overflow: hidden;
+    padding: 20px 0;
+    width: 100%
+}
+
+.pagination .next {
+    float: right;
+}
+
+.pagination .center {
+    margin: auto;
+    text-align: center;
+    width: 80px;
+}
+
+/*左边 外层元素负责定位*/
+#sidebar .profile a {
+    display: block;
+    margin: 0 auto;
+}
+
+#sidebar .profile {
+    padding-top: 40px;
+    padding-bottom: 10px;
+}
+
+#sidebar .profile a, #sidebar .profile image {
+    max-width: 140px;
+    max-height: 140px;
+    overflow: hidden;
+    border-radius: 70px;
+}
+
+#sidebar .profile span {
+    display: block;
+    color: #999;
+    font-size: 18px;
+    margin: 10px 0px;
+    text-align: center;
+
+}
+
+#sidebar li, #sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#sidebar .buttons {
+    margin: 0 0 20px;
+}
+
+#sidebar .buttons li {
+    display: block;
+    font-size: 16px;
+    height: 45px;
+    line-height: 45px;
+    width: 100%;
+}
+#sidebar .buttons li a {
+    color: #999;
+    display: block;
+    padding-left: 25px;
+    text-decoration: none;
+    -webkit-transition: color .2s cubic-bezier(.4, .01, .165, .99);
+    transition: color .2s cubic-bezier(.4, .01, .165, .99);
+}
+#sidebar .buttons li a:hover {
+    color: rgba(153, 153, 153, .8)
+}
+
+#sidebar .buttons li a i {
+    font-size: 20px;
+    height: 45px;
+    line-height: 45px;
+    margin-right: 20px;
+    text-align: center;
+    width: 25px;
+}
+#sidebar .buttons li a i, #sidebar .buttons li a span {
+    display: inline-block;
+    vertical-align: middle;
+}
+#footer {
+    text-align: center;
+}
+
+/*响应式代码  begain*/
+
+@media screen and (max-width: 768px) {
+    #header {
+        display: block;
+        -webkit-transform: translate3D(0, 0, 0);
+        -ms-transform: translate3D(0, 0, 0);
+        transform: translate3D(0, 0, 0);
+        -webkit-transition: all .2s cubic-bezier(.4, .01, .165, .99);
+        transition: all .2s cubic-bezier(.4, .01, .165, .99)
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #sidebar {
+        -webkit-transition: -webkit-transform .2s cubic-bezier(.4, .01, .165, .99);
+        transition: transform .2s cubic-bezier(.4, .01, .165, .99), -webkit-transform .2s cubic-bezier(.4, .01, .165, .99)
+    }
+
+    #sidebar.behavior_1 {
+        -webkit-transform: translate3D(-250px, 0, 0);
+        -ms-transform: translate3D(-250px, 0, 0);
+        transform: translate3D(-250px, 0, 0)
+    }
+
+    #sidebar.behavior_2 {
+        -webkit-transform: translate3D(0, 0, 0);
+        -ms-transform: translate3D(0, 0, 0);
+        transform: translate3D(0, 0, 0)
+    }
+
+    #sidebar .profile {
+        padding-top: 20px;
+        padding-bottom: 20px
+    }
+
+    #sidebar .profile a, #sidebar .profile img {
+        border-radius: 100px;
+        height: 100px;
+        width: 100px
+    }
+
+    #sidebar .profile span {
+        display: none
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    #sidebar {
+        width: 75px
+    }
+
+    #sidebar .profile {
+        padding-top: 20px
+    }
+
+    #sidebar .profile a, #sidebar .profile img {
+        border-radius: 40px;
+        height: 40px;
+        width: 40px
+    }
+
+    #sidebar .profile span {
+        display: none
+    }
+
+    #sidebar .buttons li a {
+        padding: 0
+    }
+
+    #sidebar .buttons li a i {
+        display: block;
+        font-size: 18px;
+        margin: 0 auto
+    }
+
+    #sidebar .buttons li a span {
+        display: none
+    }
+
+    #sidebar .buttons li a.inline {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    #main {
+        padding-left: 115px
+    }
+}
+
+@media screen and (max-width: 769px) {
+    #main {
+        min-height: 100%;
+        padding-top: 50px;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    article {
+        background-color: #fff;
+        padding: 10px
+    }
+
+    article h1 {
+        font-size: 22px;
+        margin: 0;
+        padding: 5px 0 10px
+    }
+
+    article .meta {
+        display: none
+    }
+
+    article .desc {
+        color: #999;
+        font-size: 14px
+    }
+
+    article p.more {
+        font-size: 14px;
+        margin: 5px 0
+    }
+}

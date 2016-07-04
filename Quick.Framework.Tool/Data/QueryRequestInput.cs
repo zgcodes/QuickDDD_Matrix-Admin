@@ -12,6 +12,12 @@ namespace Quick.Framework.Tool
     public class QueryRequestInput
     {
 
+        public QueryRequestInput()
+        {
+            pageNumber = 1;
+            pageSize = 10;
+        }
+
         public string Keywords { get; set; }//搜索关键词
 
         /// <summary>

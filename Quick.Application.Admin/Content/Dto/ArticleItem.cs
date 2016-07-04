@@ -10,17 +10,10 @@ namespace Quick.Application
 
     public class ArticleItem : DtoBase
     {
-                    public string Name { get; set; }
-                   public string Content { get; set; }
-                   public string Introduction { get; set; }
-                   public string Remark { get; set; }
-                   public string IsDeleted { get; set; }
-                   public string DeletedTime { get; set; }
-                   public string CreateId { get; set; }
-                   public string CreateBy { get; set; }
-                   public string CreateTime { get; set; }
-                   public string ModifyId { get; set; }
-                   public string ModifyBy { get; set; }
-                   public string ModifyTime { get; set; }
+        public string Name { get; set; }
+        public string Content { get; set; }
+        public string Introduction { get; set; }
+        public string Remark { get; set; }
+        public string CreateTime { get; set; }
     }
 }

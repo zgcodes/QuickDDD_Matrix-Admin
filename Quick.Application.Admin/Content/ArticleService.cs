@@ -12,10 +12,10 @@ using System;
 
 namespace Quick.Application
 {
-	public class ArticleService : IArticleService
-	{
+    public class ArticleService : IArticleService
+    {
         private readonly IArticleRepository _articleRepository;
-		
+
         public ArticleService(IArticleRepository articleRepository)
         {
             _articleRepository = articleRepository;
@@ -24,8 +24,8 @@ namespace Quick.Application
         public QueryRequestOut<ArticleItem> GetAll(ArticleQueryInput input)
         {
             return _articleRepository.GetAll()
-                .Where(m=>!m.IsDeleted)
-                .WhereIf(!input.Keywords.IsNullOrWhiteSpace(),m=>m.Name.Contains(input.Keywords))
+                .Where(m => !m.IsDeleted)
+                .WhereIf(!input.Keywords.IsNullOrWhiteSpace(), m => m.Name.Contains(input.Keywords))
                 .ToOutPut<ArticleItem>(input);
         }
 
@@ -51,5 +51,23 @@ namespace Quick.Application
             _articleRepository.Delete(id);
         }
 
-	}
+        #region 前端接口
+
+        public List<ArticleItem> GetArticleList(ArticleQueryInput input)
+        {
+            var query = _articleRepository.GetAll()
+                .Where(m => !m.IsDeleted)
+                .WhereIf(!input.Keywords.IsNullOrWhiteSpace(), m => m.Name.Contains(input.Keywords))
+                .OrderByDescending(m => m.CreateTime).Skip(input.iDisplayStart).Take(input.pageSize)
+                .Select(m => new ArticleItem
+                {
+                    Content = m.Content.Contains("&lt;!--以上是摘要--&gt;") ? m.Content.Substring(0, m.Content.IndexOf("&lt;!--以上是摘要--&gt;")) : m.Introduction,
+                    Id = m.Id,
+                    Name = m.Name
+                });
+            return query.ToList();
+        }
+
+        #endregion
+    }
 }

@@ -10,7 +10,7 @@ namespace Quick.Repositories
     /// <summary>
     /// 数据库初始化策略
     /// </summary>
-    public class SampleDataInitializer : DropCreateDatabaseAlways<QuickDbContext>
+    public class SampleDataInitializer : CreateDatabaseIfNotExists<QuickDbContext>
     {
         //始化策略满足时执行
         protected override void Seed(QuickDbContext context)
@@ -31,6 +31,94 @@ namespace Quick.Repositories
             };
             roles.ForEach(s => context.Roles.Add(s));
             context.SaveChanges();
+
+            List<Module> moduleList = new List<Module>()
+                {
+                    new Module()
+                    {
+                    Id=1,
+                    ParentId = 0,
+                    Name = "权限管理",
+                    ChildModule = new List<Module>()
+                    {
+                        new Module()
+                        {
+                        Id=11,
+                        ParentId = 1,
+                        Name="用户管理",
+                        Icon = "icon-cloud",
+                        Area = "Account",
+                        Controller = "User",
+                        Action = "Index",
+                        LinkUrl = "Account/User/Index"
+                        },
+                        new Module()
+                        {
+                        Id=12,
+                        ParentId = 1,
+                        Name="模块管理",
+                        Icon = "icon-cloud",
+                        Area = "Account",
+                        Controller = "Module",
+                        Action = "Index",
+                        LinkUrl = "Account/Module/Index"
+                        },
+                         new Module()
+                        {
+                        Id=13,
+                        ParentId = 1,
+                        Name="角色管理",
+                        Icon = "icon-cloud",
+                        Area = "Account",
+                        Controller = "Role",
+                        Action = "Index",
+                        LinkUrl = "Account/Role/Index"
+                        },
+                         new Module()
+                        {
+                        Id=13,
+                        ParentId = 1,
+                        Name="权限管理",
+                        Icon = "icon-cloud",
+                        Area = "Account",
+                        Controller = "Permission",
+                        Action = "Index"
+                        }
+                     }
+                    },
+                     new Module()
+                    {
+                    Id=2,
+                    ParentId = 0,
+                    Name="内容管理",
+                    Icon = "icon-cloud",
+                     ChildModule = new List<Module>()
+                    {
+                          new Module()
+                        {
+                        Id=13,
+                        ParentId = 1,
+                        Name="文章管理",
+                        Icon = "icon-cloud",
+                        Area = "Content",
+                        Controller = "Article",
+                        Action = "Index"
+                        },
+                            new Module()
+                        {
+                        Id=13,
+                        ParentId = 1,
+                        Name="文章分类管理",
+                        Icon = "icon-cloud",
+                        Area = "Content",
+                        Controller = "ArticleCategory",
+                        Action = "Index"
+                        }
+                     }
+                    }
+                };
+
+            moduleList.ForEach(s => context.Module.Add(s));
         }
     }
 }

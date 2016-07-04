@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +40,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.1.0\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi.3.1.0\lib\net40\Autofac.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -108,7 +117,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Extension\ApiErrorHandleAttribute.cs" />
+    <Compile Include="Extension\ApiResultAttribute.cs" />
+    <Compile Include="Extension\ApiResultModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -118,21 +131,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="Content\css\base.css" />
-    <Content Include="Content\images\5891.png" />
-    <Content Include="Content\images\banner_top.jpg" />
-    <Content Include="Content\images\ex.jpg" />
-    <Content Include="Content\images\ex02.jpg" />
-    <Content Include="Content\images\ex03.png" />
-    <Content Include="Content\images\h_line.jpg" />
-    <Content Include="Content\images\li.jpg" />
-    <Content Include="Content\images\logo.jpg" />
-    <Content Include="Content\images\ph.jpg" />
-    <Content Include="Content\images\photos2.jpg" />
-    <Content Include="Content\images\r_title_bg.jpg" />
-    <Content Include="Content\images\time.jpg" />
-    <Content Include="Content\images\weixin.jpg" />
-    <Content Include="Content\js\modernizr.js" />
+    <Content Include="Content\css\Index.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -145,6 +144,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\" />
+    <Folder Include="Content\js\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +153,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Index\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Quick.Application.Admin\Quick.Application.csproj">
+      <Project>{3789fb66-9543-4bfd-91ad-b62ef604710b}</Project>
+      <Name>Quick.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Quick.Framework.Tool\Quick.Framework.Tool.csproj">
+      <Project>{8bfa233d-717c-4439-8ea3-28156f0a185b}</Project>
+      <Name>Quick.Framework.Tool</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

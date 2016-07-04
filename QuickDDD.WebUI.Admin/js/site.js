@@ -12,9 +12,9 @@ $(function () {
     //项目全路径
     site.config.projectPath = "http://localhost:8080";
     //资源路径
-    site.config.resourecePath = "http://192.168.0.100:92";
+    site.config.resourecePath = "http://192.168.0.103:84";
     //上传资源服务接口
-    site.config.uploadPath = "http://192.168.0.100:92/Uploader"; 
+    site.config.uploadPath = "http://192.168.0.103:84/Uploader";
     //项目版本
     site.config.version = "0.01";
 

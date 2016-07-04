@@ -12,8 +12,8 @@ using System;
 
 namespace Quick.Application
 {
-	public interface IArticleService : IServiceBase
-	{
+    public interface IArticleService : IServiceBase
+    {
         #region 文章公共方法
 
         QueryRequestOut<ArticleItem> GetAll(ArticleQueryInput input);
@@ -27,5 +27,12 @@ namespace Quick.Application
         void Update(ArticleDto model);
 
         #endregion
-	}
+
+        #region 前端接口
+
+        List<ArticleItem> GetArticleList(ArticleQueryInput input);
+
+        #endregion
+
+    }
 }

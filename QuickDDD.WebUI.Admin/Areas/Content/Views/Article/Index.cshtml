@@ -75,8 +75,8 @@
             $("#addButton").on("click", function () {
                 top.site.dialog({
                     href: "/Content/Article/Edit",
-                    height: 600,
-                    width: 1000,
+                    height: 800,
+                    width: "80%",
                     title: "新增",
                     callback: site.tables.refresh
                 });
@@ -90,8 +90,8 @@
                 }
                 top.site.dialog({
                     href: "/Content/Article/Edit?id=" + row.Id,
-                    height: 600,
-                    width: 1000,
+                    height: 800,
+                    width: "80%",
                     title: "编辑",
                     callback: site.tables.refresh
                 });
