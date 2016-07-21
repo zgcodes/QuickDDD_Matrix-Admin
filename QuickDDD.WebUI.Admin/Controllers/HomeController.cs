@@ -9,13 +9,15 @@ using System.Web.Mvc;
 
 namespace Quick.WebUI.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         //
         // GET: /Common/Home/
 
+        [PermissionValidation(false)]
         public ActionResult Index()
         {
+            logger.Info("访问首页");
             if (Session["CurrentUser"] == null)
             {
                 Response.Redirect("/Login/Index");
@@ -27,11 +29,13 @@ namespace Quick.WebUI.Admin.Controllers
             }
         }
 
+        [PermissionValidation(false)]
         public ActionResult Welcome()
         {
             return View();
         }
 
+        [PermissionValidation(false)]
         public ActionResult Unauthorized()
         {
             return View();

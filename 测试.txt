@@ -1,1 +1,37 @@
-23435
+--Log 表初始化 
+
+
+                --建表
+                USE [QuickDDD]
+
+                GO
+
+                /****** Object:  Table [dbo].[Log]    Script Date: 07/17/2016 16:16:41 ******/
+
+                SET ANSI_NULLS ON
+
+                GO
+
+                SET QUOTED_IDENTIFIER ON
+
+                GO
+
+                CREATE TABLE [dbo].[Logs](
+
+                [LogId] [int] IDENTITY(1,1) NOT NULL,
+
+                [CreateTime] [datetime] NOT NULL,
+
+                [Origin] [nvarchar](max) NULL,
+
+                [LogLevel] [nvarchar](50) NULL,
+
+                [Message] [nvarchar](max) NULL,
+
+                [Exception] [nvarchar](max) NULL,
+
+                [StackTrace] [nvarchar](max) NULL
+
+                ) ON [PRIMARY]
+
+                GO

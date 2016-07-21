@@ -1,4 +1,5 @@
-﻿using Quick.Framework.Tool;
+﻿using NLog;
+using Quick.Framework.Tool;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,6 @@ namespace Quick.Application
     /// </summary>
     public abstract class ServiceBase : IServiceBase
     {
-
+        public static Logger logger = LogManager.GetCurrentClassLogger();
     }
 }

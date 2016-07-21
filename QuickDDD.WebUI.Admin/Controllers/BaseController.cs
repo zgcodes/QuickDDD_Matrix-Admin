@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using NLog;
 using Quick.Framework.Tool;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace Quick.WebUI.Admin.Controllers
     [PermissionValidation]
     public class BaseController : Controller
     {
+        public static Logger logger = LogManager.GetCurrentClassLogger();
+
         protected JsonResult ToJson<T>(QueryRequestOut<T> data)
         {
             return new ToJsonResult

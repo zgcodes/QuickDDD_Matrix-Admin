@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "领域层", "领域层", "{7C81C967-D977-4EB7-8558-FE6B5DF242DD}"
 EndProject
@@ -30,6 +30,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools.T4", "Tools.T4\Tools.T4.csproj", "{E8ACDAD5-2122-49CF-B718-9F98868A67C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quick.Resources.Web", "Quick.Resources.Web\Quick.Resources.Web.csproj", "{A30C17E0-C2A7-472E-8B01-AB4C3643C71F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilLibrary", "UtilLibrary\UtilLibrary.csproj", "{EE9871AC-9B30-47DF-9812-A133E7837359}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{A30C17E0-C2A7-472E-8B01-AB4C3643C71F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A30C17E0-C2A7-472E-8B01-AB4C3643C71F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A30C17E0-C2A7-472E-8B01-AB4C3643C71F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE9871AC-9B30-47DF-9812-A133E7837359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE9871AC-9B30-47DF-9812-A133E7837359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE9871AC-9B30-47DF-9812-A133E7837359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE9871AC-9B30-47DF-9812-A133E7837359}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,5 +88,6 @@ Global
 		{8BFA233D-717C-4439-8EA3-28156F0A185B} = {AC14CD94-2EFB-4383-B852-25492B90BA0B}
 		{38038083-1B70-4EB4-A1F1-231D846F2F1B} = {5CFD9170-7642-493C-8639-AA310B1D2E5B}
 		{A30C17E0-C2A7-472E-8B01-AB4C3643C71F} = {89390B5D-70BF-4E4A-94DF-AC3AA56155A7}
+		{EE9871AC-9B30-47DF-9812-A133E7837359} = {F380F429-7817-42FD-8B69-6AEDA5F54284}
 	EndGlobalSection
 EndGlobal

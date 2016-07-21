@@ -16,6 +16,9 @@ using Quick.Framework.Tool;
 using Autofac.Integration.Mvc;
 using Quick.Application;
 using System.Reflection;
+using UtilLibrary;
+using Castle.DynamicProxy;
+using Autofac.Extras.DynamicProxy2;
 
 namespace Quick.WebUI.Admin
 {
@@ -49,10 +52,10 @@ namespace Quick.WebUI.Admin
             //也可换种写法：封装个静态方法，把上句封装起来，或者在QuickDbContext的构造函数中指定
             //DatabaseInitializer.Initialize();
 
-            using (var context = new QuickDbContext())
-            {
-                context.Database.Initialize(true);
-            }
+            //using (var context = new QuickDbContext())
+            //{
+            //    context.Database.Initialize(true);
+            //}
 
 
         }
@@ -77,12 +80,7 @@ namespace Quick.WebUI.Admin
 
             //控制器注入
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
-
-            //给特性类注册属性注入
-            builder.RegisterType<UserService>().As<IUserService>();
-            builder.RegisterType<RoleService>().As<IRoleService>();
-            builder.RegisterType<ModuleService>().As<IModuleService>();
-            builder.RegisterType<PermissionService>().As<IPermissionService>();
+           
             builder.RegisterFilterProvider();
 
 
@@ -91,8 +89,13 @@ namespace Quick.WebUI.Admin
             var dataAccessAssembly = Assembly.Load("Quick.Application");
             var dataAccessAssembly2 = Assembly.Load("Quick.Repositories");
             var dataAccessAssembly3 = Assembly.Load("Quick.Domain");
+
             builder.RegisterAssemblyTypes(dataAccessAssembly, dataAccessAssembly2, dataAccessAssembly3)
-                .Where(t => typeof(IDependency).IsAssignableFrom(t)).AsImplementedInterfaces().InstancePerLifetimeScope();//InstancePerLifetimeScope 保证对象生命周期基于请求
+                .EnableInterfaceInterceptors().InterceptedBy(typeof(Interceptor))
+                .Where(t => typeof(IDependency).IsAssignableFrom(t)).AsImplementedInterfaces()
+                .InstancePerLifetimeScope();//InstancePerLifetimeScope 保证对象生命周期基于请求
+
+            builder.RegisterType<Interceptor>();
             var container = builder.Build();
 
 

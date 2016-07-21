@@ -38,6 +38,7 @@ namespace Quick.WebUI.Admin
             {
                 //跳转到登录页面
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
+                return;
             }
             //权限拦截是否忽略
             if (Validate == false)
