@@ -28,6 +28,10 @@ namespace Quick.WebUI.Admin
     {
         protected void Application_Start()
         {
+
+            //autofac自动注入
+            var container = register();
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
@@ -35,17 +39,6 @@ namespace Quick.WebUI.Admin
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-
-            //Ninject，设置Controller工厂
-            //ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
-
-
-            //Unity注入 Ioc
-            //IUnityContainer container = new DependencyRegisterType().GetUnityContainer();
-            //DependencyResolver.SetResolver(new UnityDependencyResolver(container));
-
-            //autofac自动注入
-            this.register();
 
             //指定初始化策略
             //Database.SetInitializer(new SampleDataInitializer());
@@ -59,7 +52,7 @@ namespace Quick.WebUI.Admin
 
 
         }
-        private void register()
+        private IContainer register()
         {
 
             //最原始的根据接口和类注入
@@ -71,7 +64,6 @@ namespace Quick.WebUI.Admin
             //DependencyResolver.SetResolver(new AutofacDependencyResolver(container));  
 
 
-
             //根据程序集批量注入
             var builder = new ContainerBuilder();
 
@@ -80,7 +72,7 @@ namespace Quick.WebUI.Admin
 
             //控制器注入
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
-           
+            builder.RegisterType<MVCLogAttribute>().SingleInstance();
             builder.RegisterFilterProvider();
 
 
@@ -98,8 +90,8 @@ namespace Quick.WebUI.Admin
             builder.RegisterType<Interceptor>();
             var container = builder.Build();
 
-
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            return container;
         }
 
     }

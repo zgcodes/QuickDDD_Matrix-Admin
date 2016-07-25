@@ -105,12 +105,14 @@
     <Compile Include="Core\Dto\RoleQueryInput.cs" />
     <Compile Include="Core\Dto\PermissionItem.cs" />
     <Compile Include="Core\Dto\PermissionQueryInput.cs" />
+    <Compile Include="Core\IAuditInfoService.cs" />
     <Compile Include="Core\ModuleService.cs" />
     <Compile Include="Core\RoleService.cs" />
     <Compile Include="Core\ServiceBase.cs" />
     <Compile Include="Core\Dto\RoleDto.cs" />
     <Compile Include="Core\Dto\UserDto.cs" />
     <Compile Include="Core\Dto\UserRoleDto.cs" />
+    <Compile Include="Core\AuditInfoService.cs" />
     <Compile Include="Core\UserService.cs" />
     <Compile Include="Core\PermissionService.cs" />
     <Compile Include="Core\IUserService.cs" />
@@ -137,7 +139,9 @@
       <Name>Quick.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Core\UtilService\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

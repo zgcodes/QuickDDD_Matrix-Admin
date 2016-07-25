@@ -7,13 +7,13 @@ namespace Quick.Domain.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class quickddd : IMigrationMetadata
+    public sealed partial class 添加审计表 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(quickddd));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(添加审计表));
         
         string IMigrationMetadata.Id
         {
-            get { return "201606221549253_quickddd"; }
+            get { return "201607241440263_[添加审计表]"; }
         }
         
         string IMigrationMetadata.Source

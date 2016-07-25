@@ -25,7 +25,7 @@ namespace Quick.Repositories
         /// 初始化一个 使用指定数据连接名称或连接串 的数据访问上下文类 的新实例
         /// </summary>
         public QuickDbContext(string nameOrConnectionString)
-            : base(nameOrConnectionString) {  }
+            : base(nameOrConnectionString) { }
 
         #endregion
 
@@ -44,6 +44,8 @@ namespace Quick.Repositories
         public DbSet<ModulePermission> ModulePermission { get; set; }
 
         public DbSet<RoleModulePermission> RoleModulePermission { get; set; }
+
+        public DbSet<AuditInfo> AuditInfo { get; set; }
 
         #endregion
 
@@ -69,8 +71,10 @@ namespace Quick.Repositories
             modelBuilder.Entity<ModulePermission>().ToTable("Auth_ModulePermission");
             modelBuilder.Entity<RoleModulePermission>().ToTable("Auth_RoleModulePermission");
 
+            modelBuilder.Entity<RoleModulePermission>().ToTable("Auth_RoleModulePermission");
+
             modelBuilder.Entity<Article>().ToTable("Content_Article");
-            modelBuilder.Entity<ArticleCategory>().ToTable("Content_ArticleCategory");
+            modelBuilder.Entity<AuditInfo>().ToTable("AuditInfo");
 
             //移除一对多的级联删除约定，想要级联删除可以在 EntityTypeConfiguration<TEntity>的实现类中进行控制
             //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();

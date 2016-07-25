@@ -76,14 +76,15 @@
     <Compile Include="Core\ModuleRepository.cs" />
     <Compile Include="Core\RoleRepository.cs" />
     <Compile Include="Core\PermissionRepository.cs" />
+    <Compile Include="Core\AuditInfoRepository.cs" />
     <Compile Include="Core\UserRoleRepository.cs" />
     <Compile Include="Core\ModulePermissionRepository.cs" />
     <Compile Include="Core\RoleModulePermissionRepository.cs" />
     <Compile Include="EF\EfRepositoryBase.cs" />
     <Compile Include="EF\QuickDbContext.cs" />
-    <Compile Include="Migrations\201606221549253_quickddd.cs" />
-    <Compile Include="Migrations\201606221549253_quickddd.Designer.cs">
-      <DependentUpon>201606221549253_quickddd.cs</DependentUpon>
+    <Compile Include="Migrations\201607241440263_[添加审计表].cs" />
+    <Compile Include="Migrations\201607241440263_[添加审计表].Designer.cs">
+      <DependentUpon>201607241440263_[添加审计表].cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,8 +112,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606221549253_quickddd.resx">
-      <DependentUpon>201606221549253_quickddd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607241440263_[添加审计表].resx">
+      <DependentUpon>201607241440263_[添加审计表].cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
