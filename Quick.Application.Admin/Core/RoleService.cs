@@ -1,12 +1,13 @@
 ﻿using Quick.Domain;
-using Quick.Framework.Tool;
+using Core.Domain.Entities;
 using Quick.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 using Newtonsoft.Json;
-
-
+using Core.Extensions;
+using Core.Application.Services.Dto;
+using Core.Application.Services;
 
 namespace Quick.Application
 {

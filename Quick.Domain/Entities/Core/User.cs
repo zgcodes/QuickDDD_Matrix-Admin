@@ -1,4 +1,4 @@
-﻿using Quick.Framework.Tool;
+﻿using Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;//Title:System.EnterpriseServices 也含有Description的定义，但是不能用于反射，切记别引用错了

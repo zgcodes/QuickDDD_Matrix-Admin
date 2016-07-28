@@ -1,4 +1,6 @@
-﻿using Quick.Framework.Tool;
+﻿using Core.Application.Services;
+using Core.Application.Services.Dto;
+using Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

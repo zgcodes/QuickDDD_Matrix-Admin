@@ -1,10 +1,11 @@
 ﻿
 using Quick.Domain;
-using Quick.Framework.Tool;
+using Core.Domain.Entities;
 using System.ComponentModel.Composition;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using EntityFramework.DynamicFilters;
+using Core.Auditing;
 
 namespace Quick.Repositories
 {

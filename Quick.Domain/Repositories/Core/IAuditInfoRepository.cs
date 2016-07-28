@@ -1,5 +1,6 @@
 ﻿
-using Quick.Framework.Tool;
+using Core.Auditing;
+
 namespace Quick.Domain
 {
     /// <summary>

@@ -1,5 +1,5 @@
 ﻿using Quick.Domain;
-using Quick.Framework.Tool;
+using Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;

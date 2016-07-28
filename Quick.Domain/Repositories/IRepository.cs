@@ -1,5 +1,6 @@
 ﻿
-using Quick.Framework.Tool;
+using Core.Dependency;
+using Core.Domain.Entities;
 using System.Collections.Generic;
 using System.Linq;
 

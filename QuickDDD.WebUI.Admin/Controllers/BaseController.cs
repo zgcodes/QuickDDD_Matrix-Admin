@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using NLog;
-using Quick.Framework.Tool;
+using Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using Core.Application.Services.Dto;
 
 namespace Quick.WebUI.Admin.Controllers
 {

@@ -63,18 +63,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autofac\Interceptor.cs" />
-    <Compile Include="CheckData.cs" />
-    <Compile Include="EnumExtensions.cs" />
-    <Compile Include="JsonUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Log\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

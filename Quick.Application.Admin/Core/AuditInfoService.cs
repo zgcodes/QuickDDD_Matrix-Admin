@@ -1,29 +1,24 @@
 ﻿using Quick.Domain;
+using Core.Auditing;
+using Core.Application.Services;
 
 namespace Quick.Application
 {
-	/// <summary>
+    /// <summary>
     /// 服务层实现类 —— UserService
     /// </summary>
-    public class AuditInfoService : ServiceBase, IAuditInfoService
+    public class AuditInfoService : ServiceBase, IAuditingStore
     {
-
         private readonly IAuditInfoRepository _auditInfoRepository;
-       // public IUnitOfWork UnitOfWork { get; set; }
 
         public AuditInfoService(IAuditInfoRepository auditInfoRepository)
         {
             _auditInfoRepository = auditInfoRepository;
         }
-        
-        #region 公共方法
 
-        public void Create(AuditInfo entity)
+        public void Save(AuditInfo auditInfo)
         {
-            _auditInfoRepository.Insert(entity);
+            _auditInfoRepository.Insert(auditInfo);
         }
-
-        #endregion
-
-	}
+    }
 }

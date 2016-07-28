@@ -155,13 +155,13 @@
     <Content Include="Views\Index\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{F9840160-E8D4-4571-B7AB-4739C498B94B}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Quick.Application.Admin\Quick.Application.csproj">
       <Project>{3789fb66-9543-4bfd-91ad-b62ef604710b}</Project>
       <Name>Quick.Application</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Quick.Framework.Tool\Quick.Framework.Tool.csproj">
-      <Project>{8bfa233d-717c-4439-8ea3-28156f0a185b}</Project>
-      <Name>Quick.Framework.Tool</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

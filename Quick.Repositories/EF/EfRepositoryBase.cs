@@ -1,14 +1,12 @@
-﻿using Quick.Domain;
-using Quick.Framework.Tool;
+﻿using Core.Domain.Entities;
+using Quick.Domain;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
-using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Web;
+
 
 namespace Quick.Repositories
 {

@@ -1,5 +1,4 @@
 ﻿
-using Quick.Framework.Tool;
 namespace Quick.Domain
 {
 	/// <summary>

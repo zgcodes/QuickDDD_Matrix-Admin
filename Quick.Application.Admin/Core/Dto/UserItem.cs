@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Application.Services.Dto;
+using System;
 
 namespace Quick.Application
 {

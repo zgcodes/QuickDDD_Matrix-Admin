@@ -1,10 +1,10 @@
 ﻿using Quick.Domain;
-using Quick.Framework.Tool;
+using Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Core.Application.Services.Dto;
 
 namespace Quick.Application
 {

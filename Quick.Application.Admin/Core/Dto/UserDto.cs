@@ -1,6 +1,7 @@
 ﻿using Quick.Domain;
 using System;
 using System.Collections.Generic;
+using Core.Application.Services.Dto;
 
 namespace Quick.Application
 {
