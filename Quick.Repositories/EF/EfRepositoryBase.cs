@@ -39,7 +39,10 @@ namespace Quick.Repositories
 
         public virtual void Insert(TEntity entity)
         {
-            (entity as IAudited).CreateTime = DateTime.Now;
+            if (entity is IAudited)
+            {
+                (entity as IAudited).CreateTime = DateTime.Now;
+            }
             dbSet.Add(entity);
             context.SaveChanges();
             //TODO:提交数据库。注意，如果多次“数据操作（insert，undate,delete）”后再提交这一个公用的context，
