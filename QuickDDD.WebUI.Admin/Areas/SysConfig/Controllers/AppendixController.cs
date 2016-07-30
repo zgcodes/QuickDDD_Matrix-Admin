@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-using Quick.Framework.Tool;
+using Core.Domain.Entities;
 using Quick.WebUI.Admin;
 
 namespace Quick.WebUI.Admin.Areas.SysConfig.Controllers

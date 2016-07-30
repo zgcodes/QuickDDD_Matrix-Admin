@@ -53,10 +53,6 @@
       <Project>{169f1c47-313a-49e2-839e-43ffc0b81b14}</Project>
       <Name>Quick.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Quick.Framework.Tool\Quick.Framework.Tool.csproj">
-      <Project>{8bfa233d-717c-4439-8ea3-28156f0a185b}</Project>
-      <Name>Quick.Framework.Tool</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Quick.Repositories\Quick.Repositories.csproj">
       <Project>{38038083-1b70-4eb4-a1f1-231d846f2f1b}</Project>
       <Name>Quick.Repositories</Name>

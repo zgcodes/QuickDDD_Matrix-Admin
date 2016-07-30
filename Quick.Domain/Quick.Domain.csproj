@@ -67,7 +67,6 @@
   <ItemGroup>
     <Compile Include="Entities\Content\Article.cs" />
     <Compile Include="Entities\Content\ArticleCategory.cs" />
-    <Compile Include="Entities\Core\AuditInfo.cs" />
     <Compile Include="Entities\Core\Module.cs" />
     <Compile Include="Entities\Core\ModulePermission.cs" />
     <Compile Include="Entities\Core\Permission.cs" />
@@ -98,9 +97,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Quick.Framework.Tool\Quick.Framework.Tool.csproj">
-      <Project>{8bfa233d-717c-4439-8ea3-28156f0a185b}</Project>
-      <Name>Quick.Framework.Tool</Name>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{f9840160-e8d4-4571-b7ab-4739c498b94b}</Project>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

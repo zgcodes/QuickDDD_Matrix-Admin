@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Core.Auditing;
+using Core.Utils;
+using Newtonsoft.Json;
 using NLog;
 using Quick.Application;
 using Quick.Domain;
@@ -6,7 +8,6 @@ using System;
 using System.Diagnostics;
 using System.Web;
 using System.Web.Mvc;
-using UtilLibrary;
 
 namespace Quick.WebUI.Admin
 {
@@ -16,9 +17,9 @@ namespace Quick.WebUI.Admin
         private const string ArgumentsKey = "ActionArguments";
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
-        private readonly IAuditInfoService _auditInfoService;
+        private readonly IAuditingStore _auditInfoService;
 
-        public MVCLogAttribute(IAuditInfoService auditInfoService)
+        public MVCLogAttribute(IAuditingStore auditInfoService)
         {
             _auditInfoService = auditInfoService;
         }
@@ -81,7 +82,7 @@ namespace Quick.WebUI.Admin
         /// <param name="entity"></param>
         public void SaveAuditInfo(AuditInfo entity)
         {
-            _auditInfoService.Create(entity);
+            _auditInfoService.Save(entity);
         }
 
         /// <summary>

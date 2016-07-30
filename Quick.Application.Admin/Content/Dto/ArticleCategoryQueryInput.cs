@@ -1,4 +1,5 @@
-﻿using Quick.Framework.Tool;
+﻿using Core.Application.Services.Dto;
+using Core.Domain.Entities;
 
 namespace Quick.Application
 {

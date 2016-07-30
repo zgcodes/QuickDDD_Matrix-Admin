@@ -12,13 +12,14 @@ using System.Web.Routing;
 using System.Data.Entity;
 using Microsoft.Practices.Unity;
 using Autofac;
-using Quick.Framework.Tool;
+using Core.Domain.Entities;
 using Autofac.Integration.Mvc;
 using Quick.Application;
 using System.Reflection;
-using UtilLibrary;
 using Castle.DynamicProxy;
 using Autofac.Extras.DynamicProxy2;
+using Core.Dependency;
+using Core.Auditing;
 
 namespace Quick.WebUI.Admin
 {
@@ -83,11 +84,11 @@ namespace Quick.WebUI.Admin
             var dataAccessAssembly3 = Assembly.Load("Quick.Domain");
 
             builder.RegisterAssemblyTypes(dataAccessAssembly, dataAccessAssembly2, dataAccessAssembly3)
-                .EnableInterfaceInterceptors().InterceptedBy(typeof(Interceptor))
+                .EnableInterfaceInterceptors().InterceptedBy(typeof(AuditingInterceptor))
                 .Where(t => typeof(IDependency).IsAssignableFrom(t)).AsImplementedInterfaces()
                 .InstancePerLifetimeScope();//InstancePerLifetimeScope 保证对象生命周期基于请求
 
-            builder.RegisterType<Interceptor>();
+            builder.RegisterType<AuditingInterceptor>();
             var container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

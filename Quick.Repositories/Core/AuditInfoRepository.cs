@@ -1,10 +1,5 @@
-﻿
-using System;
-using System.Linq;
-using System.ComponentModel.Composition;
-using Quick.Domain;
-using System.Collections.Generic;
-
+﻿using Quick.Domain;
+using Core.Auditing;
 
 namespace Quick.Repositories
 {

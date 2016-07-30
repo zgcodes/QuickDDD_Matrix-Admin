@@ -1,5 +1,5 @@
 ﻿
-using Quick.Framework.Tool;
+using Core.Domain.Entities;
 namespace Quick.Domain
 {
 	/// <summary>

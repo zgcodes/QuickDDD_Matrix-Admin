@@ -1,7 +1,7 @@
 ﻿using Microsoft.Practices.Unity;
 using Newtonsoft.Json;
 using Quick.Application;
-using Quick.Framework.Tool;
+using Core.Domain.Entities;
 using Quick.WebUI.Admin.Controllers;
 using System;
 using System.Collections.Generic;

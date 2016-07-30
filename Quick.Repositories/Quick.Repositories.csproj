@@ -81,6 +81,7 @@
     <Compile Include="Core\ModulePermissionRepository.cs" />
     <Compile Include="Core\RoleModulePermissionRepository.cs" />
     <Compile Include="EF\EfRepositoryBase.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="EF\QuickDbContext.cs" />
     <Compile Include="Migrations\201607241440263_[添加审计表].cs" />
     <Compile Include="Migrations\201607241440263_[添加审计表].Designer.cs">
@@ -92,13 +93,13 @@
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{F9840160-E8D4-4571-B7AB-4739C498B94B}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Quick.Domain\Quick.Domain.csproj">
       <Project>{169f1c47-313a-49e2-839e-43ffc0b81b14}</Project>
       <Name>Quick.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Quick.Framework.Tool\Quick.Framework.Tool.csproj">
-      <Project>{8bfa233d-717c-4439-8ea3-28156f0a185b}</Project>
-      <Name>Quick.Framework.Tool</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

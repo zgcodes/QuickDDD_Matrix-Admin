@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
-using Quick.Framework.Tool;
+using Core.Dependency;
+using Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

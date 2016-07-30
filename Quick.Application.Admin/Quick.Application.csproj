@@ -86,7 +86,6 @@
     <Compile Include="Content\Dto\ArticleQueryInput.cs" />
     <Compile Include="Content\IArticleCategoryService.cs" />
     <Compile Include="Content\IArticleService.cs" />
-    <Compile Include="Core\Dto\DtoBase.cs" />
     <Compile Include="Core\Dto\ModuleDto.cs" />
     <Compile Include="Core\Dto\PermissionDto.cs" />
     <Compile Include="Core\Dto\RoleModulePermission\RoleModulePermissionModel.cs" />
@@ -105,10 +104,8 @@
     <Compile Include="Core\Dto\RoleQueryInput.cs" />
     <Compile Include="Core\Dto\PermissionItem.cs" />
     <Compile Include="Core\Dto\PermissionQueryInput.cs" />
-    <Compile Include="Core\IAuditInfoService.cs" />
     <Compile Include="Core\ModuleService.cs" />
     <Compile Include="Core\RoleService.cs" />
-    <Compile Include="Core\ServiceBase.cs" />
     <Compile Include="Core\Dto\RoleDto.cs" />
     <Compile Include="Core\Dto\UserDto.cs" />
     <Compile Include="Core\Dto\UserRoleDto.cs" />
@@ -118,7 +115,6 @@
     <Compile Include="Core\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\IModuleService.cs" />
-    <Compile Include="Core\IServiceBase.cs" />
     <Compile Include="Core\IRoleService.cs" />
     <Compile Include="Core\IPermissionService.cs" />
   </ItemGroup>
@@ -126,22 +122,20 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{f9840160-e8d4-4571-b7ab-4739c498b94b}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Quick.Domain\Quick.Domain.csproj">
       <Project>{169f1c47-313a-49e2-839e-43ffc0b81b14}</Project>
       <Name>Quick.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Quick.Framework.Tool\Quick.Framework.Tool.csproj">
-      <Project>{8bfa233d-717c-4439-8ea3-28156f0a185b}</Project>
-      <Name>Quick.Framework.Tool</Name>
     </ProjectReference>
     <ProjectReference Include="..\Quick.Repositories\Quick.Repositories.csproj">
       <Project>{38038083-1b70-4eb4-a1f1-231d846f2f1b}</Project>
       <Name>Quick.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\UtilService\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

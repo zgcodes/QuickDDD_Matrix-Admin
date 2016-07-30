@@ -73,7 +73,6 @@
     <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\..\网站\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -664,13 +663,16 @@
     <Folder Include="Areas\Common\Models\" />
     <Folder Include="Areas\SysConfig\Models\" />
     <Folder Include="Extension\HtmlHelper\" />
-    <Folder Include="Extension\Ioc\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{F9840160-E8D4-4571-B7AB-4739C498B94B}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Quick.Application.Admin\Quick.Application.csproj">
       <Project>{3789fb66-9543-4bfd-91ad-b62ef604710b}</Project>
       <Name>Quick.Application</Name>
@@ -679,17 +681,9 @@
       <Project>{169f1c47-313a-49e2-839e-43ffc0b81b14}</Project>
       <Name>Quick.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Quick.Framework.Tool\Quick.Framework.Tool.csproj">
-      <Project>{8bfa233d-717c-4439-8ea3-28156f0a185b}</Project>
-      <Name>Quick.Framework.Tool</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Quick.Repositories\Quick.Repositories.csproj">
       <Project>{38038083-1b70-4eb4-a1f1-231d846f2f1b}</Project>
       <Name>Quick.Repositories</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UtilLibrary\UtilLibrary.csproj">
-      <Project>{ee9871ac-9b30-47df-9812-a133e7837359}</Project>
-      <Name>UtilLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

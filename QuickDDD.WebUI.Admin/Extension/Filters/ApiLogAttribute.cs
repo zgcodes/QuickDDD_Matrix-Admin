@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Core.Auditing;
+using Core.Utils;
+using Newtonsoft.Json;
 using NLog;
 using Quick.Application;
 using Quick.Domain;
@@ -12,7 +14,6 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
-using UtilLibrary;
 
 namespace Quick.WebUI.Admin
 {
@@ -21,7 +22,7 @@ namespace Quick.WebUI.Admin
         private const string StopwatchKey = "ApiStopwatch";
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
-        public IAuditInfoService auditInfoService { get; set; }
+        public IAuditingStore auditInfoService { get; set; }
 
 
         public override void OnActionExecuting(HttpActionContext actionContext)
@@ -97,7 +98,7 @@ namespace Quick.WebUI.Admin
         /// <param name="entity"></param>
         public void SaveAuditInfo(AuditInfo entity)
         {
-            auditInfoService.Create(entity);
+            auditInfoService.Save(entity);
         }
 
         /// <summary>

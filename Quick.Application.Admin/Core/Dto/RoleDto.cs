@@ -1,5 +1,7 @@
 ﻿
 
+using Core.Application.Services.Dto;
+
 namespace Quick.Application
 {
     public class RoleDto : DtoBase
