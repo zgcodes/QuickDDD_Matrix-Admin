@@ -2,6 +2,7 @@
 using Core.Domain.Entities;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Core.Extensions
 {
@@ -16,7 +17,7 @@ namespace Core.Extensions
         public static T MapTo<T>(this object obj)
         {
             if (obj == null) return default(T);
-            Mapper.Map(obj.GetType(), typeof(T));
+            Mapper.CreateMap(obj.GetType(), typeof(T));
             return Mapper.Map<T>(obj);
         }
 
@@ -28,7 +29,7 @@ namespace Core.Extensions
             foreach (var first in source)
             {
                 var type = first.GetType();
-                Mapper.Map(type, typeof(TDestination));
+                Mapper.CreateMap(type, typeof(TDestination));
                 break;
             }
             return Mapper.Map<List<TDestination>>(source);
@@ -36,9 +37,11 @@ namespace Core.Extensions
         /// <summary>
         /// 集合列表类型映射
         /// </summary>
-        public static IEnumerable<TDestination> MapToList<TSource, TDestination>(this IEnumerable<TSource> source)
+        public static List<TDestination> MapToList<TSource, TDestination>(this IEnumerable<TSource> source)
         {
-            return Mapper.Map<IEnumerable<TSource>, IEnumerable<TDestination>>(source);
+            //IEnumerable<T> 类型需要创建元素的映射
+            Mapper.CreateMap<TSource, TDestination>();
+            return Mapper.Map<List<TDestination>>(source);
         }
         /// <summary>
         /// 类型映射，指定目标对象，拷贝数据到目标对象，并返回目标对象(修改时用到，这里对目标对象做了限制，暂时只能是实体，TODO:可变动)
@@ -47,6 +50,7 @@ namespace Core.Extensions
             where TDestination : Entity
         {
             if (source == null) return destination;
+            Mapper.CreateMap<TSource, TDestination>();
             return Mapper.Map(source, destination);
         }
     }

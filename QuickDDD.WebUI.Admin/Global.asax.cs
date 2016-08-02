@@ -1,25 +1,15 @@
-﻿using Quick.Domain;
-using Quick.Repositories;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition.Hosting;
+﻿using Autofac;
+using Autofac.Extras.DynamicProxy2;
+using Autofac.Integration.Mvc;
+using Core.Auditing;
+using Core.Dependency;
+using Microsoft.Practices.Unity;
 using System.Linq;
-using System.Web;
+using System.Reflection;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using System.Data.Entity;
-using Microsoft.Practices.Unity;
-using Autofac;
-using Core.Domain.Entities;
-using Autofac.Integration.Mvc;
-using Quick.Application;
-using System.Reflection;
-using Castle.DynamicProxy;
-using Autofac.Extras.DynamicProxy2;
-using Core.Dependency;
-using Core.Auditing;
 
 namespace Quick.WebUI.Admin
 {
@@ -50,8 +40,6 @@ namespace Quick.WebUI.Admin
             //{
             //    context.Database.Initialize(true);
             //}
-
-
         }
         private IContainer register()
         {
